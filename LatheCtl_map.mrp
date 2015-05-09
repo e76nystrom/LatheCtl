@@ -1,0 +1,607 @@
+Release 14.6 Map P.68d (nt64)
+Xilinx Mapping Report File for Design 'LatheCtl'
+
+Design Information
+------------------
+Command Line   : map -intstyle ise -p xc3s250e-tq144-5 -cm area -detail -ir off
+-pr off -c 100 -o LatheCtl_map.ncd LatheCtl.ngd LatheCtl.pcf 
+Target Device  : xc3s250e
+Target Package : tq144
+Target Speed   : -5
+Mapper Version : spartan3e -- $Revision: 1.55 $
+Mapped Date    : Sat May 09 07:19:35 2015
+
+Design Summary
+--------------
+Number of errors:      0
+Number of warnings:    0
+Logic Utilization:
+  Number of Slice Flip Flops:         1,338 out of   4,896   27%
+  Number of 4 input LUTs:             1,672 out of   4,896   34%
+Logic Distribution:
+  Number of occupied Slices:          1,302 out of   2,448   53%
+    Number of Slices containing only related logic:   1,302 out of   1,302 100%
+    Number of Slices containing unrelated logic:          0 out of   1,302   0%
+      *See NOTES below for an explanation of the effects of unrelated logic.
+  Total Number of 4 input LUTs:       1,811 out of   4,896   36%
+    Number used as logic:             1,672
+    Number used as a route-thru:        139
+
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+
+  Number of bonded IOBs:                 34 out of     108   31%
+    IOB Flip Flops:                       1
+  Number of BUFGMUXs:                     1 out of      24    4%
+  Number of DCMs:                         1 out of       4   25%
+
+Average Fanout of Non-Clock Nets:                3.22
+
+Peak Memory Usage:  334 MB
+Total REAL time to MAP completion:  2 secs 
+Total CPU time to MAP completion:   2 secs 
+
+NOTES:
+
+   Related logic is defined as being logic that shares connectivity - e.g. two
+   LUTs are "related" if they share common inputs.  When assembling slices,
+   Map gives priority to combine logic that is related.  Doing so results in
+   the best timing performance.
+
+   Unrelated logic shares no connectivity.  Map will only begin packing
+   unrelated logic into a slice once 99% of the slices are occupied through
+   related logic packing.
+
+   Note that once logic distribution reaches the 99% level through related
+   logic packing, this does not mean the device is completely utilized.
+   Unrelated logic packing will then begin, continuing until all usable LUTs
+   and FFs are occupied.  Depending on your timing budget, increased levels of
+   unrelated logic packing may adversely affect the overall timing performance
+   of your design.
+
+Table of Contents
+-----------------
+Section 1 - Errors
+Section 2 - Warnings
+Section 3 - Informational
+Section 4 - Removed Logic Summary
+Section 5 - Removed Logic
+Section 6 - IOB Properties
+Section 7 - RPMs
+Section 8 - Guide Report
+Section 9 - Area Group and Partition Summary
+Section 10 - Timing Report
+Section 11 - Configuration String Information
+Section 12 - Control Set Information
+Section 13 - Utilization by Hierarchy
+
+Section 1 - Errors
+------------------
+
+Section 2 - Warnings
+--------------------
+
+Section 3 - Informational
+-------------------------
+INFO:MapLib:562 - No environment variables are currently set.
+INFO:LIT:244 - All of the single ended outputs in this design are using slew
+   rate limited output drivers. The delay on speed critical single ended outputs
+   can be dramatically reduced by designating them as fast outputs.
+
+Section 4 - Removed Logic Summary
+---------------------------------
+   2 block(s) optimized away
+ 302 Block(s) redundant
+
+Section 5 - Removed Logic
+-------------------------
+
+Optimized Block(s):
+TYPE 		BLOCK
+GND 		XST_GND
+VCC 		XST_VCC
+
+Redundant Block(s):
+TYPE 		BLOCK
+LOCALBUF 		z_SyncAccel/accelAccum/Mmux_sum_mux00001031/LUT3_D_BUF
+LOCALBUF 		z_SyncAccel/accelAccum/Mmux_sum_mux00001021/LUT3_D_BUF
+LOCALBUF 		x_SyncAccel/accelAccum/Mmux_sum_mux00001031/LUT3_D_BUF
+LOCALBUF 		x_SyncAccel/accelAccum/Mmux_sum_mux00001021/LUT3_D_BUF
+LOCALBUF 		zDistCounter/dist_shift21/LUT2_D_BUF
+LOCALBUF 		z_SyncAccel/incr2Clk_SW0/LUT2_D_BUF
+LOCALBUF 		z_loc/locreg/counter_not0001_SW0/LUT4_L_BUF
+LOCALBUF 		x_loc/locreg/counter_not0001_SW0/LUT4_L_BUF
+LOCALBUF 		pulse_Mult/remTimer_cmp_eq00001/LUT3_D_BUF
+LOCALBUF 		xFreqGen/freq_shift11/LUT2_D_BUF
+LOCALBUF 		dctl_sel_and000011/LUT4_D_BUF
+LOCALBUF 		dbg_clk/clock/counter_cmp_eq000051/LUT3_D_BUF
+LOCALBUF 		spi_int/op_mux0000<0>11/LUT4_D_BUF
+LOCALBUF 		pulse_Mult/pulseTimer_cmp_eq000025/LUT4_L_BUF
+LOCALBUF 		spi_int/Msub_count_addsub0000_cy<2>11/LUT3_D_BUF
+LOCALBUF 		spi_int/count_mux0000<1>5/LUT3_L_BUF
+LOCALBUF 		pulse_Mult/pulseTimer_mux0003<3>_SW0/LUT3_L_BUF
+LOCALBUF 		pulse_Mult/pulseTimer_mux0003<4>_SW0/LUT3_L_BUF
+LOCALBUF 		pulse_Mult/pulseTimer_mux0003<5>_SW0/LUT3_L_BUF
+LOCALBUF 		pulse_Mult/pulseTimer_mux0003<6>_SW0/LUT3_L_BUF
+LOCALBUF 		pulse_Mult/pulseTimer_mux0003<7>_SW0/LUT3_L_BUF
+LOCALBUF 		pulse_Mult/pulseTimer_mux0003<8>_SW0/LUT3_L_BUF
+LOCALBUF 		pulse_Mult/pulseTimer_mux0003<9>_SW0/LUT3_L_BUF
+LOCALBUF 		pulse_Mult/pulseTimer_mux0003<10>_SW0/LUT3_L_BUF
+LOCALBUF 		outReg_mux0002<19>111/LUT2_D_BUF
+LOCALBUF 		outReg_mux0002<18>11/LUT4_D_BUF
+LOCALBUF 		pulse_Mult/pulseTimer_mux0003<11>_SW0/LUT3_L_BUF
+LOCALBUF 		pulse_Mult/pulseTimer_mux0003<12>_SW0/LUT3_L_BUF
+LOCALBUF 		outReg_mux0002<4>711/LUT2_D_BUF
+LOCALBUF 		Mmux_outReg_mux00012212/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00012012/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00011812/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00011512/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00011312/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00011012/LUT4_L_BUF
+LOCALBUF 		outReg_mux0002<1>131/LUT2_D_BUF
+LOCALBUF 		outReg_mux0002<5>71/LUT3_D_BUF
+LOCALBUF 		outReg_mux0002<0>111/LUT3_D_BUF
+LOCALBUF 		Mmux_outReg_mux00017156/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00015156/LUT4_L_BUF
+LOCALBUF 		outReg_mux0002<7>211/LUT2_D_BUF
+LOCALBUF 		outReg_mux0002<5>161/LUT2_D_BUF
+LOCALBUF 		outReg_mux0002<5>121/LUT2_D_BUF
+LOCALBUF 		outReg_mux0002<1>41/LUT2_D_BUF
+LOCALBUF 		outReg_mux0002<10>521/LUT2_D_BUF
+LOCALBUF 		outReg_mux0002<10>511/LUT2_D_BUF
+LOCALBUF 		outReg_mux0002<10>431/LUT2_D_BUF
+LOCALBUF 		outReg_mux0002<0>311/LUT2_D_BUF
+LOCALBUF 		Mmux_outReg_mux0001847/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux0001942/LUT2_D_BUF
+LOCALBUF 		Mmux_outReg_mux00019132/LUT3_L_BUF
+LOCALBUF 		Mmux_outReg_mux0001347/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux0001386/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00013141/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00013247/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00013289/LUT3_L_BUF
+LOCALBUF 		Mmux_outReg_mux000132157/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00012971/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00012771/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00011189/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux000123202/LUT4_L_BUF
+LOCALBUF 		outReg_mux0002<10>31/LUT4_D_BUF
+LOCALBUF 		Mmux_outReg_mux0001410/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux0001434/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00014109/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00012101/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00012341/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00012138/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux000131101/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00013134/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux000131137/LUT4_L_BUF
+LOCALBUF 		outReg_mux0002<4>51/LUT3_D_BUF
+LOCALBUF 		Mmux_outReg_mux000112129/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux000129130/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux000127130/LUT4_L_BUF
+LOCALBUF 		outReg_mux0002<10>531/LUT3_D_BUF
+LOCALBUF 		outReg_mux0002<5>51/LUT3_D_BUF
+LOCALBUF 		outReg_mux0002<0>131/LUT3_D_BUF
+LOCALBUF 		outReg_mux0002<0>121/LUT3_D_BUF
+LOCALBUF 		outReg_mux0002<10>441/LUT3_D_BUF
+LOCALBUF 		outReg_mux0002<10>421/LUT3_D_BUF
+LOCALBUF 		Mmux_outReg_mux000129183_SW0/LUT3_L_BUF
+LOCALBUF 		Mmux_outReg_mux000127183_SW0/LUT3_L_BUF
+LOCALBUF 		Mmux_outReg_mux00012654/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00013051/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00012851/LUT4_L_BUF
+LOCALBUF 		outReg_mux0002<1>2_SW2/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux0001990_SW0/LUT4_L_BUF
+LOCALBUF 		outReg_mux0002<5>61/LUT3_D_BUF
+LOCALBUF 		outReg_mux0002<5>31/LUT3_D_BUF
+LOCALBUF 		outReg_mux0002<10>411/LUT3_D_BUF
+LOCALBUF 		Mmux_outReg_mux00016137/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00014137/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00012166/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux000126179/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux000112224/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux0001781/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux0001581/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00019224/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00012654_SW0_SW0/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00011791_SW0_SW0/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00012392_SW0_SW0/LUT4_L_BUF
+LOCALBUF 		outReg_mux0002<10>491/LUT3_D_BUF
+LOCALBUF 		Mmux_outReg_mux00011268_SW0/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux000130125_SW0/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux000128125_SW0/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux0001629_SW0/LUT4_L_BUF
+LOCALBUF 		outReg_mux0002<5>171/LUT4_D_BUF
+LOCALBUF 		outReg_mux0002<4>71_SW2/LUT4_L_BUF
+LOCALBUF 		outReg_mux0002<5>81/LUT3_D_BUF
+LOCALBUF 		Mmux_outReg_mux0001685/LUT3_L_BUF
+LOCALBUF 		outReg_mux0002<17>51/LUT3_D_BUF
+LOCALBUF 		outReg_mux0002<18>21/LUT4_D_BUF
+LOCALBUF 		Mmux_outReg_mux000123226_SW0/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00019175_SW0/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00012617_SW0/LUT3_L_BUF
+LOCALBUF 		Mmux_outReg_mux00011791/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00012392/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux000131124_SW0/LUT3_L_BUF
+LOCALBUF 		Mmux_outReg_mux00018155/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00013171/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux000132187/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux000126120_SW1/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux000112165_SW1/LUT4_L_BUF
+LOCALBUF 		outReg_mux0002<19>131/LUT4_L_BUF
+LOCALBUF 		outReg_mux0002<0>41/LUT4_D_BUF
+LOCALBUF 		outReg_mux0002<5>101/LUT4_D_BUF
+LOCALBUF 		Mmux_outReg_mux000112231_SW0/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00012469_SW0_SW0/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00012169_SW0_SW0/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00011969_SW0_SW0/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00011769_SW0_SW0/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00011669_SW0_SW0/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00011469_SW0_SW0/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00011169_SW0_SW0/LUT4_L_BUF
+LOCALBUF 		spi_int/count_mux0000<3>_SW2/LUT4_L_BUF
+LOCALBUF 		xctl/sreg_not0001_SW0/LUT4_D_BUF
+LOCALBUF 		zFreqGen/freq_shift_SW1/LUT4_L_BUF
+LOCALBUF 		x_loc/loc_shift_SW1/LUT4_L_BUF
+LOCALBUF 		z_SyncAccel/incr1Clk_SW0/LUT3_D_BUF
+LOCALBUF 		Mmux_outReg_mux00012995_SW0/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux00012795_SW0/LUT4_L_BUF
+LOCALBUF 		spi_int/count_mux0000<0>111/LUT4_D_BUF
+LOCALBUF 		pulse_Mult/pulseTimer_mux0003<1>_SW1/LUT3_L_BUF
+LOCALBUF 		x_SyncAccel/incr1Clk_SW1/LUT4_L_BUF
+LOCALBUF 		xFreqGen/freq_shift_SW1/LUT4_L_BUF
+LOCALBUF 		Mmux_outReg_mux0001513_SW0/LUT4_L_BUF
+LOCALBUF 		spi_int/count_mux0000<1>1/LUT4_D_BUF
+LOCALBUF 		tCtl/sreg_not000121/LUT3_D_BUF
+LOCALBUF 		tCtl/sreg_not000111/LUT4_D_BUF
+LOCALBUF 		Mmux_outReg_mux0001834_SW0/LUT3_L_BUF
+LOCALBUF 		Mmux_outReg_mux0001334_SW0/LUT3_L_BUF
+LOCALBUF 		Mmux_outReg_mux00013234_SW0/LUT3_L_BUF
+LOCALBUF 		Mmux_outReg_mux00017192_SW0_SW0/LUT4_D_BUF
+LOCALBUF 		pulse_Mult/pulseTimer_mux0003<0>11/LUT3_D_BUF
+LUT1 		Mcount_div_cy<1>_rt
+LUT1 		Mcount_div_cy<2>_rt
+LUT1 		Mcount_div_cy<3>_rt
+LUT1 		Mcount_div_cy<4>_rt
+LUT1 		Mcount_div_cy<5>_rt
+LUT1 		Mcount_div_cy<6>_rt
+LUT1 		Mcount_div_cy<7>_rt
+LUT1 		Mcount_div_cy<8>_rt
+LUT1 		Mcount_div_cy<9>_rt
+LUT1 		Mcount_div_cy<10>_rt
+LUT1 		Mcount_div_cy<11>_rt
+LUT1 		Mcount_div_cy<12>_rt
+LUT1 		Mcount_div_cy<13>_rt
+LUT1 		Mcount_div_cy<14>_rt
+LUT1 		Mcount_div_cy<15>_rt
+LUT1 		Mcount_div_cy<16>_rt
+LUT1 		Mcount_div_cy<17>_rt
+LUT1 		Mcount_div_cy<18>_rt
+INV 		led_display/Mrom_anode_mux0001112_INV_0
+LUT1 		Mcount_div_cy<19>_rt
+INV 		led_display/Mrom_anode_mux00011111_INV_0
+LUT1 		Mcount_div_cy<20>_rt
+LUT1 		Mcount_div_cy<21>_rt
+LUT1 		Mcount_div_cy<22>_rt
+LUT1 		Mcount_div_cy<23>_rt
+LUT1 		Mcount_div_cy<24>_rt
+LUT1 		Mcount_div_cy<25>_rt
+LUT1 		Tick_Gen/Mcount_divider_cy<0>_rt
+LUT1 		xPulseOut/Mcount_counter_cy<0>_rt
+LUT1 		zDistCounter/stpctr/Mcount_counter_cy<1>_rt
+LUT1 		zDistCounter/stpctr/Mcount_counter_cy<2>_rt
+LUT1 		zDistCounter/stpctr/Mcount_counter_cy<3>_rt
+LUT1 		zDistCounter/stpctr/Mcount_counter_cy<4>_rt
+LUT1 		zDistCounter/stpctr/Mcount_counter_cy<5>_rt
+LUT1 		zDistCounter/stpctr/Mcount_counter_cy<6>_rt
+LUT1 		zDistCounter/stpctr/Mcount_counter_cy<7>_rt
+LUT1 		zDistCounter/stpctr/Mcount_counter_cy<8>_rt
+LUT1 		zDistCounter/stpctr/Mcount_counter_cy<9>_rt
+LUT1 		zDistCounter/stpctr/Mcount_counter_cy<10>_rt
+LUT1 		zDistCounter/stpctr/Mcount_counter_cy<11>_rt
+LUT1 		zDistCounter/stpctr/Mcount_counter_cy<12>_rt
+LUT1 		zDistCounter/stpctr/Mcount_counter_cy<13>_rt
+LUT1 		zDistCounter/stpctr/Mcount_counter_cy<14>_rt
+LUT1 		zDistCounter/stpctr/Mcount_counter_cy<15>_rt
+LUT1 		zDistCounter/stpctr/Mcount_counter_cy<16>_rt
+LUT1 		zPulseOut/Mcount_counter_cy<0>_rt
+LUT1 		xDistCounter/stpctr/Mcount_counter_cy<1>_rt
+LUT1 		xDistCounter/stpctr/Mcount_counter_cy<2>_rt
+LUT1 		xDistCounter/stpctr/Mcount_counter_cy<3>_rt
+LUT1 		xDistCounter/stpctr/Mcount_counter_cy<4>_rt
+LUT1 		xDistCounter/stpctr/Mcount_counter_cy<5>_rt
+LUT1 		xDistCounter/stpctr/Mcount_counter_cy<6>_rt
+LUT1 		xDistCounter/stpctr/Mcount_counter_cy<7>_rt
+LUT1 		xDistCounter/stpctr/Mcount_counter_cy<8>_rt
+LUT1 		xDistCounter/stpctr/Mcount_counter_cy<9>_rt
+LUT1 		xDistCounter/stpctr/Mcount_counter_cy<10>_rt
+LUT1 		xDistCounter/stpctr/Mcount_counter_cy<11>_rt
+LUT1 		xDistCounter/stpctr/Mcount_counter_cy<12>_rt
+LUT1 		xDistCounter/stpctr/Mcount_counter_cy<13>_rt
+LUT1 		xDistCounter/stpctr/Mcount_counter_cy<14>_rt
+LUT1 		xDistCounter/stpctr/Mcount_counter_cy<15>_rt
+LUT1 		xDistCounter/stpctr/Mcount_counter_cy<16>_rt
+LUT1 		xFreqGen/Mcount_counter_cy<0>_rt
+LUT1 		zFreqGen/Mcount_counter_cy<0>_rt
+LUT1 		Freq_Counter/Mcount_counter_cy<16>_rt
+LUT1 		Freq_Counter/Mcount_counter_cy<15>_rt
+LUT1 		Freq_Counter/Mcount_counter_cy<14>_rt
+LUT1 		Freq_Counter/Mcount_counter_cy<13>_rt
+LUT1 		Freq_Counter/Mcount_counter_cy<12>_rt
+LUT1 		Freq_Counter/Mcount_counter_cy<11>_rt
+LUT1 		Freq_Counter/Mcount_counter_cy<10>_rt
+LUT1 		Freq_Counter/Mcount_counter_cy<9>_rt
+LUT1 		Freq_Counter/Mcount_counter_cy<8>_rt
+LUT1 		Freq_Counter/Mcount_counter_cy<7>_rt
+LUT1 		Freq_Counter/Mcount_counter_cy<6>_rt
+LUT1 		Freq_Counter/Mcount_counter_cy<5>_rt
+LUT1 		Freq_Counter/Mcount_counter_cy<4>_rt
+LUT1 		Freq_Counter/Mcount_counter_cy<3>_rt
+LUT1 		Freq_Counter/Mcount_counter_cy<2>_rt
+LUT1 		Freq_Counter/Mcount_counter_cy<1>_rt
+LUT1 		pulse_Mult/Mcount_inCounter_cy<14>_rt
+LUT1 		pulse_Mult/Mcount_inCounter_cy<13>_rt
+LUT1 		pulse_Mult/Mcount_inCounter_cy<12>_rt
+LUT1 		pulse_Mult/Mcount_inCounter_cy<11>_rt
+LUT1 		pulse_Mult/Mcount_inCounter_cy<10>_rt
+LUT1 		pulse_Mult/Mcount_inCounter_cy<9>_rt
+LUT1 		pulse_Mult/Mcount_inCounter_cy<8>_rt
+LUT1 		pulse_Mult/Mcount_inCounter_cy<7>_rt
+LUT1 		pulse_Mult/Mcount_inCounter_cy<6>_rt
+LUT1 		pulse_Mult/Mcount_inCounter_cy<5>_rt
+LUT1 		pulse_Mult/Mcount_inCounter_cy<4>_rt
+LUT1 		pulse_Mult/Mcount_inCounter_cy<3>_rt
+LUT1 		pulse_Mult/Mcount_inCounter_cy<2>_rt
+LUT1 		pulse_Mult/Mcount_inCounter_cy<1>_rt
+LUT1 		pulse_Mult/Msub_pulseTimer_addsub0000_cy<0>_rt
+LUT1 		pulse_Mult/Msub_pulseVal_addsub0000_cy<0>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<30>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<29>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<28>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<27>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<26>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<25>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<24>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<23>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<22>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<21>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<20>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<19>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<18>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<17>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<16>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<15>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<14>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<13>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<12>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<11>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<10>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<9>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<8>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<7>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<6>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<5>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<4>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<3>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<2>_rt
+LUT1 		phase_counter/Mcount_totphase_cy<1>_rt
+LUT1 		dbg_clk/clock/Mcount_counter_cy<0>_rt
+LUT1 		Mcount_div_xor<26>_rt
+LUT1 		zDistCounter/stpctr/Mcount_counter_xor<17>_rt
+LUT1 		xDistCounter/stpctr/Mcount_counter_xor<17>_rt
+LUT1 		Freq_Counter/Mcount_counter_xor<17>_rt
+LUT1 		pulse_Mult/Mcount_inCounter_xor<15>_rt
+LUT1 		phase_counter/Mcount_totphase_xor<31>_rt
+INV 		z_SyncAccel/accelFlag_mux00011_INV_0
+INV 		x_SyncAccel/accelFlag_mux00011_INV_0
+INV 		tstOut2/Mcount_counter_xor<0>11_INV_0
+INV 		tstOut1/Mcount_counter_xor<0>11_INV_0
+INV 		pulse_Mult/Mcount_pulseCounter_xor<0>11_INV_0
+INV 		z_run/init_inv1_INV_0
+INV 		z_SyncAccel/accelAdd1_INV_0
+INV 		z_SyncAccel/accelAccum/ena_inv1_INV_0
+INV 		x_SyncAccel/accelAdd1_INV_0
+INV 		x_SyncAccel/accelAccum/ena_inv1_INV_0
+INV 		x_Run/rst_inv1_INV_0
+INV 		dbg_clk/sq_FSM_Scst_FSM_inv1_INV_0
+INV 		Tick_Gen/divider_not0001_inv1_INV_0
+INV 		spi_int/state_FSM_FFd1-In11_INV_0
+
+Section 6 - IOB Properties
+--------------------------
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| IOB Name                           | Type             | Direction | IO Standard          | Diff  | Drive    | Slew | Reg (s)      | Resistor | IOB      |
+|                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| an0                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| an1                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| an2                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| an3                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| ja1                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| ja2                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| ja3                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| ja4                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| jb1                                | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| jb2                                | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| jb3                                | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| jb4                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| jc1                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| jc2                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| jc3                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| jc4                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| jd1                                | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| jd2                                | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| led0                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led1                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led2                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led3                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          | 0 / 0    |
+| led4                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led5                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led6                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led7                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| sega                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| segb                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| segc                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| segd                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| sege                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| segf                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| segg                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| sysclk                             | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Section 7 - RPMs
+----------------
+
+Section 8 - Guide Report
+------------------------
+Guide not run on this design.
+
+Section 9 - Area Group and Partition Summary
+--------------------------------------------
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Area Group Information
+----------------------
+
+  No area groups were found in this design.
+
+----------------------
+
+Section 10 - Timing Report
+--------------------------
+This design was not run using timing mode.
+
+Section 11 - Configuration String Details
+-----------------------------------------
+BUFGMUX "sys_Clk/CLK0_BUFG_INST":
+DISABLE_ATTR:LOW
+
+
+
+DCM "sys_Clk/DCM_SP_INST":
+CLKDV_DIVIDE:2
+CLKOUT_PHASE_SHIFT:NONE
+CLK_FEEDBACK:1X
+DESKEW_ADJUST:7
+DFS_FREQUENCY_MODE:LOW
+DLL_FREQUENCY_MODE:LOW
+DUTY_CYCLE_CORRECTION:TRUE
+FACTORY_JF1:0XC0
+FACTORY_JF2:0X80
+CLKFX_DIVIDE = 1
+CLKFX_MULTIPLY = 4
+PHASE_SHIFT = 0
+X_CLKIN_PERIOD = 20.0000000000000000
+
+
+
+Section 12 - Control Set Information
+------------------------------------
+No control set information for this architecture.
+
+Section 13 - Utilization by Hierarchy
+-------------------------------------
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Module             | Partition | Slices        | Slice Reg     | LUTs          | LUTRAM        | BRAM      | MULT18X18 | BUFG  | DCM   | Full Hierarchical Name                 |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| LatheCtl/          |           | 305/1365      | 75/1338       | 535/1809      | 0/0           | 0/0       | 0/0       | 0/1   | 0/1   | LatheCtl                               |
+| +Freq_Counter      |           | 18/18         | 36/36         | 18/18         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/Freq_Counter                  |
+| +Tick_Gen          |           | 14/14         | 21/21         | 25/25         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/Tick_Gen                      |
+| +cCtl              |           | 8/8           | 11/11         | 1/1           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/cCtl                          |
+| +clk_ena           |           | 1/1           | 2/2           | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/clk_ena                       |
+| +dbg_clk           |           | 21/55         | 23/68         | 35/65         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/dbg_clk                       |
+| ++clock            |           | 18/24         | 13/25         | 30/30         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/dbg_clk/clock                 |
+| +++freqreg         |           | 6/6           | 12/12         | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/dbg_clk/clock/freqreg         |
+| ++countreg         |           | 10/10         | 20/20         | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/dbg_clk/countreg              |
+| +dbgctl            |           | 7/7           | 12/12         | 1/1           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/dbgctl                        |
+| +dspctl            |           | 9/9           | 16/16         | 1/1           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/dspctl                        |
+| +led_display       |           | 12/12         | 15/15         | 16/16         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/led_display                   |
+| +pCtl              |           | 5/5           | 6/6           | 1/1           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/pCtl                          |
+| +phase_counter     |           | 54/62         | 67/83         | 84/84         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/phase_counter                 |
+| ++phasereg         |           | 8/8           | 16/16         | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/phase_counter/phasereg        |
+| +pulse_Mult        |           | 53/55         | 52/54         | 83/84         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/pulse_Mult                    |
+| ++clk_ena          |           | 2/2           | 2/2           | 1/1           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/pulse_Mult/clk_ena            |
+| +sp_enc            |           | 8/8           | 9/9           | 5/5           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/sp_enc                        |
+| +spi_int           |           | 18/19         | 17/19         | 30/30         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/spi_int                       |
+| ++clk_ena          |           | 1/1           | 2/2           | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/spi_int/clk_ena               |
+| +sys_Clk           |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/0       | 0/0       | 1/1   | 1/1   | LatheCtl/sys_Clk                       |
+| +tCtl              |           | 5/5           | 4/4           | 3/3           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/tCtl                          |
+| +tstOut1           |           | 5/7           | 6/8           | 5/6           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/tstOut1                       |
+| ++clk_ena          |           | 2/2           | 2/2           | 1/1           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/tstOut1/clk_ena               |
+| +tstOut2           |           | 5/7           | 6/8           | 5/6           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/tstOut2                       |
+| ++clk_ena          |           | 2/2           | 2/2           | 1/1           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/tstOut2/clk_ena               |
+| +xDistCounter      |           | 2/43          | 0/55          | 2/62          | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/xDistCounter                  |
+| ++distcmp          |           | 9/9           | 0/0           | 18/18         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/xDistCounter/distcmp          |
+| ++distreg          |           | 14/23         | 19/37         | 24/24         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/xDistCounter/distreg          |
+| +++distreg         |           | 9/9           | 18/18         | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/xDistCounter/distreg/distreg  |
+| ++stpctr           |           | 9/9           | 18/18         | 18/18         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/xDistCounter/stpctr           |
+| +xEnableSoure      |           | 2/2           | 0/0           | 2/2           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/xEnableSoure                  |
+| +xFreqGen          |           | 25/34         | 19/37         | 45/45         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/xFreqGen                      |
+| ++freqreg          |           | 9/9           | 18/18         | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/xFreqGen/freqreg              |
+| +xLoadSoure        |           | 1/1           | 0/0           | 1/1           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/xLoadSoure                    |
+| +xPulseOut         |           | 8/10          | 9/11          | 12/13         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/xPulseOut                     |
+| ++clk_ena          |           | 2/2           | 2/2           | 1/1           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/xPulseOut/clk_ena             |
+| +xStepSource       |           | 1/1           | 0/0           | 2/2           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/xStepSource                   |
+| +x_Run             |           | 6/6           | 6/6           | 8/8           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/x_Run                         |
+| +x_SyncAccel       |           | 56/254        | 19/285        | 65/303        | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/x_SyncAccel                   |
+| ++accelAccum       |           | 39/39         | 33/33         | 75/75         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/x_SyncAccel/accelAccum        |
+| ++accelCountReg    |           | 9/9           | 18/18         | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/x_SyncAccel/accelCountReg     |
+| ++accelCtr         |           | 14/14         | 19/19         | 25/25         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/x_SyncAccel/accelCtr          |
+| ++accelreg         |           | 16/16         | 32/32         | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/x_SyncAccel/accelreg          |
+| ++dreg             |           | 16/16         | 32/32         | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/x_SyncAccel/dreg              |
+| ++incr1reg         |           | 16/16         | 32/32         | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/x_SyncAccel/incr1reg          |
+| ++incr2reg         |           | 16/16         | 32/32         | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/x_SyncAccel/incr2reg          |
+| ++mux              |           | 32/32         | 0/0           | 64/64         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/x_SyncAccel/mux               |
+| ++xadder           |           | 22/22         | 32/32         | 38/38         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/x_SyncAccel/xadder            |
+| ++xposreg          |           | 9/9           | 18/18         | 18/18         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/x_SyncAccel/xposreg           |
+| ++yposreg          |           | 9/9           | 18/18         | 18/18         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/x_SyncAccel/yposreg           |
+| +x_loc             |           | 1/21          | 0/36          | 2/23          | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/x_loc                         |
+| ++locinreg         |           | 9/9           | 18/18         | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/x_loc/locinreg                |
+| ++locreg           |           | 11/11         | 18/18         | 21/21         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/x_loc/locreg                  |
+| +xctl              |           | 7/7           | 12/12         | 2/2           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/xctl                          |
+| +zChSoure          |           | 1/1           | 0/0           | 1/1           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/zChSoure                      |
+| +zDistCounter      |           | 3/44          | 0/55          | 3/63          | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/zDistCounter                  |
+| ++distcmp          |           | 9/9           | 0/0           | 18/18         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/zDistCounter/distcmp          |
+| ++distreg          |           | 14/23         | 19/37         | 24/24         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/zDistCounter/distreg          |
+| +++distreg         |           | 9/9           | 18/18         | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/zDistCounter/distreg/distreg  |
+| ++stpctr           |           | 9/9           | 18/18         | 18/18         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/zDistCounter/stpctr           |
+| +zEnableSoure      |           | 2/2           | 0/0           | 2/2           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/zEnableSoure                  |
+| +zFreqGen          |           | 24/33         | 19/37         | 44/44         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/zFreqGen                      |
+| ++freqreg          |           | 9/9           | 18/18         | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/zFreqGen/freqreg              |
+| +zLoadSoure        |           | 1/1           | 0/0           | 1/1           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/zLoadSoure                    |
+| +zPulseOut         |           | 8/10          | 9/11          | 12/13         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/zPulseOut                     |
+| ++clk_ena          |           | 2/2           | 2/2           | 1/1           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/zPulseOut/clk_ena             |
+| +zStepSource       |           | 1/1           | 0/0           | 2/2           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/zStepSource                   |
+| +z_SyncAccel       |           | 59/257        | 19/285        | 66/304        | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/z_SyncAccel                   |
+| ++accelAccum       |           | 39/39         | 33/33         | 75/75         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/z_SyncAccel/accelAccum        |
+| ++accelCountReg    |           | 9/9           | 18/18         | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/z_SyncAccel/accelCountReg     |
+| ++accelCtr         |           | 14/14         | 19/19         | 25/25         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/z_SyncAccel/accelCtr          |
+| ++accelreg         |           | 16/16         | 32/32         | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/z_SyncAccel/accelreg          |
+| ++dreg             |           | 16/16         | 32/32         | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/z_SyncAccel/dreg              |
+| ++incr1reg         |           | 16/16         | 32/32         | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/z_SyncAccel/incr1reg          |
+| ++incr2reg         |           | 16/16         | 32/32         | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/z_SyncAccel/incr2reg          |
+| ++mux              |           | 32/32         | 0/0           | 64/64         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/z_SyncAccel/mux               |
+| ++xadder           |           | 22/22         | 32/32         | 38/38         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/z_SyncAccel/xadder            |
+| ++xposreg          |           | 9/9           | 18/18         | 18/18         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/z_SyncAccel/xposreg           |
+| ++yposreg          |           | 9/9           | 18/18         | 18/18         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/z_SyncAccel/yposreg           |
+| +z_loc             |           | 1/21          | 0/36          | 1/22          | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/z_loc                         |
+| ++locinreg         |           | 9/9           | 18/18         | 0/0           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/z_loc/locinreg                |
+| ++locreg           |           | 11/11         | 18/18         | 21/21         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/z_loc/locreg                  |
+| +z_run             |           | 8/8           | 7/7           | 14/14         | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/z_run                         |
+| +zctl              |           | 11/11         | 18/18         | 1/1           | 0/0           | 0/0       | 0/0       | 0/0   | 0/0   | LatheCtl/zctl                          |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+* Slices can be packed with basic elements from multiple hierarchies.
+  Therefore, a slice will be counted in every hierarchical module
+  that each of its packed basic elements belong to.
+** For each column, there are two numbers reported <A>/<B>.
+   <A> is the number of elements that belong to that specific hierarchical module.
+   <B> is the total number of elements from that hierarchical module and any lower level
+   hierarchical modules below.
+*** The LUTRAM column counts all LUTs used as memory including RAM, ROM, and shift registers.
