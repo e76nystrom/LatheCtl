@@ -1197,6 +1197,7 @@ begin
  -- z pulse out
 
  zPulseOut : PulseGen
+  generic map (step_width => 25)
   port map (
    clk => clk1,
    step_in => zStepOut,
@@ -1366,6 +1367,7 @@ begin
  -- x pulse out
 
  xPulseOut : PulseGen
+  generic map (step_width => 25)
   port map (
    clk => clk1,
    step_in => xStepOut,
