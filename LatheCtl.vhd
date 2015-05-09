@@ -494,7 +494,7 @@ architecture Behavioral of LatheCtl is
 
  -- z enable source
 
- --signal zTaperSel : std_logic;
+ signal zTaperSel : std_logic;
  signal zSyncEna : std_logic;
 
  -- z step input selector
@@ -562,7 +562,7 @@ architecture Behavioral of LatheCtl is
 
  -- x enable source
 
- --signal xTaperSel : std_logic;
+ signal xTaperSel : std_logic;
  signal xSyncEna : std_logic;
 
  -- x step input selector
@@ -1064,12 +1064,13 @@ begin
 
  -- z enable source
 
- --ztaperSel <= '1' when (tena = '1') and (tz = '1') and (xRunUpdLoc = '1')
- --             else '0';
+ ztaperSel <= '1' when (tena = '1') and (tz = '1') and (xRunUpdLoc = '1')
+              else '0';
 
  zEnableSoure : DataSel1_2
   port map (
-   sel => taperZ, --ztaperSel,
+   --sel => taperZ,
+   sel => ztaperSel,
    d0 => zRunning,
    d1 => xRunning,
    dout => zSyncEna
@@ -1236,12 +1237,13 @@ begin
 
  -- x enable source
 
- --xtaperSel <= '1' when (tena = '1') and (tz = '0') and (zRunUpdLoc = '1')
- --             else '0';
+ xtaperSel <= '1' when (tena = '1') and (tz = '0') and (zRunUpdLoc = '1')
+              else '0';
 
  xEnableSoure : DataSel1_2
   port map (
-   sel => taperX, --xTaperSel,
+   --sel => taperX,
+   sel => xTaperSel,
    d0 => xRunning,
    d1 => zRunning,
    dout => xSyncEna
