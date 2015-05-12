@@ -4,7 +4,7 @@ from sys import stdout
 from time import sleep
 from math import floor,log
 
-fData = False
+fData = True
 jLoc = '../../Java/Lathe/src/lathe/'
 cLoc = '../../Picc/Lathe.X/'
 xLoc = '../../Xilinx/LatheCtl/'
@@ -166,6 +166,7 @@ parmList = \
  ["PRMZDYMAX","z move max dy value","int32_t"],
  ["PRMZACCEL","z move accel rate","int32_t","ZMVCHG"],
  ["PRMZACLJOG","z move jog accel clocks","int32_t","ZMVCHG"],
+ ["PRMZACLRUN","z move run accel clocks","int32_t","ZMVCHG"],
  ["PRMZACLMAX","z move max accel clocks","int32_t","ZMVCHG"],
  ["PRMZBACKLASH","z backlash","int32_t"],
  ["PRMZCTLREG","z control register","uint16_t"],
@@ -197,6 +198,7 @@ parmList = \
  ["PRMXDYMAX","x move max dy value","int32_t"],
  ["PRMXACCEL","x move accel rate","int32_t","XMVCHG"],
  ["PRMXACLJOG","x move jog accel clocks","int32_t","XMVCHG"],
+ ["PRMXACLRUN","x move run accel clocks","int32_t","XMVCHG"],
  ["PRMXACLMAX","x move max accel clocks","int32_t","XMVCHG"],
  ["PRMXBACKLASH","x backlash","int32_t"],
  ["PRMXCTLREG","x control register","uint16_t"],
@@ -628,10 +630,11 @@ stateList =\
  "enum tStates",
  "{",
  ["TIDLE","idle"],
- ["TCKRTC","check for x retracted"],
- ["TWTRTC0","wait for x to retract"],
- ["TCKSTR","check for at start position"],
- ["TWSTART","wait for start position"],
+ ["TSTART","Start"],
+# ["TCKRTC","check for x retracted"],
+# ["TWTRTC0","wait for x to retract"],
+# ["TCKSTR","check for at start position"],
+# ["TWSTART","wait for start position"],
  ["TFEED","feed x in"],
  ["TWTFEED","wait for x feed to complete"],
  ["TTURN","set up turn move"],
@@ -640,6 +643,7 @@ stateList =\
  ["TWTRTC1","wait for x retract to complete"],
  ["TRTN","return to start position"],
  ["TWTRTN","wait for return to start"],
+ ["TWTRTNB","wait for return backlash "],
  ["TUPDPASS","update pass"],
  ["TUPDSPRING","update spring pass"],
  ["TDONE","clean up state"],
@@ -662,6 +666,7 @@ stateList =\
  ["FWTRTC1","wait for z retract to complete"],
  ["FRTN","return to start position"],
  ["FWTRTN","wait for return to start"],
+ ["FWTRTNB","wait for return backlash"],
  ["FUPDPASS","update pass"],
  ["FUPDSPRING","update spring pass"],
  ["FDONE","clean up state"],
@@ -708,21 +713,23 @@ regList =\
 [\
  "z move command bits",
 
- ["ZMSK","(3 << 0)","z move mask"],
+ ["ZMSK","(7 << 0)","z move mask"],
  ["ZMOV","(1 << 0)","z a set distance"],
  ["ZJOG","(2 << 0)","z while cmd are present"],
  ["ZSYN","(3 << 0)","z dist sync to rotation"],
- ["ZPOS","(1 << 2)","z in positive direction"],
- ["ZNEG","(0 << 2)","z in negative direction"],
+ ["ZMAX","(4 << 0)","z rapid move"],
+ ["ZPOS","(1 << 3)","z in positive direction"],
+ ["ZNEG","(0 << 3)","z in negative direction"],
 
  "x move command bits",
 
- ["XMSK","(3 << 0)","xmove mask"],
+ ["XMSK","(7 << 0)","xmove mask"],
  ["XMOV","(1 << 0)","x a set distance"],
  ["XJOG","(2 << 0)","x while cmd are present"],
  ["XSYN","(3 << 0)","x dist sync to rotation"],
- ["XPOS","(1 << 2)","x in positive direction"],
- ["XNEG","(0 << 2)","x in negative direction"],
+ ["XMAX","(4 << 0)","x rapid move"],
+ ["XPOS","(1 << 3)","x in positive direction"],
+ ["XNEG","(0 << 3)","x in negative direction"],
 
  "turn control bits",
 
@@ -2021,92 +2028,106 @@ def test5(dist=100,dbgprint=True,prt=False):
 
 class Move():
     def __init__(self):
+        self.prt = True
         self.cFreq = 50000000   # clock frequency
         self.mult = 64          # freq gen multiplier
         self.stepsRev = 1600    # steps per revolution
         self.pitch = .1         # leadscrew pitch
-        self.scale = 8          # scale factor
 
         self.minFeed = 10       # min feed ipm
         self.maxFeed = 40       # max feed ipm
         self.jogV = 20          # jog velocity
         self.accelRate = 5      # acceleration rate in per sec^2
 
+        self.scale = 0          # scale factor
         self.freqDivider = 0
+        self.dx = 0
+        self.dyIni = 0
+        self.dyJog = 0
+        self.dyMax = 0
+        self.accelTime = 0
+        self.accelClocks = 0
+        self.jogAccelClocks = 0
+        self.accelSteps = 0
 
     def setup(self,pitch):
-        stepsInch = stepsRev / pitch           # steps per inch
-        stepsMinMax = this.maxFeed * stepsInch # max steps per min
+        stepsInch = self.stepsRev / pitch      # steps per inch
+        stepsMinMax = self.maxFeed * stepsInch # max steps per min
         stepsSecMax = stepsMinMax / 60.0       # max steps per second
-        freqGenMax = int(stepsSecMax) * this.mult # frequency generator maximum
+        freqGenMax = int(stepsSecMax) * self.mult # frequency generator maximum
         if self.prt:
             print ("stepsSecMax %6.0f freqGenMax %7.0f" %
                    (stepsSecMax,freqGenMax))
 
-        stepsMinMin = this.minFeed * stepsInch # max steps per min
+        stepsMinMin = self.minFeed * stepsInch # max steps per min
         stepsSecMin = stepsMinMin / 60.0       # max steps per second
-        freqGenMin = stepsSecMin * this.mult # frequency generator maximum
+        freqGenMin = stepsSecMin * self.mult # frequency generator maximum
         if self.prt:
             print ("stepsSecMin %6.0f freqGenMin %7.0f" %
                    (stepsSecMin,freqGenMin))
 
-        stepsMinJog = int(this.jogV * stepsInch)
+        stepsMinJog = int(self.jogV * stepsInch)
         stepsSecJog = stepsMinJog / 60
-        freqGenJog = stepsSecJog * mult
+        freqGenJog = stepsSecJog * self.mult
         if self.prt:
             print "stepsSecJog %d freqGenJog %d\n" % (stepsSecJog,freqGenJog)
 
-        this.freqDivider = int(floor(this.cFreq /
+        self.freqDivider = int(floor(self.cFreq /
                                      freqGenMax - 1)) # calc divider
         if self.prt:
-            print "freqDivider %3.0f" % freqDivider
+            print "freqDivider %3.0f" % self.freqDivider
 
-        this.accelTime = ((this.maxFeed - this.minFeed) /
-                          (60.0 * accelRate)) # acceleration time
-        this.accelClocks = int(accelTime * freqGenMax)
+        self.accelTime = ((self.maxFeed - self.minFeed) /
+                          (60.0 * self.accelRate)) # acceleration time
+        self.accelClocks = int(self.accelTime * freqGenMax)
         if self.prt:
-            print "accelTime %8.6f clocks %d" % (accelTime,accelClocks)
+            print ("accelTime %8.6f clocks %d" %
+                   (self.accelTime,self.accelClocks))
 
-        for this.scale in range(0,10):
-            dyMin = int(stepsSecMin) << this.scale
-            dyMax = int(stepsSecMax) << this.scale
-            this.dx = int(freqGenMax) << this.scale
-            dyDelta = dyMax - dyMin
+        for self.scale in range(0,10):
+            dyMin = int(stepsSecMin) << self.scale
+            self.dyMax = int(stepsSecMax) << self.scale
+            self.dx = int(freqGenMax) << self.scale
+            dyDelta = self.dyMax - dyMin
             if self.prt:
-                print ("\ndx %d dyMin %d dyMax %d dyDelta %d" %
-                       (this.dx,dyMin,dyMax,dyDelta))
+                print ("\nscale %d dx %d dyMin %d dyMax %d dyDelta %d" %
+                       (self.scale,self.dx,dyMin,self.dyMax,dyDelta))
 
-            incPerClock = dyDelta / float(accelClocks)
+            incPerClock = dyDelta / float(self.accelClocks)
             intIncPerClock = int(incPerClock)
-            dyDeltaC = intIncPerClock * accelClocks
-            this.dyIni = dyMax - dyDeltaC
-            err = int(dyDelta - dyDeltaC) >> scale
-            bits = int(floor(log(2*dx,2))) + 1
+            if (intIncPerClock == 0):
+                continue
+            dyDeltaC = intIncPerClock * self.accelClocks
+            self.dyIni = self.dyMax - dyDeltaC
+            err = int(dyDelta - dyDeltaC) >> self.scale
+            bits = int(floor(log(2 * self.dx,2))) + 1
             if self.prt:
                 print (("dyIni %d dyMax %d dyDelta %d incPerClock %4.2f " +
                         "err %d bits %d") %
-                       (this.dyIni,dyMax,dyDeltaC,incPerClock,err,bits))
-                if (err == 0):
-                    break
+                       (self.dyIni,self.dyMax,dyDeltaC,incPerClock,err,bits))
 
-            this.accel = 2 * intIncPerClock
+            self.accel = 2 * intIncPerClock
 
-            this.dyJog = stepsSecJog << scale;
-            dyDelta = (dyJog - dyIni);
-            jogAccelClocks = dyDelta / accel;
-            dyJog = jogAccelClocks * accel;
+            self.dyJog = stepsSecJog << self.scale;
+            dyDelta = (self.dyJog - self.dyIni);
+            self.jogAccelClocks = dyDelta / self.accel;
+            self.dyJog = self.jogAccelClocks * self.accel;
 
-            incr1 = 2 * this.dyIni
-            incr2 = incr1 - 2 * this.dx
-            d = incr1 - this.dx
+            incr1 = 2 * self.dyIni
+            incr2 = incr1 - 2 * self.dx
+            d = incr1 - self.dx
 
-            totalSum = (accelClocks * incr1) + d
-            totalInc = (accelClocks * (accelClocks - 1) * this.accel) / 2
-            this.accelSteps = ((totalSum + totalInc) / (2 * dx))
+            totalSum = (self.accelClocks * incr1) + d
+            totalInc = (self.accelClocks * (self.accelClocks - 1) * 
+                        self.accel) / 2
+            self.accelSteps = ((totalSum + totalInc) / (2 * self.dx))
 
             if self.prt:
                 print ("accelClocks %d totalSum %d totalInc %d accelSteps %d" % 
-                       (accelClocks,totalSum,totalInc,this.accelSteps))
+                       (self.accelClocks,totalSum,totalInc,self.accelSteps))
+
+            if (err == 0):
+                break
 
 def test6(dist=100,dbgprint=True,prt=False):
     if (dist == 0):
@@ -2256,6 +2277,8 @@ else:
     # test3(runClocks=arg1,dist=arg2)
     # test4(runClocks=arg1,tpi=arg2,pData=False)
     # test5(dist=arg1)
-    test6(dist=arg1)
+    # test6(dist=arg1)
+    tmp = Move()
+    tmp.setup(1.0)
 if not (ser is None):
     ser.close()
