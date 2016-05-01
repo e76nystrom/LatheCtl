@@ -58,14 +58,15 @@ package CtlBits is
 
 -- debug control register
 
- constant dctl_size : integer := 6;
+ constant dctl_size : integer := 7;
  signal dctlReg : unsigned(dctl_size-1 downto 0);
  alias DbgEna     : std_logic is dctlreg(0); -- enable debugging
- alias DbgDir     : std_logic is dctlreg(1); -- debug direction
- alias DbgCount   : std_logic is dctlreg(2); -- gen count num dbg clks
- alias DbgInit    : std_logic is dctlreg(3); -- init z modules
- alias DbgRsyn    : std_logic is dctlreg(4); -- running in sync mode
- alias DbgMove    : std_logic is dctlreg(5); -- used debug clock for move
+ alias DbgSel     : std_logic is dctlreg(1); -- select dbg encoder
+ alias DbgDir     : std_logic is dctlreg(2); -- debug direction
+ alias DbgCount   : std_logic is dctlreg(3); -- gen count num dbg clks
+ alias DbgInit    : std_logic is dctlreg(4); -- init z modules
+ alias DbgRsyn    : std_logic is dctlreg(5); -- running in sync mode
+ alias DbgMove    : std_logic is dctlreg(6); -- used debug clock for move
 
 end CtlBits;
 

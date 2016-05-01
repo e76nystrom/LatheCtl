@@ -54,7 +54,7 @@ begin
   port map (
    clk => clk,
    ena => step_in,
-   clkena =>clkena);
+   clkena => clkena);
 
  PulseGen: process(clk)
  begin

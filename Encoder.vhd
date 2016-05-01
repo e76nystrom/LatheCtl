@@ -30,13 +30,14 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity Encoder is
- port ( clk : in std_logic;
-        a : in std_logic;
-        b : in std_logic;
-        ch : inout std_logic;
-        dir : inout std_logic;
-        dir_ch : out std_logic;
-        err : out std_logic);
+ port (
+  clk : in std_logic;
+  a : in std_logic;
+  b : in std_logic;
+  ch : inout std_logic;
+  dir : inout std_logic;
+  dir_ch : out std_logic;
+  err : out std_logic);
 end Encoder;
 
 architecture Behavioral of Encoder is

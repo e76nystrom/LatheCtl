@@ -36,6 +36,7 @@ entity DbgClk is
         dbg_ena : in std_logic;
         dbg_dir : in std_logic;
         dbg_count : in std_logic;
+        dbg_sel : in std_logic;
         a : in std_logic;
         b : in std_logic;
         din : in std_logic;
@@ -43,18 +44,17 @@ entity DbgClk is
         load : in std_logic;
         freq_sel : in std_logic;
         count_sel : in std_logic;
-        --dbg1 : out std_logic;
-        --dbg2 : out std_logic;
         a_out : out std_logic;
         b_out : out std_logic;
-        dbg_pulse : out std_logic);
+        dbg_pulse : out std_logic;
+        dbg_done: out std_logic);
 end DbgClk;
 
 architecture Behavioral of DbgClk is
 
  component FreqGen
   generic(freq_bits : positive);
-  PORT(
+  port(
    clk : in std_logic;
    ena : in std_logic;
    dshift : in std_logic;
@@ -66,11 +66,26 @@ architecture Behavioral of DbgClk is
 
  component Shift is
   generic(n : positive);
-  port ( clk : in std_logic;
-         shift : in std_logic;
-         din : in std_logic;
-         data : inout unsigned(n-1 downto 0));
+  port (
+   clk : in std_logic;
+   shift : in std_logic;
+   din : in std_logic;
+   data : inout unsigned(n-1 downto 0));
  end component;
+
+ component DownCounter is
+  generic(n : positive);
+  port (
+   clk : in std_logic;
+   ena : in std_logic;
+   load : in std_logic;
+   preset : in unsigned (n-1 downto 0);
+   counter : inout  unsigned (n-1 downto 0);
+   zero : out std_logic);
+ end component;
+
+ type fsm is (idle, upd_output);
+ signal state : fsm;
 
  signal sq : std_logic_vector(1 downto 0) := "00";
  signal count : unsigned(count_bits-1 downto 0);
@@ -78,13 +93,13 @@ architecture Behavioral of DbgClk is
  signal freq_shift : std_logic;
  signal count_shift : std_logic;
  signal pulse_out : std_logic;
- signal pulse_ena : std_logic;
  signal freq_ena : std_logic;
+ signal count_down : std_logic;
+ signal count_zero : std_logic;
 
 begin
 
  freq_shift <= freq_sel and dshift;
- freq_ena <= '1' when (dbg_ena = '1') and (pulse_ena ='1') else '0';
 
  clock: FreqGen
   generic map(freq_bits)
@@ -107,54 +122,67 @@ begin
    din => din,
    data => count);
  
- a_out <= sq(0) when (dbg_ena = '1') else a;
- b_out <= sq(1) when (dbg_ena = '1') else b;
- dbg_pulse <= pulse_out;
+ dbgCtr: DownCounter
+  generic map(count_bits)
+  port map (
+   clk => clk,
+   ena => count_down,
+   load => load,
+   preset => count,
+   counter => counter,
+   zero => count_zero);
 
- count_seq: process(clk)
+ a_out <= sq(0) when (dbg_sel = '1') else a;
+ b_out <= sq(1) when (dbg_sel = '1') else b;
+
+ dbg_proc: process(clk)
  begin
   if (rising_edge(clk)) then
-   if (load = '1') then
-    counter <= count;
-    pulse_ena <= '1';
+   if (load = '1') then                 --if load
+    state <= idle;                      --set sart state
+    freq_ena <= '1';                    --start frequency generator
+    dbg_done <= '0';                    --clear done flag
    else
-    if (dbg_ena = '1') then
-     if ((pulse_out = '1') and (dbg_count = '1')) then
-      if (counter = 0) then
-       pulse_ena <= '0';
-      else
-       counter <= counter - 1;
-      end if;
-     end if;
-    end if;
-   end if;
-  end if;
- end process;
+    if (dbg_ena = '1') then             --if enabled
+     case state is
+      when idle =>                      --idle state
+       dbg_pulse <= '0';                --clear debug pulse
+       if (pulse_out = '1') then        --if clock pulse present
+        if (dbg_count = '0') then       --if not using count
+         state <= upd_output;
+        else                            --if using count
+         if (count_zero = '0') then     --if counter non zero
+          count_down <= '1';            --set to count down
+          state <= upd_output;
+         else
+          freq_ena <= '0';              --stop frequency generator
+          dbg_done <= '1';              --set done flag
+         end if;
+        end if;
+       end if;
 
- gen_seq: process(clk)
- begin
-  if (rising_edge(clk)) then
-   if (dbg_ena = '0') then
-    sq <= "00";
-   else
-    if ((pulse_out = '1') and ((pulse_ena = '1') or (dbg_count = '0'))) then
-     if (dbg_dir = '1') then
-      case (sq) is
-       when "00" => sq <= "01";
-       when "01" => sq <= "11";
-       when "11" => sq <= "10";
-       when "10" => sq <= "00";
-       when others => sq <= "00";    
-      end case;
-     else
-      case (sq) is
-       when "00" => sq <= "10";
-       when "10" => sq <= "11";
-       when "11" => sq <= "01";
-       when "01" => sq <= "00";
-       when others => sq <= "00";    
-      end case;
-     end if;
+      when upd_output =>                --update output
+       count_down <= '0';               --clear count down flag
+       dbg_pulse <= '1';                --ouput debug pulse
+       state <= idle;
+       if (dbg_dir = '1') then
+        case (sq) is
+         when "00" => sq <= "01";
+         when "01" => sq <= "11";
+         when "11" => sq <= "10";
+         when "10" => sq <= "00";
+         when others => sq <= "00";    
+        end case;
+       else
+        case (sq) is
+         when "00" => sq <= "10";
+         when "10" => sq <= "11";
+         when "11" => sq <= "01";
+         when "01" => sq <= "00";
+         when others => sq <= "00";    
+        end case;
+       end if;
+     end case;
     end if;
    end if;
   end if;

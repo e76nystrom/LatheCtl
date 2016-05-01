@@ -40,11 +40,16 @@ entity LatheCtl is
   ja3 : out std_logic;            --x done
   ja4 : out std_logic;            --z done
 
-  jb1 : in std_logic;             --data clock
-  jb2 : in std_logic;             --data in
-  jb3 : in std_logic;             --select
-  jb4 : out std_logic;            --data out
+  --jb1 : in std_logic;             --data clock
+  --jb2 : in std_logic;             --data in
+  --jb3 : in std_logic;             --select
+  --jb4 : out std_logic;            --data out
 
+  jb1 : in std_logic;             --sck data clock 
+  jb2 : out std_logic;            --miso data out
+  jb3 : in std_logic;             --mosi data in
+  jb4 : in std_logic;             --sel
+  
   jc1 : out std_logic;            --z step
   jc2 : out std_logic;            --z direction
   jc3 : out std_logic;            --x step
@@ -157,6 +162,7 @@ architecture Behavioral of LatheCtl is
   port(
    clk : in std_logic;
    dbg_ena : in std_logic;
+   dbg_sel : in std_logic;
    dbg_dir : in std_logic;
    dbg_count : in std_logic;
    a : in std_logic;
@@ -168,7 +174,8 @@ architecture Behavioral of LatheCtl is
    count_sel : in std_logic;
    a_out : out std_logic;
    b_out : out std_logic;
-   dbg_pulse : out std_logic
+   dbg_pulse : out std_logic;
+   dbg_done : out std_logic
    );
  end component;
 
@@ -252,6 +259,7 @@ architecture Behavioral of LatheCtl is
    accelSum  : inout unsigned(syn_bits-1 downto 0);
    synstp : out std_logic;
    accelFlag : out std_logic
+   --testFlag : out std_logic_vector(1 downto 0)
    --done : inout std_logic
    );
  end component;
@@ -440,6 +448,7 @@ architecture Behavioral of LatheCtl is
  signal dbgFreqClk : std_logic;
  signal zDbgLoad : std_logic;
  signal xDbgLoad : std_logic;
+ signal dbgDone : std_logic;
 
  -- encoder
 
@@ -486,7 +495,7 @@ architecture Behavioral of LatheCtl is
  constant freq_bits : integer := 18;
  signal zFreqSel : std_logic;
  signal zFreqEna : std_logic;
- signal zFreqStep : std_logic;
+ signal zFreqClock : std_logic;
 
  -- z load source
 
@@ -499,10 +508,10 @@ architecture Behavioral of LatheCtl is
 
  -- z step input selector
 
- signal zStepSrc : std_logic_vector(1 downto 0);
- signal zStepIn : std_logic;
+ signal zClockSrc : std_logic_vector(1 downto 0);
+ signal zClockIn : std_logic;
 
- -- z synchronizer
+ -- z axis sync and accel
 
  constant syn_bits : integer := 32;
  constant pos_bits : integer := 18;
@@ -519,6 +528,7 @@ architecture Behavioral of LatheCtl is
  signal zAccelSum : unsigned(syn_bits-1 downto 0);
  signal zStepOut : std_logic;
  signal zAccel : std_logic;
+ --signal zTestFlag : std_logic_vector(1 downto 0);
 
  -- z axis distance counter
 
@@ -554,7 +564,7 @@ architecture Behavioral of LatheCtl is
 
  signal xFreqSel : std_logic;
  signal xFreqEna : std_logic;
- signal xFreqStep : std_logic;
+ signal xFreqClock : std_logic;
 
  -- x load source
 
@@ -567,10 +577,10 @@ architecture Behavioral of LatheCtl is
 
  -- x step input selector
 
- signal xStepSrc : std_logic_vector(1 downto 0);
- signal xStepIn : std_logic;
+ signal xClockSrc : std_logic_vector(1 downto 0);
+ signal xClockIn : std_logic;
 
- -- x synchronizer
+ -- x axis sync an accel
 
  signal xd_sel : std_logic;
  signal xincr1_sel : std_logic;
@@ -583,6 +593,7 @@ architecture Behavioral of LatheCtl is
  signal xAccelSum : unsigned(syn_bits-1 downto 0);
  signal xStepOut : std_logic;
  signal xAccel : std_logic;
+ --signal xTestFlag : std_logic_vector(1 downto 0);
 
  -- x axis distance counter
 
@@ -626,6 +637,7 @@ architecture Behavioral of LatheCtl is
 
  signal test1 : std_logic;
  signal test2 : std_logic;
+ signal test3 : std_logic;
 
 begin
 
@@ -635,42 +647,67 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => xStepIn,
+   step_in => dbgFreqClk,
    step_out => test1);
 
- -- test 1 output pulse
+ -- test 2 output pulse
 
  tstOut2 : PulseGen
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => zSync,
+   step_in => enc_dir,
    step_out => test2);
 
+ -- test 3 output pulse
+
+ tstOut3 : PulseGen
+  generic map (step_width => 25)
+  port map (
+   clk => clk1,
+   step_in => dir_ch,
+   step_out => test3);
+
+ --port a
+
  ja1 <= zStart;
- ja2 <= xStart;
- ja3 <= xDoneInt;
- ja4 <= zDoneInt;
+ ja2 <= test1;
+ --ja3 <= zDoneInt;
+ --ja4 <= xDoneInt;
+ ja3 <= zDoneInt;
+ ja4 <= dbgDone;
+
+ --port b
+
+ --dclk <= jb1;
+ --din  <= jb2;
+ --dsel <= jb3;
+ --jb4  <= dout;
 
  dclk <= jb1;
- din  <= jb2;
- dsel <= jb3;
- jb4  <= dout;
+ jb2  <= dout;
+ din  <= jb3;
+ dsel <= jb4;
 
+ --port c
+ 
  jc1 <= zStepPulseOut;
  jc2 <= xStepPUlseOUt;
  jc3 <= zSyncEna;
  jc4 <= xSyncEna;
 
+ --port d
+
  a_in <= jd1;
  b_in <= jd2;
+
+ --leds
 
  led0 <= ch;
  led1 <= a;
  led2 <= b;
  led4 <= enc_dir;
  led5 <= enc_err xor
-         xDoneInt xor
          zStepPulseOut xor
          zDirOut xor
          xStepPulseOut xor
@@ -678,9 +715,14 @@ begin
          pReset xor
          pLimit xor
          pZero xor
-         test1 xor
          zEncDir xor
-         test2;
+         test2 xor
+         test3 xor
+         --zTestFlag(0) xor
+         --zTestFlag(1) xor
+         --xTestFlag(0) xor
+         --xTestFlag(1) xor
+         '0';
  led6 <= dir_ch;
  led7 <= div(div_range);
 
@@ -831,6 +873,9 @@ begin
      when XREADREG =>
       outReg <= (out_bits-1 downto opb => '0') & dspReg;
 
+     when XRDSR =>
+      outReg <= (out_bits-1 downto 3 => '0') & dbgDone & xDoneInt & zDoneInt;
+
      when others =>
       outReg <= x"55aa55aa";
     end case;
@@ -942,6 +987,7 @@ begin
   port map (
    clk => clk1,
    dbg_ena => dbgEna,
+   dbg_sel => dbgSel,
    dbg_dir => dbgDir,
    dbg_count => dbgCount,
    a => a_in,
@@ -953,7 +999,8 @@ begin
    count_sel => dbgcount_sel,
    a_out => a,
    b_out => b,
-   dbg_pulse =>dbgFreqClk
+   dbg_pulse => dbgFreqClk,
+   dbg_done => dbgDone
    );
 
  -- process quadrature signals
@@ -1044,7 +1091,7 @@ begin
    din => din,
    dshift => dshift,
    freq_sel => zFreqSel,
-   pulse_out => zFreqStep
+   pulse_out => zFreqClock
    );
 
  -- z init source
@@ -1078,22 +1125,22 @@ begin
 
  -- z input step data selector
 
- zStepSrc <= "00" when ((dbgMove = '0')  and (zSrcSyn = '0') and
-                        ((tena = '0') or (tz = '0'))) else
-             "01" when ((dbgMove = '0')  and (zSrcSyn = '1') and
-                        ((tena = '0') or (tz = '0'))) else
-             "10" when (dbgMove = '-') and (tena = '1') and (tz = '1') else
-             "11" when (dbgMove = '1') and ((tEna = '0') or (tz = '0')) else
-             "00";
+ zClockSrc <= "00" when ((dbgMove = '0')  and (zSrcSyn = '0') and
+                         ((tena = '0') or (tz = '0'))) else
+              "01" when ((dbgMove = '0')  and (zSrcSyn = '1') and
+                         ((tena = '0') or (tz = '0'))) else
+              "10" when (dbgMove = '-') and (tena = '1') and (tz = '1') else
+              "11" when (dbgMove = '1') and ((tEna = '0') or (tz = '0')) else
+              "00";
 
  zStepSource : DataSel1_4
   port map (
-   sel => zStepSrc,
-   d0 => zFreqStep,
+   sel => zClockSrc,
+   d0 => zFreqClock,
    d1 => chOut,
    d2 => xStepOut,
    d3 => dbgFreqClk,
-   dout => zStepIn
+   dout => zClockIn
    );
 
  -- z axis synchronizer
@@ -1111,7 +1158,7 @@ begin
    init => zSyncInit,
    ena => zSyncEna,
    decel => zDecel,
-   ch => zStepIn,
+   ch => zClockIn,
    dir => enc_dir,
    dir_ch => dir_ch,
    din => din,
@@ -1127,6 +1174,7 @@ begin
    accelSum => zAccelSum,
    synstp => zStepOut,
    accelFlag => zAccel
+   --testFlag => zTestFlag
    );
 
  -- z distance counter
@@ -1220,7 +1268,7 @@ begin
    din => din,
    dshift => dshift,
    freq_sel => xFreqSel,
-   pulse_out => xFreqStep
+   pulse_out => xFreqClock
    );
 
  -- x init source
@@ -1251,22 +1299,22 @@ begin
 
  -- x input step data selector
 
- xStepSrc <= "00" when ((dbgMove = '0')  and (xSrcSyn = '0') and
-                        ((tena = '0') or (tz = '1'))) else
-             "01" when ((dbgMove = '0')  and (xSrcSyn = '1') and
-                        ((tena = '0') or (tz = '1'))) else
-             "10" when (dbgMove = '-') and (tena = '1') and (tz = '0') else
-             "11" when (dbgMove = '1') and ((tEna = '0') or (tz = '1')) else
-             "00";
+ xClockSrc <= "00" when ((dbgMove = '0')  and (xSrcSyn = '0') and
+                         ((tena = '0') or (tz = '1'))) else
+              "01" when ((dbgMove = '0')  and (xSrcSyn = '1') and
+                         ((tena = '0') or (tz = '1'))) else
+              "10" when (dbgMove = '-') and (tena = '1') and (tz = '0') else
+              "11" when (dbgMove = '1') and ((tEna = '0') or (tz = '1')) else
+              "00";
 
  xStepSource : DataSel1_4
   port map (
-   sel => xStepSrc,
-   d0 => xFreqStep,
+   sel => xClockSrc,
+   d0 => xFreqClock,
    d1 => chOut,
    d2 => zStepOut,
    d3 => dbgFreqClk,
-   dout => xStepIn
+   dout => xClockIn
    );
 
  -- x axis synchronizer
@@ -1284,7 +1332,7 @@ begin
    init => xSyncInit,
    ena => xSyncEna,
    decel => xDecel,
-   ch => xStepIn,
+   ch => xClockIn,
    dir => enc_dir,
    dir_ch => dir_ch,
    din => din,
@@ -1300,6 +1348,7 @@ begin
    accelSum => xAccelSum,
    synstp => xStepOut,
    accelFlag => xAccel
+   --testFlag => xTestFlag
    );
 
  -- x distance counter

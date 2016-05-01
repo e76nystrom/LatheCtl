@@ -153,7 +153,7 @@ BEGIN
   port map (
    clk => clk,
    init => init,
-   ena => ena,
+   ena => ena and not distZero,
    decel => decel,
    ch => ch,
    dir => dir,
@@ -211,18 +211,21 @@ BEGIN
   dx := 2540 * 8;
   dy := 600;
 
-  dx := 87381248;
-  dy := 341258;
+  --dx := 87381248;
+  --dy := 341258;
 
-  dist := 10;
+  dist := 2;
 
   incr1 := 2 * dy;
   incr2 := 2 * (dy - dx);
   d := incr1 - dx;
 
-  accelVal := 2 * 15;
-  accelCount := 68266;
+  accelVal := 8;
+  accelCount := 99;
 
+  --accelVal := 0;
+  --accelCount := 0;
+  
   tmp <= to_signed(d,syn_bits);
   d_sel <= '1';
   dshift <= '1';

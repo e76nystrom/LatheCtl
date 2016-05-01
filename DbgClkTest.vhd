@@ -45,6 +45,7 @@ ARCHITECTURE behavior OF DbgClkTest IS
   port(
    clk : in std_logic;
    dbg_ena : in std_logic;
+   dbg_sel : in std_logic;
    dbg_dir : in std_logic;
    dbg_count : in std_logic;
    a : in std_logic;
@@ -62,6 +63,7 @@ ARCHITECTURE behavior OF DbgClkTest IS
  --Inputs
  signal clk : std_logic := '0';
  signal dbg_ena : std_logic := '0';
+ signal dbg_sel : std_logic := '0';
  signal dbg_dir : std_logic := '0';
  signal dbg_count : std_logic := '0';
  signal a : std_logic := '0';
@@ -103,6 +105,7 @@ BEGIN
   port MAP (
   clk => clk,
   dbg_ena => dbg_ena,
+  dbg_sel => dbg_sel,
   dbg_dir => dbg_dir,
   dbg_count => dbg_count,
   a => a,
@@ -192,6 +195,7 @@ BEGIN
   load <= '1';
   wait until clk = '1';
   load <= '0';
+  dbg_sel <= '1';
   delay(1);
   
   dbg_ena <= '1';
