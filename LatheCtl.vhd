@@ -1060,7 +1060,6 @@ begin
 
  -- phase counter
 
-
  phase_sel <= '1' when (op = XLDPHASE) else '0';
  runSync <= dbgRSyn or (zRunning and zSrcSyn);
 
