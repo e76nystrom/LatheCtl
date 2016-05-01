@@ -32,28 +32,30 @@ use IEEE.NUMERIC_STD.ALL;
 entity PhaseCounter is
  generic (phase_bits : positive := 16;
           tot_bits : positive := 32);
-    port ( clk : in std_logic;
-           ch : in std_logic;
-           sync : in std_logic;
-           dir : in std_logic;
-           init : in std_logic;
-           run_sync : in std_logic;
-           din : in std_logic;
-           dshift : in std_logic;
-           phase_sel : in std_logic;
-           phasesyn : inout unsigned(phase_bits-1 downto 0);
-           totphase : inout unsigned(tot_bits-1 downto 0);
-           sync_out : out std_logic);
+ port (
+  clk : in std_logic;
+  ch : in std_logic;
+  sync : in std_logic;
+  dir : in std_logic;
+  init : in std_logic;
+  run_sync : in std_logic;
+  din : in std_logic;
+  dshift : in std_logic;
+  phase_sel : in std_logic;
+  phasesyn : inout unsigned(phase_bits-1 downto 0);
+  totphase : inout unsigned(tot_bits-1 downto 0);
+  sync_out : out std_logic);
 end PhaseCounter;
 
 architecture Behavioral of PhaseCounter is
 
  component Shift is
   generic(n : positive);
-  port ( clk : in std_logic;
-         shift : in std_logic;
-         din : in std_logic;
-         data : inout unsigned (n-1 downto 0));
+  port (
+   clk : in std_logic;
+   shift : in std_logic;
+   din : in std_logic;
+   data : inout unsigned (n-1 downto 0));
  end component;
 
  signal last_syn : std_logic_vector(1 downto 0);
