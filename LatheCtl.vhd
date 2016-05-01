@@ -57,7 +57,7 @@ entity LatheCtl is
 
   jd1 : in std_logic;             --a input
   jd2 : in std_logic;             --b input
-  --jd3 : in std_logic;             --sync pulse input
+  jd3 : in std_logic;             --sync pulse input
   --jd4 : in std_logic;             --serial input
 
   led0 : out std_logic;
@@ -454,6 +454,7 @@ architecture Behavioral of LatheCtl is
 
  signal a_in : std_logic;
  signal b_in : std_logic;
+ signal sync_in : std_logic;
 
  signal a : std_logic;
  signal b : std_logic;
@@ -700,6 +701,7 @@ begin
 
  a_in <= jd1;
  b_in <= jd2;
+ sync_in <= jd3;
 
  --leds
 
@@ -1053,10 +1055,11 @@ begin
    sel => zPulsMult,
    d0 => ch,
    d1 => multCh,
-   dout =>chOut
+   dout => chOut
    );
 
  -- phase counter
+
 
  phase_sel <= '1' when (op = XLDPHASE) else '0';
  runSync <= dbgRSyn or (zRunning and zSrcSyn);
@@ -1067,7 +1070,7 @@ begin
   port map (
    clk => clk1,
    ch => chOut,
-   sync => div(18),
+   sync => sync_in,
    dir => enc_dir,
    init => zReset,
    run_sync => runSync,
