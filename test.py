@@ -1,3 +1,5 @@
+#!/cygdrive/c/Python27/Python.exe
+
 import sys
 import serial
 from sys import stdout
