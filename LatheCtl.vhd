@@ -1127,23 +1127,31 @@ begin
 
  -- z input step data selector
 
- zClockSrc <= "00" when ((dbgMove = '0')  and (zSrcSyn = '0') and
-                         ((tena = '0') or (tz = '0'))) else
-              "01" when ((dbgMove = '0')  and (zSrcSyn = '1') and
-                         ((tena = '0') or (tz = '0'))) else
-              "10" when (dbgMove = '-') and (tena = '1') and (tz = '1') else
-              "11" when (dbgMove = '1') and ((tEna = '0') or (tz = '0')) else
-              "00";
+ zClockIn <= zFreqClk  when ((dbgMove = '0')  and (zSrcSyn = '0') and
+                             ((tena = '0') or (tz = '0'))) else
+             chout     when ((dbgMove = '0')  and (zSrcSyn = '1') and
+                             ((tena = '0') or (tz = '0'))) else
+             xStepOut   when (dbgMove = '-') and (tena = '1') and (tz = '1') else
+             dbgFreqClk when (dbgMove = '1') and ((tEna = '0') or (tz = '0')) else
+             "00";
 
- zStepSource : DataSel1_4
-  port map (
-   sel => zClockSrc,
-   d0 => zFreqClock,
-   d1 => chOut,
-   d2 => xStepOut,
-   d3 => dbgFreqClk,
-   dout => zClockIn
-   );
+ --zClockSrc <= "00" when ((dbgMove = '0')  and (zSrcSyn = '0') and
+ --                        ((tena = '0') or (tz = '0'))) else
+ --             "01" when ((dbgMove = '0')  and (zSrcSyn = '1') and
+ --                        ((tena = '0') or (tz = '0'))) else
+ --             "10" when (dbgMove = '-') and (tena = '1') and (tz = '1') else
+ --             "11" when (dbgMove = '1') and ((tEna = '0') or (tz = '0')) else
+ --             "00";
+
+ --zStepSource : DataSel1_4
+ -- port map (
+ --  sel => zClockSrc,
+ --  d0 => zFreqClock,
+ --  d1 => chOut,
+ --  d2 => xStepOut,
+ --  d3 => dbgFreqClk,
+ --  dout => zClockIn
+ --  );
 
  -- z axis synchronizer
 
