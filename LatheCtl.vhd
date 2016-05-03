@@ -507,9 +507,8 @@ architecture Behavioral of LatheCtl is
  signal zTaperSel : std_logic;
  signal zSyncEna : std_logic;
 
- -- z step input selector
+ -- z step input clock
 
- --signal zClockSrc : std_logic_vector(1 downto 0);
  signal zClockIn : std_logic;
 
  -- z axis sync and accel
@@ -578,7 +577,6 @@ architecture Behavioral of LatheCtl is
 
  -- x step input selector
 
- signal xClockSrc : std_logic_vector(1 downto 0);
  signal xClockIn : std_logic;
 
  -- x axis sync an accel
@@ -1100,8 +1098,7 @@ begin
 
  taperZ <= '1' when (tena = '1') and (tz = '1') else '0';
 
- --zDbgLoad <= dbgInit or zLoadParm;
- zDbgLoad <= zLoadParm;
+ zDbgLoad <= dbgInit or zLoadParm;
  xDbgLoad <= dbgInit or xLoadParm;
 
  zLoadSoure : DataSel1_2
@@ -1134,25 +1131,8 @@ begin
                              ((tena = '0') or (tz = '0'))) else
              xStepOut   when (dbgMove = '-') and (tena = '1') and (tz = '1') else
              dbgFreqClk when (dbgMove = '1') and ((tEna = '0') or (tz = '0')) else
+             '0'        when (dbgInit = '1') else
              '0';
-
- --zClockSrc <= "00" when ((dbgMove = '0')  and (zSrcSyn = '0') and
- --                        ((tena = '0') or (tz = '0'))) else
- --             "01" when ((dbgMove = '0')  and (zSrcSyn = '1') and
- --                        ((tena = '0') or (tz = '0'))) else
- --             "10" when (dbgMove = '-') and (tena = '1') and (tz = '1') else
- --             "11" when (dbgMove = '1') and ((tEna = '0') or (tz = '0')) else
- --             "00";
-
- --zStepSource : DataSel1_4
- -- port map (
- --  sel => zClockSrc,
- --  d0 => zFreqClock,
- --  d1 => chOut,
- --  d2 => xStepOut,
- --  d3 => dbgFreqClk,
- --  dout => zClockIn
- --  );
 
  -- z axis synchronizer
 
@@ -1310,23 +1290,13 @@ begin
 
  -- x input step data selector
 
- xClockSrc <= "00" when ((dbgMove = '0')  and (xSrcSyn = '0') and
-                         ((tena = '0') or (tz = '1'))) else
-              "01" when ((dbgMove = '0')  and (xSrcSyn = '1') and
-                         ((tena = '0') or (tz = '1'))) else
-              "10" when (dbgMove = '-') and (tena = '1') and (tz = '0') else
-              "11" when (dbgMove = '1') and ((tEna = '0') or (tz = '1')) else
-              "00";
-
- xStepSource : DataSel1_4
-  port map (
-   sel => xClockSrc,
-   d0 => xFreqClock,
-   d1 => chOut,
-   d2 => zStepOut,
-   d3 => dbgFreqClk,
-   dout => xClockIn
-   );
+ xClockIn <= xFreqClock when ((dbgMove = '0')  and (xSrcSyn = '0') and
+                              ((tena = '0') or (tz = '1'))) else
+             chOut      when ((dbgMove = '0')  and (xSrcSyn = '1') and
+                              ((tena = '0') or (tz = '1'))) else
+             zStepOut   when (dbgMove = '-') and (tena = '1') and (tz = '0') else
+             dbgFreqClk when (dbgMove = '1') and ((tEna = '0') or (tz = '1')) else
+              '1';
 
  -- x axis synchronizer
 
