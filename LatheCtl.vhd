@@ -1177,7 +1177,7 @@ begin
    accelSum => zAccelSum,
    synstp => zStepOut,
    test1 => zTest1,
-   tests => zTest2,
+   test2 => zTest2,
    accelFlag => zAccel
    --testFlag => zTestFlag
    );
@@ -1343,7 +1343,7 @@ begin
    accelSum => xAccelSum,
    synstp => xStepOut,
    test1 => xTest1,
-   tests => xTest2,
+   test2 => xTest2,
    accelFlag => xAccel
    --testFlag => xTestFlag
    );
