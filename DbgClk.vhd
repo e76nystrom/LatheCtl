@@ -32,22 +32,23 @@ use IEEE.NUMERIC_STD.ALL;
 entity DbgClk is
  generic(freq_bits : positive;
          count_bits : positive);
- port ( clk : in std_logic;
-        dbg_ena : in std_logic;
-        dbg_dir : in std_logic;
-        dbg_count : in std_logic;
-        dbg_sel : in std_logic;
-        a : in std_logic;
-        b : in std_logic;
-        din : in std_logic;
-        dshift : in std_logic;
-        load : in std_logic;
-        freq_sel : in std_logic;
-        count_sel : in std_logic;
-        a_out : out std_logic;
-        b_out : out std_logic;
-        dbg_pulse : out std_logic;
-        dbg_done: out std_logic);
+ port (
+  clk : in std_logic;
+  dbg_ena : in std_logic;
+  dbg_dir : in std_logic;
+  dbg_count : in std_logic;
+  dbg_sel : in std_logic;
+  a : in std_logic;
+  b : in std_logic;
+  din : in std_logic;
+  dshift : in std_logic;
+  load : in std_logic;
+  freq_sel : in std_logic;
+  count_sel : in std_logic;
+  a_out : out std_logic;
+  b_out : out std_logic;
+  dbg_pulse : out std_logic;
+  dbg_done: out std_logic);
 end DbgClk;
 
 architecture Behavioral of DbgClk is
@@ -142,6 +143,7 @@ begin
     state <= idle;                      --set sart state
     freq_ena <= '1';                    --start frequency generator
     dbg_done <= '0';                    --clear done flag
+    dbg_pulse <= '0';                   --clear debug clock
    else
     if (dbg_ena = '1') then             --if enabled
      case state is
