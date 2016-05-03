@@ -1127,13 +1127,13 @@ begin
 
  -- z input step data selector
 
- zClockIn <= zFreqClk  when ((dbgMove = '0')  and (zSrcSyn = '0') and
+ zClockIn <= zFreqClock when ((dbgMove = '0')  and (zSrcSyn = '0') and
                              ((tena = '0') or (tz = '0'))) else
              chout     when ((dbgMove = '0')  and (zSrcSyn = '1') and
                              ((tena = '0') or (tz = '0'))) else
              xStepOut   when (dbgMove = '-') and (tena = '1') and (tz = '1') else
              dbgFreqClk when (dbgMove = '1') and ((tEna = '0') or (tz = '0')) else
-             "00";
+             '0';
 
  --zClockSrc <= "00" when ((dbgMove = '0')  and (zSrcSyn = '0') and
  --                        ((tena = '0') or (tz = '0'))) else
