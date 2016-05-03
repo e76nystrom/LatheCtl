@@ -676,7 +676,7 @@ begin
  --ja3 <= zDoneInt;
  --ja4 <= xDoneInt;
  ja3 <= dbgFreqClk;
- ja4 <= dbgMove);
+ ja4 <= dbgMove;
 
  --port b
 
