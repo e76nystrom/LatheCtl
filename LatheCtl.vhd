@@ -1100,7 +1100,8 @@ begin
 
  taperZ <= '1' when (tena = '1') and (tz = '1') else '0';
 
- zDbgLoad <= dbgInit or zLoadParm;
+ --zDbgLoad <= dbgInit or zLoadParm;
+ zDbgLoad <= zLoadParm;
  xDbgLoad <= dbgInit or xLoadParm;
 
  zLoadSoure : DataSel1_2
