@@ -259,6 +259,8 @@ architecture Behavioral of LatheCtl is
    sum : inout unsigned(syn_bits-1 downto 0);
    accelSum  : inout unsigned(syn_bits-1 downto 0);
    synstp : out std_logic;
+   test1 : out std_logic;
+   test2 : out std_logic;
    accelFlag : out std_logic
    --testFlag : out std_logic_vector(1 downto 0)
    --done : inout std_logic
@@ -529,6 +531,8 @@ architecture Behavioral of LatheCtl is
  signal zAccelSum : unsigned(syn_bits-1 downto 0);
  signal zStepOut : std_logic;
  signal zAccel : std_logic;
+ signal zTest1 : std_logic;
+ signal zTest2 : std_logic;
  --signal zTestFlag : std_logic_vector(1 downto 0);
 
  -- z axis distance counter
@@ -593,6 +597,8 @@ architecture Behavioral of LatheCtl is
  signal xAccelSum : unsigned(syn_bits-1 downto 0);
  signal xStepOut : std_logic;
  signal xAccel : std_logic;
+ signal xTest1 : std_logic;
+ signal xTest2 : std_logic;
  --signal xTestFlag : std_logic_vector(1 downto 0);
 
  -- x axis distance counter
@@ -696,10 +702,10 @@ begin
  --jc3 <= zSyncEna;
  --jc4 <= xSyncEna;
 
- jc1 <= zFreqClock;
- jc2 <= chOut;
- jc3 <= xStepOut;
- jc4 <= dbgFreqClk;
+ jc1 <= zTest1;
+ jc2 <= zTest2;
+ jc3 <= xTest1;
+ jc4 <= xTest2;
 
  --port d
 
@@ -1170,6 +1176,8 @@ begin
    sum => zSum,
    accelSum => zAccelSum,
    synstp => zStepOut,
+   test1 => zTest1,
+   tests => zTest2,
    accelFlag => zAccel
    --testFlag => zTestFlag
    );
@@ -1334,6 +1342,8 @@ begin
    sum => xSum,
    accelSum => xAccelSum,
    synstp => xStepOut,
+   test1 => xTest1,
+   tests => xTest2,
    accelFlag => xAccel
    --testFlag => xTestFlag
    );
