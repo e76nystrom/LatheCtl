@@ -1302,7 +1302,7 @@ begin
                               ((tena = '0') or (tz = '1'))) else
              zStepOut   when (dbgMove = '-') and (tena = '1') and (tz = '0') else
              dbgFreqClk when (dbgMove = '1') and ((tEna = '0') or (tz = '1')) else
-              '1';
+             '1';
 
  -- x axis synchronizer
 
