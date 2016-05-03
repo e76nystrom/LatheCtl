@@ -97,16 +97,17 @@ architecture Behavioral of LatheCtl is
 
  component latheClk is
   port (
-   CLK_IN  : in  std_logic;
-   CLK_OUT : out std_logic;
-   RESET   : in  std_logic;
-   LOCKED  : out std_logic);
+   clk_in  : in  std_logic;
+   clk_out : out std_logic;
+   reset   : in  std_logic;
+   locked  : out std_logic);
  end component;
 
  component ClockEnable is
-  Port ( clk : in  std_logic;
-         ena : in  std_logic;
-         clkena : out std_logic);
+  Port (
+   clk : in  std_logic;
+   ena : in  std_logic;
+   clkena : out std_logic);
  end component;
 
  component Display is
@@ -690,10 +691,15 @@ begin
 
  --port c
  
- jc1 <= zStepPulseOut;
- jc2 <= xStepPUlseOUt;
- jc3 <= zSyncEna;
- jc4 <= xSyncEna;
+ --jc1 <= zStepPulseOut;
+ --jc2 <= xStepPUlseOUt;
+ --jc3 <= zSyncEna;
+ --jc4 <= xSyncEna;
+
+ jc1 <= zFreqClock;
+ jc2 <= chOut;
+ jc3 <= xStepOut;
+ jc4 <= dbgFreqClk;
 
  --port d
 
