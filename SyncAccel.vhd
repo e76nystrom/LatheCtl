@@ -53,8 +53,9 @@ entity SyncAccel is
   sum : inout unsigned(syn_bits-1 downto 0);
   accelSum  : inout unsigned(syn_bits-1 downto 0);
   synstp : out std_logic;
+  test1 : out std_logic;
+  test2 : out std_logic;
   accelFlag : out std_logic
-  --done : inout std_logic
   );
 end SyncAccel;
 
@@ -172,6 +173,8 @@ architecture Behavioral of SyncAccel is
 begin
 
  dClk <= d_sel and dshift;
+ test1 <= dir;
+ test2 <= xInc;
 
  dreg: Shift
   generic map(syn_bits)
