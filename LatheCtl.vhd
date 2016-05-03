@@ -675,8 +675,8 @@ begin
  ja2 <= test1;
  --ja3 <= zDoneInt;
  --ja4 <= xDoneInt;
- ja3 <= zClockIn;
- ja4 <= dbgFreqClk;
+ ja3 <= zClockSrc[0];
+ ja4 <= zClockSrc[1];
 
  --port b
 
