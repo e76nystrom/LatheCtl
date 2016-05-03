@@ -509,7 +509,7 @@ architecture Behavioral of LatheCtl is
 
  -- z step input selector
 
- signal zClockSrc : std_logic_vector(1 downto 0);
+ --signal zClockSrc : std_logic_vector(1 downto 0);
  signal zClockIn : std_logic;
 
  -- z axis sync and accel
