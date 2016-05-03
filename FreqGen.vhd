@@ -31,23 +31,25 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity FreqGen is
  generic(freq_bits : positive);
- port ( clk : in std_logic;
-        ena : in std_logic;
-        din : in std_logic;
-        dshift : in std_logic;
-        freq_sel : in std_logic;
-        pulse_out : out std_logic
-        );
+ port (
+  clk : in std_logic;
+  ena : in std_logic;
+  din : in std_logic;
+  dshift : in std_logic;
+  freq_sel : in std_logic;
+  pulse_out : out std_logic
+  );
 end FreqGen;
 
 architecture Behavioral of FreqGen is
 
  component Shift is
   generic(n : positive);
-  port ( clk : in std_logic;
-         shift : in std_logic;
-         din : in std_logic;
-         data : inout  unsigned (freq_bits-1 downto 0));
+  port (
+   clk : in std_logic;
+   shift : in std_logic;
+   din : in std_logic;
+   data : inout  unsigned (freq_bits-1 downto 0));
  end component;
 
  signal freq_shift : std_logic;
