@@ -49,7 +49,7 @@ ARCHITECTURE behavior OF SPITest IS
    op : inout unsigned(op_bits-1 downto 0);
    copy : out std_logic;
    shift : out std_logic;
-   load : out std_logic;
+   load : out std_logic
    );
  end component;
 
