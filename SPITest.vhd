@@ -132,7 +132,7 @@ BEGIN
   din => din,
   op => op,
   copy => copy,
-  shift => dshift,
+  shift => shift,
   load => load,
   );
 
@@ -144,14 +144,14 @@ BEGIN
  --  din => din,
  --  data => test_reg);
 
- test1reg: CtlReg
-  generic map(test_bits)
-  port map (
-   clk => clk,
-   din => din,
-   shift => shift,
-   load => load,
-   data => test1_reg);
+ --test1reg: CtlReg
+ -- generic map(test_bits)
+ -- port map (
+ --  clk => clk,
+ --  din => din,
+ --  shift => shift,
+ --  load => load,
+ --  data => test1_reg);
 
  -- Clock process definitions
  clk_process :process
