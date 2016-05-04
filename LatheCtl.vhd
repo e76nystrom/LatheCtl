@@ -644,6 +644,7 @@ architecture Behavioral of LatheCtl is
  -- display signals
 
  signal dsp_sel : std_logic;
+ signal dsp_load : std_logic;
 
  signal anode : std_logic_vector(3 downto 0);
  signal seg : std_logic_vector(6 downto 0);
