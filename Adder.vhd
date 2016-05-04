@@ -30,7 +30,7 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity Adder is
- generic (n : positive);
+ generic (n : positive := 32);
  port ( clk : in std_logic;
         ena : in std_logic;
         load : in std_logic;
