@@ -173,7 +173,7 @@ architecture Behavioral of SyncAccel is
 begin
 
  dClk <= d_sel and dshift;
- test1 <= dir;
+ test1 <= ch;
  test2 <= xInc;
 
  dreg: Shift
