@@ -683,7 +683,7 @@ begin
 
  -- test 4 output pulse
 
- tstOut3 : PulseGen
+ tstOut4 : PulseGen
   generic map (step_width => 25)
   port map (
    clk => clk1,
