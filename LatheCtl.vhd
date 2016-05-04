@@ -424,30 +424,35 @@ architecture Behavioral of LatheCtl is
 
 -- z control register
 
- signal zctl_sel : std_logic;           --select for shifting data in
- signal zctl_load : std_logic;          --select for loading contorl reg
+ signal zCtl_sel : std_logic;           --select for shifting data in
+ signal Ctl_load : std_logic;          --select for loading contorl reg
 
  -- x control register
 
- signal xctl_sel : std_logic;
+ signal xCtl_sel : std_logic;           --select for shifting data in
+ signal xCtl_load : std_logic;          --select for loading contorl reg
 
 -- taper control register
 
- signal tctl_sel : std_logic;
+ signal tctl_sel : std_logic;           --select for shifting data in
+ signal tctl_load : std_logic;          --select for loading contorl reg
  signal taperZ : std_logic;
  signal taperX : std_logic;
 
 -- z position control register
 
- signal pctl_sel : std_logic;
+ signal pCtl_sel : std_logic;           --select for shifting data in
+ signal pCtl_load : std_logic;          --select for loading contorl reg
 
 -- configuration register
 
- signal cctl_sel : std_logic;
+ signal cCtl_sel : std_logic;           --select for shifting data in
+ signal cCtl_load : std_logic;          --select for loading contorl reg
 
  -- debug control register
 
- signal dctl_sel : std_logic;
+ signal dCtl_sel : std_logic;           --select for shifting data in
+ signal dCtl_load : std_logic;          --select for loading contorl reg
 
 -- debug frequency generator
 
@@ -638,11 +643,12 @@ architecture Behavioral of LatheCtl is
 
  -- display signals
 
+ signal dsp_sel : std_logic;
+
  signal anode : std_logic_vector(3 downto 0);
  signal seg : std_logic_vector(6 downto 0);
  constant dsp_bits : integer := 16;
  signal dspReg : unsigned(opb-1 downto 0);
- signal dsp_sel : std_logic;
  signal dspUpd : std_logic;
  signal dspData : unsigned(15 downto 0);
 
@@ -925,7 +931,7 @@ begin
 
  -- z control register
 
- zctl_sel <= '1' when ((op = XLDZCTL) and (dshift = '1')) else '0';
+ zCtl_sel <= '1' when ((op = XLDZCTL) and (dshift = '1')) else '0';
  zCtl_load <= '1' when ((op = XLDZCTL) and (load = '1')) else '0';
 
  zctl : CtlReg
@@ -939,7 +945,8 @@ begin
 
  -- x control register
 
- xctl_sel <= '1' when ((op = XLDXCTL) and (dshift = '1')) else '0';
+ xCtl_sel <= '1' when ((op = XLDXCTL) and (dshift = '1')) else '0';
+ xCtl_load <= '1' when ((op = XLDXCTL) and (load = '1')) else '0';
 
  xctl : CtlReg
   generic map (xctl_size)
@@ -947,12 +954,13 @@ begin
    clk => clk1,
    din => din,
    shift => xctl_sel,
-   load => load,
+   load => xctl_load,
    data => xCtlReg);
 
  -- taper control register
 
  tCtl_sel <= '1' when ((op = XLDTCTL) and (dshift = '1')) else '0';
+ tCtl_load <= '1' when ((op = XLDTCTL) and (load = '1')) else '0';
 
  tCtl : CtlReg
   generic map (n => tctl_size)
@@ -960,12 +968,13 @@ begin
    clk => clk1,
    din => din,
    shift => tCtl_Sel,
-   load => load,
+   load => tCtl_load,
    data => tctlreg);
 
  -- z position control register
 
  pCtl_sel <= '1' when ((op = XLDPCTL) and (dshift = '1')) else '0';
+ pCtl_load <= '1' when ((op = XLDPCTL) and (load = '1')) else '0';
 
  pCtl : CtlReg
   generic map (n => pctl_size)
@@ -973,12 +982,13 @@ begin
    clk => clk1,
    din => din,
    shift => pCtl_sel,
-   load => load,
+   load => pCtl_load,
    data => pCtlReg);
 
  -- configuration register
 
  cCtl_sel <= '1' when ((op = XLDCFG) and (dshift = '1')) else '0';
+ cCtl_load <= '1' when ((op = XLDCFG) and (load = '1')) else '0';
 
  cCtl : CtlReg
   generic map (n => cctl_size)
@@ -986,23 +996,25 @@ begin
    clk => clk1,
    din => din,
    shift => cctl_sel,
-   load => load,
+   load => cCtl_load,
    data => cCtlreg);
 
  -- debug control register
 
- dctl_sel <= '1' when ((op = XLDDCTL) and (dshift = '1')) else '0';
+ dCtl_sel <= '1' when ((op = XLDDCTL) and (dshift = '1')) else '0';
+ dCtl_load <= '1' when ((op = XLDDCTL) and (load = '1')) else '0';
 
  dbgctl : CtlReg
   generic map (n => dctl_size)
   port map (
    clk => clk1,
    din => din,
-   shift => dctl_sel,
-   load => load,
+   shift => dCtl_sel,
+   load => dCtl_load,
    data => dctlreg);
 
  dsp_sel <= '1' when ((op = XLDDREG) and (dshift = '1')) else '0';
+ dsp_load <= '1' when ((op = XLDDREG) and (load = '1')) else '0';
 
  dspctl : CtlReg
   generic map (n => opb)
@@ -1010,7 +1022,7 @@ begin
    clk => clk1,
    din => din,
    shift => dsp_sel,
-   load => load,
+   load => dsp_load,
    data => dspReg);
 
  -- clock simulator for debugging
