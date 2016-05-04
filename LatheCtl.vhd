@@ -650,6 +650,7 @@ architecture Behavioral of LatheCtl is
  signal test1 : std_logic;
  signal test2 : std_logic;
  signal test3 : std_logic;
+ signal test4 : std_logic;
 
 begin
 
@@ -679,6 +680,15 @@ begin
    clk => clk1,
    step_in => zTest2,
    step_out => test3);
+
+ -- test 4 output pulse
+
+ tstOut3 : PulseGen
+  generic map (step_width => 25)
+  port map (
+   clk => clk1,
+   step_in => zSyncInit,
+   step_out => test4);
 
  --port a
 
@@ -710,7 +720,7 @@ begin
 
  jc1 <= test2;
  jc2 <= test3;
- jc3 <= zSyncInit;
+ jc3 <= test4;
  jc4 <= zSyncEna;
 
  --port d
