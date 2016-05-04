@@ -63,6 +63,8 @@ ARCHITECTURE behavior OF SyncAccelTest IS
    sum : inout unsigned(syn_bits-1 downto 0);
    accelSum : inout unsigned(syn_bits-1 downto 0);
    synstp : out std_logic;
+   test1 : out std_logic;
+   test2 : out std_logic;
    accelFlag : out std_logic);
  end component;
 
@@ -117,6 +119,8 @@ ARCHITECTURE behavior OF SyncAccelTest IS
  --Outputs
  signal synstp : std_logic;
  signal accelFlag : std_logic;
+ signal test1 : std_logic;
+ signal test2 : std_logic;
 
  signal distZero : std_logic;
  
