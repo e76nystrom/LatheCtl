@@ -53,24 +53,24 @@ ARCHITECTURE behavior OF SPITest IS
    );
  end component;
 
- component Shift is
-  generic(n : positive);
-  Port(
-   clk : in  std_logic;
-   shift : in std_logic;
-   din : in std_logic;
-   data : inout  unsigned (n-1 downto 0));
- end component;
+ --component Shift is
+ -- generic(n : positive);
+ -- Port(
+ --  clk : in  std_logic;
+ --  shift : in std_logic;
+ --  din : in std_logic;
+ --  data : inout  unsigned (n-1 downto 0));
+ --end component;
 
- component CtlReg is
-  generic(n : positive);
-  port (
-   clk : in std_logic;
-   din : in std_logic;
-   shift : in std_logic;
-   load : in std_logic;
-   data : inout  unsigned (n-1 downto 0));
- end component;
+ --component CtlReg is
+ -- generic(n : positive);
+ -- port (
+ --  clk : in std_logic;
+ --  din : in std_logic;
+ --  shift : in std_logic;
+ --  load : in std_logic;
+ --  data : inout  unsigned (n-1 downto 0));
+ --end component;
 
  constant op_bits : integer := 8;
  
