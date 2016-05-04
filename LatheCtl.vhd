@@ -681,7 +681,7 @@ begin
  --ja3 <= zDoneInt;
  --ja4 <= xDoneInt;
  ja3 <= zDoneInt;
- ja4 <= dbgFreqClk;
+ ja4 <= zDistZero;
 
  --port b
 
