@@ -704,8 +704,8 @@ begin
 
  jc1 <= test2;
  jc2 <= test3;
- jc3 <= xTest1;
- jc4 <= xTest2;
+ jc3 <= zSyncInit;
+ jc4 <= zSyncEna;
 
  --port d
 
@@ -730,10 +730,8 @@ begin
          zEncDir xor
          test2 xor
          test3 xor
-         --zTestFlag(0) xor
-         --zTestFlag(1) xor
-         --xTestFlag(0) xor
-         --xTestFlag(1) xor
+         xTest1 xor
+         xTest2 xor
          '0';
  led6 <= dir_ch;
  led7 <= div(div_range);
