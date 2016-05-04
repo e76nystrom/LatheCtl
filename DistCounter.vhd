@@ -31,47 +31,51 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity DistCounter is
  generic (dist_bits : positive);
- Port ( clk : in  std_logic;
-        accelFlag : in std_logic;       --acceleration step
-        step : in std_logic;            --all steps
-        init : in std_logic;            --reset
-        din : in std_logic;
-        dshift : in std_logic;
-        dist_sel : in std_logic;
-        distCtr : inout unsigned(dist_bits-1 downto 0);
-        aclSteps : inout unsigned(dist_bits-1 downto 0);
-        decel : inout std_logic;        --dist le acceleration steps
-        dist_zero : out std_logic       --distance zero
-        );
+ Port (
+  clk : in  std_logic;
+  accelFlag : in std_logic;             --acceleration step
+  step : in std_logic;                  --all steps
+  init : in std_logic;                  --reset
+  din : in std_logic;
+  dshift : in std_logic;
+  dist_sel : in std_logic;
+  distCtr : inout unsigned(dist_bits-1 downto 0);
+  aclSteps : inout unsigned(dist_bits-1 downto 0);
+  decel : inout std_logic;              --dist le acceleration steps
+  dist_zero : out std_logic             --distance zero
+  );
 end DistCounter;
 
 architecture Behavioral of DistCounter is
 
  component Compare is
   generic (n : positive);
-  port ( a : in  unsigned (n-1 downto 0);
-         b : in  unsigned (n-1 downto 0);
-         cmp_ge : in std_logic;
-         cmp : out std_logic);
+  port (
+   a : in  unsigned (n-1 downto 0);
+   b : in  unsigned (n-1 downto 0);
+   cmp_ge : in std_logic;
+   cmp : out std_logic);
  end component;
 
  component UpCounter is
   generic(n : positive);
-  port ( clk : in std_logic;
-         ena : in std_logic;
-         clr : in std_logic;
-         counter : inout  unsigned (n-1 downto 0));
+  port (
+   clk : in std_logic;
+   ena : in std_logic;
+   clr : in std_logic;
+   counter : inout  unsigned (n-1 downto 0));
  end component;
 
  component RegCtr is
   generic(n : positive);
-  port ( clk : in std_logic;
-         ld_ena : in std_logic;
-         shift_in : in std_logic;
-         ct_ena : in std_logic;
-         load : in std_logic;
-         data : inout  unsigned (n-1 downto 0);
-         zero : inout std_logic);
+  port (
+   clk : in std_logic;
+   ld_ena : in std_logic;
+   shift_in : in std_logic;
+   ct_ena : in std_logic;
+   load : in std_logic;
+   data : inout  unsigned (n-1 downto 0);
+   zero : inout std_logic);
  end component;
 
  signal accelStep : std_logic;
@@ -81,8 +85,8 @@ architecture Behavioral of DistCounter is
 
 begin
 
- accelStep <= '1' when ((accelFlag = '1') and (step = '1') and
-                        (decel = '0')) else '0';
+ accelStep <= '1' when ((accelFlag = '1') and (step = '1') and (decel = '0'))
+              else '0';
 
  stpctr: UpCounter
   generic map(dist_bits)
