@@ -40,8 +40,7 @@ ARCHITECTURE behavior OF SPITest IS
  -- Component Declaration for the Unit Under Test (UUT)
  
  component SPI
- generic (op_bits : positive := 8;
-          data_bits : positive := 32);
+ generic (op_bits : positive := 8);
   PORT(
    clk : in std_logic;
    dclk : in std_logic;
@@ -49,9 +48,8 @@ ARCHITECTURE behavior OF SPITest IS
    din : in std_logic;
    op : inout unsigned(op_bits-1 downto 0);
    copy : out std_logic;
-   --shift : out std_logic;
+   shift : out std_logic;
    load : out std_logic;
-   datareg : inout unsigned(data_bits-1 downto 0)
    );
  end component;
 
@@ -87,7 +85,7 @@ ARCHITECTURE behavior OF SPITest IS
 
  --Outputs
  signal copy : std_logic;
- --signal dshift : std_logic;
+ signal shift : std_logic;
  signal load : std_logic;
 
  -- Clock period definitions
@@ -121,8 +119,8 @@ ARCHITECTURE behavior OF SPITest IS
  signal tmp1 : unsigned(31 downto 0) :=  (31 downto 0 => '0');
 
  constant test_bits : integer := 32;
- signal test_reg : unsigned(test_bits-1 downto 0);
- --signal test1_reg : unsigned(test_bits-1 downto 0);
+ --signal test_reg : unsigned(test_bits-1 downto 0);
+ signal test1_reg : unsigned(test_bits-1 downto 0);
 
 BEGIN
  
@@ -134,9 +132,8 @@ BEGIN
   din => din,
   op => op,
   copy => copy,
-  --shift => dshift,
+  shift => dshift,
   load => load,
-  datareg => test_reg
   );
 
  --testreg: Shift
@@ -147,14 +144,14 @@ BEGIN
  --  din => din,
  --  data => test_reg);
 
- --test1reg: CtlReg
- -- generic map(test_bits)
- -- port map (
- --  clk => clk,
- --  din => din,
- --  shift => dshift,
- --  load => load,
- --  data => test1_reg);
+ test1reg: CtlReg
+  generic map(test_bits)
+  port map (
+   clk => clk,
+   din => din,
+   shift => shift,
+   load => load,
+   data => test1_reg);
 
  -- Clock process definitions
  clk_process :process
