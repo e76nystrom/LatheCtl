@@ -55,10 +55,15 @@ entity LatheCtl is
   jc3 : out std_logic;            --x step
   jc4 : out std_logic;            --x direction
 
-  jd1 : in std_logic;             --a input
-  jd2 : in std_logic;             --b input
-  jd3 : in std_logic;             --sync pulse input
+  --jd1 : in std_logic;             --a input
+  --jd2 : in std_logic;             --b input
+  --jd3 : in std_logic;             --sync pulse input
   --jd4 : in std_logic;             --serial input
+
+  jd1 : out std_logic;
+  jd2 : out std_logic;
+  jd3 : out std_logic;
+  jd4 : out std_logic;
 
   led0 : out std_logic;
   led1 : out std_logic;
@@ -82,9 +87,9 @@ entity LatheCtl is
   an2 : out std_logic;
   an3 : out std_logic
 
-  --sw0: in std_logic;
-  --sw1: in std_logic;
-  --sw2: in std_logic;
+  sw0: in std_logic;
+  sw1: in std_logic;
+  sw2: in std_logic;
   --sw3: in std_logic;
   --sw4: in std_logic;
   --sw5: in std_logic;
@@ -449,8 +454,8 @@ architecture Behavioral of LatheCtl is
  signal dbgfreq_sel : std_logic;
  signal dbgcount_sel : std_logic;
  signal dbgFreqClk : std_logic;
- signal zDbgLoad : std_logic;
- signal xDbgLoad : std_logic;
+ signal zLoad : std_logic;
+ signal xLoad : std_logic;
  signal dbgDone : std_logic;
 
  -- encoder
@@ -709,10 +714,19 @@ begin
 
  --port d
 
- a_in <= jd1;
- b_in <= jd2;
- sync_in <= jd3;
+ --a_in <= jd1;
+ --b_in <= jd2;
+ --sync_in <= jd3;
 
+ jd1 <= zAccel;
+ jd2 <= zDecel;
+ jd3 <= zStepPulseOut;
+ jd4 <= 0;
+
+ a_in <= sw0;
+ b_in <= sw1;
+ sync_in <= sw2;
+ 
  --leds
 
  led0 <= ch;
@@ -1108,14 +1122,14 @@ begin
 
  taperZ <= '1' when (tena = '1') and (tz = '1') else '0';
 
- zDbgLoad <= dbgInit or zLoadParm;
- xDbgLoad <= dbgInit or xLoadParm;
+ zLoad <= dbgInit or zLoadParm;
+ xLoad <= dbgInit or xLoadParm;
 
  zLoadSoure : DataSel1_2
   port map (
    sel => taperZ,
-   d0 => zDbgLoad,
-   d1 => xDbgLoad,
+   d0 => zLoad,
+   d1 => xLoad,
    dout => zSyncInit
    );
 
@@ -1190,7 +1204,7 @@ begin
    clk => clk1,
    accelFlag => zAccel,
    step => zStepOut,
-   init => zDbgLoad,
+   init => zLoad,
    din => din,
    dshift => dshift,
    dist_sel => zdist_sel,
@@ -1281,8 +1295,8 @@ begin
  xLoadSoure : DataSel1_2
   port map (
    sel => taperX,
-   d0 => xDbgLoad,
-   d1 => zDbgLoad,
+   d0 => xLoad,
+   d1 => zLoad,
    dout => xSyncInit
    );
 
@@ -1356,7 +1370,7 @@ begin
    clk => clk1,
    accelFlag => xAccel,
    step => xStepOut,
-   init => xDbgLoad,
+   init => xLoad,
    din => din,
    dshift => dshift,
    dist_sel => xdist_sel,
