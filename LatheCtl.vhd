@@ -732,7 +732,7 @@ begin
  jd1 <= zAccel;
  jd2 <= zDecel;
  jd3 <= zStepPulseOut;
- jd4 <= zStepOut;
+ jd4 <= zRunning;
 
  a_in <= sw0;
  b_in <= sw1;
@@ -1169,7 +1169,6 @@ begin
                              ((tena = '0') or (tz = '0'))) else
              xStepOut   when (dbgMove = '-') and (tena = '1') and (tz = '1') else
              dbgFreqClk when (dbgMove = '1') and ((tEna = '0') or (tz = '0')) else
-             '0'        when (dbgInit = '1') else
              '0';
 
  -- z axis synchronizer
