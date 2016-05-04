@@ -424,7 +424,8 @@ architecture Behavioral of LatheCtl is
 
 -- z control register
 
- signal zctl_sel : std_logic;
+ signal zctl_sel : std_logic;           --select for shifting data in
+ signal zctl_load : std_logic;          --select for loading contorl reg
 
  -- x control register
 
@@ -925,6 +926,7 @@ begin
  -- z control register
 
  zctl_sel <= '1' when ((op = XLDZCTL) and (dshift = '1')) else '0';
+ zCtl_load <= '1' when ((op = XLDZCTL) and (load = '1')) else '0';
 
  zctl : CtlReg
   generic map (zctl_size)
@@ -932,7 +934,7 @@ begin
    clk => clk1,
    din => din,
    shift => zctl_sel,
-   load => load,
+   load => zctl_load,
    data => zCtlReg);
 
  -- x control register
