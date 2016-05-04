@@ -151,7 +151,7 @@ ARCHITECTURE behavior OF SyncAccelTest IS
 
 BEGIN
 
- syncEna = ena and not distZero;
+ syncEna <= ena and not distZero;
 
  -- Instantiate the Unit Under Test (UUT)
  uut: SyncAccel
