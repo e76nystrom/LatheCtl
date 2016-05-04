@@ -30,19 +30,20 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity ZRun is
-  port ( clk : in std_logic;            --input clock
-        init : in std_logic;            --reset
-        start : in std_logic;           --start axis
-        backlash : in std_logic;        --backlash move
-        sync : in std_logic;            --sync pulse
-        wait_syn : in std_logic;        --synchronized motion
-        dist_zero : in std_logic;       --distance zero
-        load_parm : out std_logic;      --load parameters
-        upd_loc : out std_logic;        --update location
-        running : out std_logic;        --running
-        done_int : out std_logic;       --done interrupt
-        info : out unsigned(3 downto 0) --state info
-        );
+  port (
+   clk : in std_logic;                  --input clock
+   init : in std_logic;                 --reset
+   start : in std_logic;                --start axis
+   backlash : in std_logic;             --backlash move
+   sync : in std_logic;                 --sync pulse
+   wait_syn : in std_logic;             --synchronized motion
+   dist_zero : in std_logic;            --distance zero
+   load_parm : out std_logic;           --load parameters
+   upd_loc : out std_logic;             --update location
+   running : out std_logic;             --running
+   done_int : out std_logic;            --done interrupt
+   info : out unsigned(3 downto 0)      --state info
+   );
 end ZRun;
 
 architecture Behavioral of ZRun is
@@ -127,4 +128,3 @@ begin
  end process;
 
 end Behavioral;
-
