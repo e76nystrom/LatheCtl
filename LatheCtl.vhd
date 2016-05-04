@@ -1123,8 +1123,11 @@ begin
 
  taperZ <= '1' when (tena = '1') and (tz = '1') else '0';
 
- zLoad <= dbgInit or zLoadParm;
- xLoad <= dbgInit or xLoadParm;
+ --zLoad <= dbgInit or zLoadParm;
+ --xLoad <= dbgInit or xLoadParm;
+
+ zLoad <= zLoadParm;
+ xLoad <= xLoadParm;
 
  zLoadSoure : DataSel1_2
   port map (
