@@ -721,7 +721,7 @@ begin
  jd1 <= zAccel;
  jd2 <= zDecel;
  jd3 <= zStepPulseOut;
- jd4 <= '0';
+ jd4 <= zStepOut;
 
  a_in <= sw0;
  b_in <= sw1;
