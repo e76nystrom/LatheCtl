@@ -936,7 +936,7 @@ begin
  zCtl_load <= '1' when ((op = XLDZCTL) and (load = '1')) else '0';
 
  zctl : CtlReg
-  generic map (zctl_size)
+  generic map (zCtl_size)
   port map (
    clk => clk1,
    din => din,
@@ -950,7 +950,7 @@ begin
  xCtl_load <= '1' when ((op = XLDXCTL) and (load = '1')) else '0';
 
  xctl : CtlReg
-  generic map (xctl_size)
+  generic map (xCtl_size)
   port map (
    clk => clk1,
    din => din,
@@ -964,7 +964,7 @@ begin
  tCtl_load <= '1' when ((op = XLDTCTL) and (load = '1')) else '0';
 
  tCtl : CtlReg
-  generic map (n => tctl_size)
+  generic map (n => tCtl_size)
   port map (
    clk => clk1,
    din => din,
@@ -978,7 +978,7 @@ begin
  pCtl_load <= '1' when ((op = XLDPCTL) and (load = '1')) else '0';
 
  pCtl : CtlReg
-  generic map (n => pctl_size)
+  generic map (n => pCtl_size)
   port map (
    clk => clk1,
    din => din,
@@ -992,7 +992,7 @@ begin
  cCtl_load <= '1' when ((op = XLDCFG) and (load = '1')) else '0';
 
  cCtl : CtlReg
-  generic map (n => cctl_size)
+  generic map (n => cCtl_size)
   port map (
    clk => clk1,
    din => din,
@@ -1006,7 +1006,7 @@ begin
  dCtl_load <= '1' when ((op = XLDDCTL) and (load = '1')) else '0';
 
  dbgctl : CtlReg
-  generic map (n => dctl_size)
+  generic map (n => dCtl_size)
   port map (
    clk => clk1,
    din => din,
