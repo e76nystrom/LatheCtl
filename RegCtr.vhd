@@ -31,23 +31,25 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity RegCtr is
  generic(n : positive);
- port ( clk : in std_logic;
-        ld_ena : in std_logic;
-        shift_in : in std_logic;
-        ct_ena : in std_logic;
-        load : in std_logic;
-        data : inout  unsigned (n-1 downto 0);
-        zero : inout std_logic);
+ port (
+  clk : in std_logic;
+  ld_ena : in std_logic;
+  shift_in : in std_logic;
+  ct_ena : in std_logic;
+  load : in std_logic;
+  data : inout  unsigned (n-1 downto 0);
+  zero : inout std_logic);
 end RegCtr;
 
 architecture Behavioral of RegCtr is
 
  component Shift is
   generic (n : positive);
-  port ( clk : in std_logic;
-         din : in std_logic;
-         shift : in std_logic;
-         data : inout  unsigned (n-1 downto 0));
+  port (
+   clk : in std_logic;
+   din : in std_logic;
+   shift : in std_logic;
+   data : inout  unsigned (n-1 downto 0));
  end component;
 
  signal dist_reg : unsigned(n-1 downto 0);
