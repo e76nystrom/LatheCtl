@@ -133,7 +133,7 @@ BEGIN
   op => op,
   copy => copy,
   shift => shift,
-  load => load,
+  load => load
   );
 
  --testreg: Shift
