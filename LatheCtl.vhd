@@ -917,8 +917,8 @@ begin
       outReg <= (out_bits-1 downto opb => '0') & dspReg;
 
      when XRDSR =>
-      outReg <= (out_bits-1 downto 4 => '0') &
-                zStart & dbgDone & xDoneInt & zDoneInt;
+      outReg <= (out_bits-1 downto 5 => '0') &
+                xStart & zStart & dbgDone & xDoneInt & zDoneInt;
 
      when others =>
       outReg <= x"55aa55aa";
