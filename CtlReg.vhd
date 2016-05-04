@@ -31,11 +31,12 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity CtlReg is
  generic(n : positive);
- port ( clk : in std_logic;
-        din : in std_logic;
-        shift : in std_logic;
-        load : in std_logic;
-        data : inout  unsigned (n-1 downto 0));
+ port (
+  clk : in std_logic;                   --clock
+  din : in std_logic;                   --data in
+  shift : in std_logic;                 --shift data
+  load : in std_logic;                  --load to data register
+  data : inout  unsigned (n-1 downto 0)); --data register
 end CtlReg;
 
 architecture Behavioral of CtlReg is
@@ -47,11 +48,11 @@ begin
 ctlreg: process (clk)
  begin
   if (rising_edge(clk)) then
-   if (load = '1') then
-    data <= sreg;
-   else
-    if (shift = '1') then
-     sreg <= sreg(n-2 downto 0) & din;
+   if (load = '1') then                 --if load set
+    data <= sreg;                       --copy from shift reg to data reg
+   else                                 --if load not set
+    if (shift = '1') then               --if shift set
+     sreg <= sreg(n-2 downto 0) & din;  --shift data in
     end if;
    end if;
   end if;
