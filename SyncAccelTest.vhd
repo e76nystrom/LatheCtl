@@ -147,7 +147,11 @@ ARCHITECTURE behavior OF SyncAccelTest IS
  shared variable accelCount : integer;
  shared variable dist : integer;
 
+ signal syncEna : std_logic;
+
 BEGIN
+
+ syncEna = ena and not distZero;
 
  -- Instantiate the Unit Under Test (UUT)
  uut: SyncAccel
@@ -157,7 +161,7 @@ BEGIN
   port map (
    clk => clk,
    init => init,
-   ena => ena and not distZero,
+   ena => syncEna,
    decel => decel,
    ch => ch,
    dir => dir,
