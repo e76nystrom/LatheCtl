@@ -940,8 +940,8 @@ begin
   port map (
    clk => clk1,
    din => din,
-   shift => zctl_sel,
-   load => zctl_load,
+   shift => zCtl_sel,
+   load => zCtl_load,
    data => zCtlReg);
 
  -- x control register
@@ -954,8 +954,8 @@ begin
   port map (
    clk => clk1,
    din => din,
-   shift => xctl_sel,
-   load => xctl_load,
+   shift => xCtl_sel,
+   load => xCtl_load,
    data => xCtlReg);
 
  -- taper control register
@@ -970,7 +970,7 @@ begin
    din => din,
    shift => tCtl_Sel,
    load => tCtl_load,
-   data => tctlreg);
+   data => tctlReg);
 
  -- z position control register
 
@@ -996,9 +996,9 @@ begin
   port map (
    clk => clk1,
    din => din,
-   shift => cctl_sel,
+   shift => cCtl_sel,
    load => cCtl_load,
-   data => cCtlreg);
+   data => cCtlReg);
 
  -- debug control register
 
@@ -1012,7 +1012,7 @@ begin
    din => din,
    shift => dCtl_sel,
    load => dCtl_load,
-   data => dctlreg);
+   data => dCtlReg);
 
  dsp_sel <= '1' when ((op = XLDDREG) and (dshift = '1')) else '0';
  dsp_load <= '1' when ((op = XLDDREG) and (load = '1')) else '0';
