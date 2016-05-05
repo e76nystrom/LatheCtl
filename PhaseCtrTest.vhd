@@ -88,7 +88,6 @@ ARCHITECTURE behavior OF PhaseCtrTest IS
  end procedure delay;
 
  signal tmp : signed(phase_bits-1 downto 0);
- signal tmp1 : signed(total_bits-1 downto 0);
 
  shared variable phase_val : integer;
 
