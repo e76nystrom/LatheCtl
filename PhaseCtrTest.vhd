@@ -68,6 +68,7 @@ ARCHITECTURE behavior OF PhaseCtrTest IS
  signal init : std_logic := '0';
  signal run_sync : std_logic := '0';
  signal din : std_logic := '0';
+ signal dshift : std_logic := '0';
  signal phase_sel : std_logic := '0';
 
  --Outputs
