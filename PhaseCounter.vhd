@@ -88,52 +88,52 @@ begin
     phasectr <= (phase_bits-1 downto 0 => '0');
     totphase <= (tot_bits-1 downto 0 => '0');
    else
-    if (ch = '1') then                  --if clock
-     case state is
-      when idle =>
-       last_syn <= last_syn(0) & sync;
+    case state is
+     when idle =>
+      last_syn <= last_syn(0) & sync;
+      if (ch = '1') then                  --if clock
        if (run_sync ='1') then
         state <= upd_sync;
        else
         state <= upd_phase;
        end if;
+      end if;
 
-      when upd_sync =>
-       totphase <= totphase + 1;
-       state <= upd_phase;
+     when upd_sync =>
+      totphase <= totphase + 1;
+      state <= upd_phase;
 
-      when upd_phase =>
-       if (dir = '1') then
-        if (phasectr = phaseval) then
-         state <= clr_phase;
-        else
-         state <= inc_phase;
-        end if;
+     when upd_phase =>
+      if (dir = '1') then
+       if (phasectr = phaseval) then
+        state <= clr_phase;
        else
-        if (phasectr = 0) then
-         state <= set_phase;
-        else
-         state <= dec_phase;
-        end if;
+        state <= inc_phase;
        end if;
+      else
+       if (phasectr = 0) then
+        state <= set_phase;
+       else
+        state <= dec_phase;
+       end if;
+      end if;
 
-      when inc_phase =>
-       phasectr <= phasectr + 1;
-       state <= idle;
+     when inc_phase =>
+      phasectr <= phasectr + 1;
+      state <= idle;
 
-      when dec_phase =>
-       phasectr <= phasectr - 1;
-       state <= idle;
+     when dec_phase =>
+      phasectr <= phasectr - 1;
+      state <= idle;
 
-      when clr_phase =>
-       phasectr <= (phase_bits-1 downto 0 => '0'); --reset to zero
-       state <= idle;
+     when clr_phase =>
+      phasectr <= (phase_bits-1 downto 0 => '0'); --reset to zero
+      state <= idle;
 
-      when set_phase =>
-       phasectr <= phaseval;
-       state <= idle;
-     end case;
-    end if;
+     when set_phase =>
+      phasectr <= phaseval;
+      state <= idle;
+    end case;
    end if;
   end if;
  end process;
