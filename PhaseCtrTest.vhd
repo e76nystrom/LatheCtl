@@ -42,7 +42,7 @@ ARCHITECTURE behavior OF PhaseCtrTest IS
  component PhaseCounter
   generic (phase_bits : positive;
            tot_bits : positive);
-  PORT(
+  port (
    clk : in std_logic;
    ch : in std_logic;
    sync : in std_logic;
