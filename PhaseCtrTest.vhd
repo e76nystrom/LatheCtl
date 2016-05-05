@@ -153,9 +153,9 @@ BEGIN
 
   for i in 0 to 30 loop
    ch <= '1';
-   wait for clk_period;
+   wait for clk_period*5;
    ch <= '0';
-   wait for clk_period*2;
+   wait for clk_period*5;
   end loop;
 
   sync <= '1';
@@ -165,9 +165,9 @@ BEGIN
 
   for i in 0 to 30 loop
    ch <= '1';
-   wait for clk_period;
+   wait for clk_period*5;
    ch <= '0';
-   wait for clk_period*2;
+   wait for clk_period*5;
   end loop;
 
   wait;
