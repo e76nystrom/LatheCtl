@@ -1112,9 +1112,10 @@ begin
  -- phase counter
 
  phase_sel <= '1' when (op = XLDPHASE) else '0';
- runSync <= '1' when (dbgRSyn = '1') else
-            '1' when ((zRunning = '1') and (zSrcSyn = '1')) else
-            '0';
+ --runSync <= '1' when (dbgRSyn = '1') else
+ --           '1' when ((zRunning = '1') and (zSrcSyn = '1')) else
+ --           '0';
+ runSync = '1';
  
  phase_counter : PhaseCounter
   generic map (phase_bits => phase_bits,
