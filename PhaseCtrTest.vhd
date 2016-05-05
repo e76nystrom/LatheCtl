@@ -73,7 +73,7 @@ ARCHITECTURE behavior OF PhaseCtrTest IS
 
  --Outputs
  signal phasesyn : unsigned(phase_bits-1 downto 0);
- signal totphase : unsigned(tot_bits-1 downto 0);
+ signal totphase : unsigned(total_bits-1 downto 0);
  signal sync_out : std_logic;
 
  -- Clock period definitions
