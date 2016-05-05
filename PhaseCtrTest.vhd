@@ -150,6 +150,7 @@ BEGIN
   delay(1);
 
   run_sync <= '1';
+  dir <= '1';
 
   for i in 0 to 30 loop
    ch <= '1';
