@@ -83,7 +83,7 @@ begin
  phase_ctr: process(clk)
  begin
   if (rising_edge(clk)) then
-   if (load = '1') then                 --if load
+   if (init = '1') then                 --if load
     state <= idle;                      --set sart state
     phasectr <= (phase_bits-1 downto 0 => '0');
     totphase <= (tot_bits-1 downto 0 => '0');
@@ -118,10 +118,10 @@ begin
        end if;
 
       when inc_phase =>
-       phasectr <= phase_ctr + 1;
+       phasectr <= phasectr + 1;
 
-      when dec__phase =>
-       phasectr <= phase_ctr - 1;
+      when dec_phase =>
+       phasectr <= phasectr - 1;
 
       when clr_phase =>
        phasectr <= (phase_bits-1 downto 0 => '0'); --reset to zero
