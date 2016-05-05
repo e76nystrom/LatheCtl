@@ -739,7 +739,7 @@ begin
 
  jd1 <= zAccel;
  jd2 <= zDecel;
- jd3 <= zRunSync;
+ jd3 <= runSync;
  jd4 <= zRunning;
 
  a_in <= sw0;
