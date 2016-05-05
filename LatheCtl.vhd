@@ -987,7 +987,7 @@ begin
    load => pCtl_load,
    data => pCtlReg);
 
- -- configuration register
+ -- configuration control register
 
  cCtl_sel <= '1' when ((op = XLDCFG) and (dshift = '1')) else '0';
  cCtl_load <= '1' when ((op = XLDCFG) and (load = '1')) else '0';
@@ -1014,6 +1014,8 @@ begin
    shift => dCtl_sel,
    load => dCtl_load,
    data => dCtlReg);
+
+ -- display control register
 
  dsp_sel <= '1' when ((op = XLDDREG) and (dshift = '1')) else '0';
  dsp_load <= '1' when ((op = XLDDREG) and (load = '1')) else '0';
