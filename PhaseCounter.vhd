@@ -90,6 +90,7 @@ begin
    else
     case state is
      when idle =>
+      sync_out <= '0';
       last_syn <= last_syn(0) & sync;
       if (ch = '1') then                  --if clock
        if (run_sync ='1') then
@@ -127,10 +128,12 @@ begin
       state <= idle;
 
      when clr_phase =>
+      sync_out <= '1';
       phasectr <= (phase_bits-1 downto 0 => '0'); --reset to zero
       state <= idle;
 
      when set_phase =>
+      sync_out <= '1';
       phasectr <= phaseval;
       state <= idle;
     end case;
