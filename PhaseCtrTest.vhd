@@ -71,7 +71,7 @@ ARCHITECTURE behavior OF PhaseCtrTest IS
  signal phase_sel : std_logic := '0';
 
  --Outputs
- signal phassyn : unsigned(phase_bits-1 downto 0);
+ signal phasesyn : unsigned(phase_bits-1 downto 0);
  signal totphase : unsigned(syn_bits-1 downto 0);
  signal sync_out : std_logic;
 
@@ -104,12 +104,10 @@ BEGIN
    init => init,
    run_sync => run_sync,
    din => din,
+   dshift => dshift,
    phase_sel => phase_sel,
-   syn_sel => syn_sel,
-   tot_sel => tot_sel,
-   read_val => read_val,
-   syn_out => syn_out,
-   tot_out => tot_out,
+   phasesyn => phasesyn,
+   totphase => totphase,
    sync_out => sync_out
    );
 
@@ -169,28 +167,6 @@ BEGIN
    ch <= '0';
    wait for clk_period*2;
   end loop;
-
-  read_val <= '1';
-  delay(1);
-  read_val <= '0';
-
-  tmp <= (phase_bits-1 downto 0 => '0');
-  syn_sel <= '1';
-  for i in 0 to phase_bits loop
-   wait until clk = '1';
-   tmp <= tmp(phase_bits-2 downto 0) & syn_out;
-   wait until clk = '0';
-  end loop;
-  syn_sel <= '0';
-
-  tmp1 <= (total_bits-1 downto 0 => '0');
-  tot_sel <= '1';
-  for i in 0 to total_bits loop
-   wait until clk = '1';
-   tmp1 <= tmp1(total_bits-2 downto 0) & tot_out;
-   wait until clk = '0';
-  end loop;
-  tot_sel <= '0';
 
   wait;
  end process;
