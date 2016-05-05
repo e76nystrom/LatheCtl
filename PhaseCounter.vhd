@@ -89,23 +89,23 @@ begin
       totphase <= totphase + 1;         --count total phase
      end if;
 
-     if (dir = '1') then                --if encoder turning forward
-      if (phasectr = phaseval) then     --if at maximum count
-       phasectr <= (phase_bits-1 downto 0 => '0'); --reset to zero
-       sync_out <= '1';                 --output sync pulse
-      else                              --if not at maximum
-       phasectr <= phasectr + 1;        --increment counter
-       sync_out <= '0';                 --clear sync pulse
-      end if;
-     else                               --if encoder turning backwards
-      if (phasectr = 0) then            --if at minimum
-       phasectr <= phaseval;            --reset to maximum
-       sync_out <= '1';                 --ouput sync pulse
-      else                              --if not at minimum
-       phasectr <= phasectr - 1;        --count down
-       sync_out <= '0';                 --reset sync pulse
-      end if;
-     end if;
+     --if (dir = '1') then                --if encoder turning forward
+     -- if (phasectr = phaseval) then     --if at maximum count
+     --  phasectr <= (phase_bits-1 downto 0 => '0'); --reset to zero
+     --  sync_out <= '1';                 --output sync pulse
+     -- else                              --if not at maximum
+     --  phasectr <= phasectr + 1;        --increment counter
+     --  sync_out <= '0';                 --clear sync pulse
+     -- end if;
+     --else                               --if encoder turning backwards
+     -- if (phasectr = 0) then            --if at minimum
+     --  phasectr <= phaseval;            --reset to maximum
+     --  sync_out <= '1';                 --ouput sync pulse
+     -- else                              --if not at minimum
+     --  phasectr <= phasectr - 1;        --count down
+     --  sync_out <= '0';                 --reset sync pulse
+     -- end if;
+     --end if;
     end if;
    end if;
   end if;
