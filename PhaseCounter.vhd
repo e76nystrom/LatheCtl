@@ -119,15 +119,19 @@ begin
 
       when inc_phase =>
        phasectr <= phasectr + 1;
+       state <= idle;
 
       when dec_phase =>
        phasectr <= phasectr - 1;
+       state <= idle;
 
       when clr_phase =>
        phasectr <= (phase_bits-1 downto 0 => '0'); --reset to zero
+       state <= idle;
 
       when set_phase =>
        phasectr <= phaseval;
+       state <= idle;
      end case;
     end if;
    end if;
