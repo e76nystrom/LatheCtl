@@ -171,6 +171,17 @@ BEGIN
    wait for clk_period*5;
   end loop;
 
+  delay(3);
+  dir <= '1';
+  delay(3);
+
+  for i in 0 to 30 loop
+   ch <= '1';
+   wait for clk_period;
+   ch <= '0';
+   wait for clk_period*5;
+  end loop;
+
   wait;
  end process;
 
