@@ -85,9 +85,9 @@ begin
     totphase <= (tot_bits-1 downto 0 => '0');
    else
     if (ch = '1') then                  --if clock active and change
-     if (run_sync = '1') then           --if synchronized mode
+     --if (run_sync = '1') then           --if synchronized mode
       totphase <= totphase + 1;         --count total phase
-     end if;
+     --end if;
 
      --if (dir = '1') then                --if encoder turning forward
      -- if (phasectr = phaseval) then     --if at maximum count
@@ -113,13 +113,13 @@ begin
 
  -- latch phase counter on external sync pulse
 
- syn_change: process(clk)
- begin
-  if (rising_edge(clk)) then            --if clock active and change
-   if ((last_syn(0) = '1') and (last_syn(1) = '0')) then --if rising edge
-    phasesyn <= phasectr;               --save phase counter
-   end if;
-  end if;
- end process;
+ --syn_change: process(clk)
+ --begin
+ -- if (rising_edge(clk)) then            --if clock active and change
+ --  if ((last_syn(0) = '1') and (last_syn(1) = '0')) then --if rising edge
+ --   phasesyn <= phasectr;               --save phase counter
+ --  end if;
+ -- end if;
+ --end process;
 
 end Behavioral;
