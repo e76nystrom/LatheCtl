@@ -50,14 +50,11 @@ ARCHITECTURE behavior OF PhaseCtrTest IS
    init : in std_logic;
    run_sync : in std_logic;
    din : in std_logic;
+   dshift : in std_logic;
    phase_sel : in std_logic;
-   syn_sel : in std_logic;
-   tot_sel : in std_logic;
-   read_val : in std_logic;
-   syn_out : out std_logic;
-   tot_out : out std_logic;
-   sync_out : out std_logic
-   );
+   phasesyn : inout unsigned(phase_bits-1 downto 0);
+   totphase : inout unsigned(tot_bits-1 downto 0);
+   sync_out : out std_logic);
  end component;
  
  constant phase_bits : integer := 16;
@@ -72,13 +69,10 @@ ARCHITECTURE behavior OF PhaseCtrTest IS
  signal run_sync : std_logic := '0';
  signal din : std_logic := '0';
  signal phase_sel : std_logic := '0';
- signal syn_sel : std_logic := '0';
- signal tot_sel : std_logic := '0';
- signal read_val : std_logic := '0';
 
  --Outputs
- signal syn_out : std_logic;
- signal tot_out : std_logic;
+ signal phassyn : unsigned(phase_bits-1 downto 0);
+ signal totphase : unsigned(syn_bits-1 downto 0);
  signal sync_out : std_logic;
 
  -- Clock period definitions
