@@ -58,7 +58,8 @@ architecture Behavioral of PhaseCounter is
    data : inout unsigned (n-1 downto 0));
  end component;
 
- type fsm is (idle, upd_output);
+ type fsm is (idle, upd_sync, upd_phase, inc_phase, dec_phase,
+              clr_phase, set_phase);
  signal state : fsm;
 
  signal last_syn : std_logic_vector(1 downto 0);
