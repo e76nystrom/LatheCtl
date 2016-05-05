@@ -737,8 +737,8 @@ begin
  --b_in <= jd2;
  --sync_in <= jd3;
 
- jd1 <= zAccel;
- jd2 <= zDecel;
+ jd1 <= dbgRsyn;
+ jd2 <= zSrcSyn;
  jd3 <= runSync;
  jd4 <= zRunning;
 
