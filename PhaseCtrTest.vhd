@@ -172,7 +172,7 @@ BEGIN
   end loop;
 
   delay(3);
-  dir <= '1';
+  dir <= '0';
   delay(3);
 
   for i in 0 to 30 loop
