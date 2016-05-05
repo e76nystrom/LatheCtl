@@ -155,7 +155,7 @@ BEGIN
    ch <= '1';
    wait for clk_period;
    ch <= '0';
-   wait for clk_period*8;
+   wait for clk_period*5;
   end loop;
 
   sync <= '1';
@@ -167,7 +167,7 @@ BEGIN
    ch <= '1';
    wait for clk_period;
    ch <= '0';
-   wait for clk_period*8;
+   wait for clk_period*5;
   end loop;
 
   wait;
