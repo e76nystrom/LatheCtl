@@ -135,12 +135,14 @@ BEGIN
 
   tmp <= to_signed(phase_val,phase_bits);
   phase_sel <= '1';
+  dshift <= '1';
   for i in 0 to phase_bits loop
    wait until clk = '1';
    din <= tmp(phase_bits - 1);
    tmp <= shift_left(tmp,1);
    wait until clk = '0';
   end loop;
+  dshift <= '0';
   phase_sel <= '0';
 
   init <= '1';
