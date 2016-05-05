@@ -42,8 +42,8 @@ NET "jc4" LOC = P85;
 
 NET "jd1" LOC = P75;
 NET "jd2" LOC = P59;
-#NET "jd3"  LOC = "p74"  ;
-#NET "jd4"  LOC = "p58"  ;
+NET "jd3" LOC = p74;
+NET "jd4" LOC = p58;
 
 NET "led0" LOC = P15;
 NET "led1" LOC = P14;
