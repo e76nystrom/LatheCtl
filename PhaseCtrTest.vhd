@@ -130,7 +130,7 @@ BEGIN
 
   -- insert stimulus here 
 
-  phase_val := 16;
+  phase_val := 15;
 
   tmp <= to_signed(phase_val,phase_bits);
   phase_sel <= '1';
