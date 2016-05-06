@@ -243,23 +243,23 @@ architecture Behavioral of LatheCtl is
    sync_out : out std_logic);
  end component;
 
- --component UpCounter is
- -- generic(n : positive);
- -- port (
- --  clk : in std_logic;
- --  clr : in std_logic;
- --  ena : in std_logic;
- --  counter : inout  unsigned (n-1 downto 0));
- --end component;
-
- component XUpCounter is
+ component UpCounter is
+  generic(n : positive);
   port (
    clk : in std_logic;
-   ce : in std_logic;
-   sclr : in std_logic;
-   q : out std_logic_vector(31 downto 0)
-   );
+   clr : in std_logic;
+   ena : in std_logic;
+   counter : inout  unsigned (n-1 downto 0));
  end component;
+
+ --component XUpCounter is
+ -- port (
+ --  clk : in std_logic;
+ --  ce : in std_logic;
+ --  sclr : in std_logic;
+ --  q : out std_logic_vector(31 downto 0)
+ --  );
+ --end component;
 
  component SyncAccel is
   generic ( syn_bits : positive;
@@ -1166,21 +1166,21 @@ begin
  totalInc <= '1' when (runSync = '1') and (ch = '1') else
              '0';
 
- --totalCounter: UpCounter
- -- generic map(tot_bits)
- -- port map (
- --  clk => clk1,
- --  clr => zReset,
- --  ena => totalInc,
- --  counter => totphase);
-
- totalCounter: XUpCounter
+ totalCounter: UpCounter
+  generic map(tot_bits)
   port map (
    clk => clk1,
-   ce => totalInc,
-   sclr => zReset,
-   q => totphase
-   );
+   clr => zReset,
+   ena => totalInc,
+   counter => totphase);
+
+ --totalCounter: XUpCounter
+ -- port map (
+ --  clk => clk1,
+ --  ce => totalInc,
+ --  sclr => zReset,
+ --  q => totphase
+ --  );
 
  --upcounter: process(clk1)
  --begin
