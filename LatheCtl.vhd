@@ -252,6 +252,15 @@ architecture Behavioral of LatheCtl is
  --  counter : inout  unsigned (n-1 downto 0));
  --end component;
 
+ component XUpCounter is
+  port (
+   clk : in std_logic;
+   ce : in std_logic;
+   sclr : in std_logic;
+   q : out std_logic_vector(31 downto 0)
+   );
+ end component;
+
  component SyncAccel is
   generic ( syn_bits : positive;
             pos_bits : positive;
@@ -509,7 +518,7 @@ architecture Behavioral of LatheCtl is
  -- phase counter variables
 
  constant phase_bits : positive := 16;
- constant tot_bits : positive := 31;
+ constant tot_bits : positive := 32;
 
  signal phasesyn : unsigned(phase_bits-1 downto 0); --phase count on syn pulse
  signal zSync : std_logic;              --sync pulse one per rev
@@ -520,7 +529,7 @@ architecture Behavioral of LatheCtl is
 
  signal totalInc : std_logic;
  signal totphase : unsigned(tot_bits-1 downto 0); --test counter
- signal phaseBuf : unsigned(tot_bits-1 downto 0); --test counter
+ --signal phaseBuf : unsigned(tot_bits-1 downto 0); --test counter
 
  -- z frequency generator variables
 
@@ -743,7 +752,7 @@ begin
  --jc4 <= xSyncEna;
 
  jc1 <= test2;
- jc2 <= phaseBuf(7);
+ jc2 <= totPhase(7);
  jc3 <= test4;
  jc4 <= zSyncEna;
 
@@ -767,7 +776,7 @@ begin
  led0 <= ch;
  led1 <= a;
  led2 <= b;
- led4 <= enc_dir xor phaseBuf(tot_bits-1);
+ led4 <= enc_dir;
  led5 <= enc_err xor
          zStepPulseOut xor
          zDirOut xor
@@ -930,8 +939,7 @@ begin
      when XRDPSYN =>
       outReg <= (out_bits-1 downto phase_bits => '0') & phasesyn;
      when XRDTPHS =>
-      --outReg <= '1' & phaseBuf;
-      outReg <= (out_bits-2 downto pos_bits => '0') & zXPos & phaseBuf(0);
+      outReg <= '1' & totphase(tot_bits-2 downto 0);
       
      when XREADREG =>
       outReg <= (out_bits-1 downto opb => '0') & dspReg;
@@ -1166,23 +1174,31 @@ begin
  --  ena => totalInc,
  --  counter => totphase);
 
- upcounter: process(clk1)
- begin
-  if (rising_edge(clk1)) then
-   if (zReset = '1') then
-    totphase <= (tot_bits-1 downto 0 => '0');
-   elsif (totalInc = '1') then
-    totphase <= totphase + 1;
-   end if;
-  end if;
- end process upcounter;
+ totalCounter: XUpCounter
+  port (
+   clk => clk1,
+   ce => totalInc,
+   sclr => zReset,
+   q => totphase
+   );
 
- pBuf: process(clk1)
- begin
-  if (rising_edge(clk1)) then
-   phaseBuf <= not totphase;
-  end if;
- end process pBuf;
+ --upcounter: process(clk1)
+ --begin
+ -- if (rising_edge(clk1)) then
+ --  if (zReset = '1') then
+ --   totphase <= (tot_bits-1 downto 0 => '0');
+ --  elsif (totalInc = '1') then
+ --   totphase <= totphase + 1;
+ --  end if;
+ -- end if;
+ --end process upcounter;
+
+ --pBuf: process(clk1)
+ --begin
+ -- if (rising_edge(clk1)) then
+ --  phaseBuf <= not totphase;
+ -- end if;
+ --end process pBuf;
 
 -- z frequency generator
 
