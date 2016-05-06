@@ -743,7 +743,7 @@ begin
  --jc4 <= xSyncEna;
 
  jc1 <= test2;
- jc2 <= totphase(0);
+ jc2 <= totphase(7);
  jc3 <= test4;
  jc4 <= zSyncEna;
 
@@ -767,7 +767,7 @@ begin
  led0 <= ch;
  led1 <= a;
  led2 <= b;
- led4 <= enc_dir;
+ led4 <= enc_dir xor totphase(tot_bits-1);
  led5 <= enc_err xor
          zStepPulseOut xor
          zDirOut xor
