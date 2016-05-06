@@ -38,7 +38,7 @@ entity PhaseCounter is
   sync : in std_logic;
   dir : in std_logic;
   init : in std_logic;
-  run_sync : in std_logic;
+  --run_sync : in std_logic;
   din : in std_logic;
   dshift : in std_logic;
   phase_sel : in std_logic;
