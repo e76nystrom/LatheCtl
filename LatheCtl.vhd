@@ -915,7 +915,7 @@ begin
                 zRunInfo;
 
      when XRDPSYN =>
-      outReg <= (out_bits-1 downto phase_bits => '1') & phasesyn;
+      outReg <= (out_bits-1 downto phase_bits => '0') & phasesyn;
      when XRDTPHS =>
       outReg <= totphase;
 
