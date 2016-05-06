@@ -1179,7 +1179,7 @@ begin
  pBuf: process(clk1)
  begin
   if (rising_edge(clk1)) then
-   phaseBuf <= totphase;
+   phaseBuf <= not totphase;
   end if;
  end process pBuf;
 
