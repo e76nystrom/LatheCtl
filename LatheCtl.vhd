@@ -931,7 +931,7 @@ begin
       outReg <= (out_bits-1 downto phase_bits => '0') & phasesyn;
      when XRDTPHS =>
       --outReg <= '1' & phaseBuf;
-      outReg <= (out_bits-2 downto pos_bits => '0') & zXPos & phaseBuf(0)p;
+      outReg <= (out_bits-2 downto pos_bits => '0') & zXPos & phaseBuf(0);
       
      when XREADREG =>
       outReg <= (out_bits-1 downto opb => '0') & dspReg;
