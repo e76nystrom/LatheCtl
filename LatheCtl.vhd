@@ -903,7 +903,7 @@ begin
 
  --opx <= op when copy = '1' else dspreg;
 
- totalSel = '1' when (op = XRDTPHS) else '0';
+ totalSel <= '1' when (op = XRDTPHS) else '0';
  dout <= totalOut when  (totalSel = '1') else
          outReg(out_bits-1);
 
