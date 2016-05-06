@@ -767,7 +767,7 @@ begin
  led0 <= ch;
  led1 <= a;
  led2 <= b;
- led4 <= enc_dir xor totphase(tot_bits-1);
+ led4 <= enc_dir xor phaseBuf(tot_bits-1);
  led5 <= enc_err xor
          zStepPulseOut xor
          zDirOut xor
