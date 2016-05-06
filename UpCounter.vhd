@@ -31,10 +31,11 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity UpCounter is
  generic(n : positive);
- port ( clk : in std_logic;
-        ena : in std_logic;
-        clr : in std_logic;
-        counter : inout  unsigned (n-1 downto 0));
+ port (
+  clk : in std_logic;
+  clr : in std_logic;
+  ena : in std_logic;
+  counter : inout  unsigned (n-1 downto 0));
 end UpCounter;
 
 architecture Behavioral of UpCounter is
