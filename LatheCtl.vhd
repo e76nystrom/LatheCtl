@@ -768,7 +768,7 @@ begin
 
  jc1 <= test2;
  jc2 <= test3;
- jc3 <= totalOut(tot_bits-1);
+ jc3 <= totalOut;
  jc4 <= totalSel;
 
  --port d
