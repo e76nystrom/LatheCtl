@@ -60,12 +60,22 @@ architecture Behavioral of PhaseCounter is
    data : inout unsigned (n-1 downto 0));
  end component;
 
- component UpCounter is
+ --component UpCounter is
+ -- generic(n : positive);
+ -- port (
+ --  clk : in std_logic;
+ --  ena : in std_logic;
+ --  clr : in std_logic;
+ --  counter : inout  unsigned (n-1 downto 0));
+ --end component;
+
+ component UpDownClrCtr is
   generic(n : positive);
   port (
    clk : in std_logic;
-   ena : in std_logic;
    clr : in std_logic;
+   inc : in std_logic;
+   ena : in std_logic;
    counter : inout  unsigned (n-1 downto 0));
  end component;
 
@@ -93,11 +103,20 @@ begin
    din => din,
    data => phaseval);
 
- totalCounter: UpCounter
+ --totalCounter: UpCounter
+ -- generic map(tot_bits)
+ -- port map (
+ --  clk => clk,
+ --  clr => init,
+ --  ena => totalInc,
+ --  counter => totphase);
+
+ totalCounter: UpDownClrCtr
   generic map(tot_bits)
   port map (
    clk => clk,
    clr => init,
+   inc => '1',
    ena => totalInc,
    counter => totphase);
 
