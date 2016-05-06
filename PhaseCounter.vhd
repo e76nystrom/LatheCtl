@@ -44,6 +44,8 @@ entity PhaseCounter is
   phase_sel : in std_logic;
   phasesyn : inout unsigned(phase_bits-1 downto 0);
   totphase : inout unsigned(tot_bits-1 downto 0);
+  test1 : out std_logic;
+  test2 : out std_logic;
   sync_out : out std_logic);
 end PhaseCounter;
 
@@ -85,12 +87,17 @@ begin
   if (rising_edge(clk)) then
    if (init = '1') then                 --if load
     state <= idle;                      --set sart state
+    test1 <= '0';
+    test2 <= '0';
+    sync_out <= '0';
     phasectr <= (phase_bits-1 downto 0 => '0');
     totphase <= (tot_bits-1 downto 0 => '0');
    else
     case state is
      when idle =>
       sync_out <= '0';
+      test1 <= '0';
+      test2 <= '0';
       last_syn <= last_syn(0) & sync;
       if (ch = '1') then                  --if clock
        if (run_sync ='1') then
@@ -101,10 +108,12 @@ begin
       end if;
 
      when upd_sync =>
+      test1 <= '1';
       totphase <= totphase + 1;
       state <= upd_phase;
 
      when upd_phase =>
+      test2 <= '1;'
       if (dir = '1') then
        if (phasectr = phaseval) then
         state <= clr_phase;
