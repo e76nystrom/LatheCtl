@@ -238,6 +238,8 @@ architecture Behavioral of LatheCtl is
    phase_sel : in std_logic;
    phasesyn : inout unsigned(phase_bits-1 downto 0);
    totphase : inout unsigned(tot_bits-1 downto 0);
+   test1 : out std_logic;
+   test2 : out std_logic;
    sync_out : out std_logic);
  end component;
 
@@ -505,6 +507,8 @@ architecture Behavioral of LatheCtl is
  signal zSync : std_logic;              --sync pulse one per rev
  signal phase_sel : std_logic;
  signal runSync : std_logic;
+ signal pTest1 : std_logic;
+ signal pTest2 : std_logic;
 
  -- z frequency generator variables
 
@@ -677,7 +681,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => zTest1,
+   step_in => pTest1;
    step_out => test2);
 
  -- test 3 output pulse
@@ -686,7 +690,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => zTest2,
+   step_in => pTest2,
    step_out => test3);
 
  -- test 4 output pulse
@@ -763,6 +767,8 @@ begin
          zEncDir xor
          test2 xor
          test3 xor
+         zTest1 xor
+         zTest2 xor
          xTest1 xor
          xTest2 xor
          '0';
@@ -773,10 +779,10 @@ begin
 
  sys_Clk : latheClk
   port map (
-   CLK_IN  => sysClk,
-   CLK_OUT => clk1,
-   RESET   => '0',
-   LOCKED  => lock
+   clk_in  => sysClk,
+   clk_out => clk1,
+   reset   => '0',
+   locked  => lock
    );
 
  c1prc : process(clk1)
@@ -1131,6 +1137,8 @@ begin
    phase_sel => phase_sel,
    phasesyn => phasesyn,
    totphase => totphase,
+   test1 => pTest1,
+   test2 => pTest2,
    sync_out => zSync);
 
 -- z frequency generator
