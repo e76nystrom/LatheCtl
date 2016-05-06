@@ -735,7 +735,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => totPhase(7),
+   step_in => freqCtr_tick,
    step_out => test4);
 
  --port a
@@ -784,7 +784,8 @@ begin
 
  a_in <= sw0;
  b_in <= sw1;
- sync_in <= sw2;
+ --sync_in <= sw2;
+ sync_in <= freqCtr_tick;
  
  --leds
 
