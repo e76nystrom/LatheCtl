@@ -1174,14 +1174,14 @@ begin
     totphase <= totphase + 1;
    end if;
   end if;
- end process UpCounter;
+ end process upcounter;
 
  pBuf: process(clk1)
  begin
   if (rising_edge(clk1)) then
    phaseBuf <= totphase;
   end if;
- end process UpCounter;
+ end process pBuf;
 
 -- z frequency generator
 
