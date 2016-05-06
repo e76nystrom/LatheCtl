@@ -98,7 +98,7 @@ ARCHITECTURE behavior OF PhaseCtrTest IS
 BEGIN
  
  -- Instantiate the Unit Under Test (UUT)
- uut: PhaseCounter
+ phase_counter: PhaseCounter
   generic map(phase_bits,total_bits)
   port MAP (
    clk => clk,
