@@ -892,10 +892,10 @@ begin
       outReg <= (out_bits-1 downto pos_bits => '0') & zYPos;
      when XRDZSUM =>
       outReg <= zSum;
-     --when XRDZACLSUM =>
-     -- outReg <= zAccelSum;
-     --when XRDZASTP =>
-     -- outReg <= (out_bits-1 downto dist_bits => '0') & zaclStps_Reg;
+     when XRDZACLSUM =>
+      outReg <= zAccelSum;
+     when XRDZASTP =>
+      outReg <= (out_bits-1 downto dist_bits => '0') & zaclStps_Reg;
 
      when XRDXXPOS =>
       outReg <= (out_bits-1 downto pos_bits => '0') & xXPos;
@@ -903,10 +903,10 @@ begin
       outReg <= (out_bits-1 downto pos_bits => '0') & xYPos;
      when XRDXSUM =>
       outReg <= xSum;
-     --when XRDXACLSUM =>
-     -- outReg <= xAccelSum;
-     --when XRDXASTP =>
-     -- outReg <= (out_bits-1 downto dist_bits => '0') & xaclStps_Reg;
+     when XRDXACLSUM =>
+      outReg <= xAccelSum;
+     when XRDXASTP =>
+      outReg <= (out_bits-1 downto dist_bits => '0') & xaclStps_Reg;
 
      when XRDZDIST =>
       outReg <= (out_bits-1 downto dist_bits => '0') & zDistCtr_reg;
@@ -918,8 +918,8 @@ begin
      when XRDXLOC =>
       outReg <= (out_bits-1 downto loc_bits => xLoc(loc_bits-1)) & xLoc;
 
-     --when XRDFREQ =>
-     -- outReg <= (out_bits-1 downto freqCtr_bits => '0') & freqCtr_reg;
+     when XRDFREQ =>
+      outReg <= (out_bits-1 downto freqCtr_bits => '0') & freqCtr_reg;
      when XRDSTATE =>
       outReg <= (15 downto 0 => '0') &
                 (3 downto 0 => '0') &
@@ -927,13 +927,13 @@ begin
                 (3 downto 0 => '0') &
                 zRunInfo;
 
-     --when XRDPSYN =>
-     -- outReg <= (out_bits-1 downto phase_bits => '0') & phasesyn;
+     when XRDPSYN =>
+      outReg <= (out_bits-1 downto phase_bits => '0') & phasesyn;
      when XRDTPHS =>
       outReg <= '1' & phaseBuf;
 
-     --when XREADREG =>
-     -- outReg <= (out_bits-1 downto opb => '0') & dspReg;
+     when XREADREG =>
+      outReg <= (out_bits-1 downto opb => '0') & dspReg;
 
      when XRDSR =>
       outReg <= (out_bits-1 downto 5 => '0') &
