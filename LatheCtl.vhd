@@ -164,8 +164,8 @@ architecture Behavioral of LatheCtl is
  end component;
 
  component ShiftOut
-  generic map(n : positive);
-  port map (
+  generic (n : positive);
+  port (
    clk : in std_logic;
    dshift : in std_logic;
    load : in std_logic;
