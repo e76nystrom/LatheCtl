@@ -681,7 +681,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => pTest1;
+   step_in => pTest1,
    step_out => test2);
 
  -- test 3 output pulse
