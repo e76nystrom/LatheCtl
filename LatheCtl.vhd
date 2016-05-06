@@ -1175,7 +1175,7 @@ begin
  --  counter => totphase);
 
  totalCounter: XUpCounter
-  port (
+  port map (
    clk => clk1,
    ce => totalInc,
    sclr => zReset,
