@@ -60,10 +60,20 @@ architecture Behavioral of PhaseCounter is
    data : inout unsigned (n-1 downto 0));
  end component;
 
- type fsm is (idle, upd_sync, upd_phase, inc_phase, dec_phase,
+ component UpCounter is
+  generic(n : positive);
+  port (
+   clk : in std_logic;
+   ena : in std_logic;
+   clr : in std_logic;
+   counter : inout  unsigned (n-1 downto 0));
+ end UpCounter;
+
+ type fsm is (idle, upd_phase, inc_phase, dec_phase,
               clr_phase, set_phase);
  signal state : fsm;
 
+ signal totalInc : std_logic;
  signal last_syn : std_logic_vector(1 downto 0);
 
  signal phasectr : unsigned(phase_bits-1 downto 0); --current phase
@@ -82,6 +92,14 @@ begin
    din => din,
    data => phaseval);
 
+ totalCounter: UpCounter
+  generic map(tot_bits)
+  port map (
+   clk => clk,
+   ena => totalInc,
+   clr => init,
+   counter => totphase);
+
  phase_ctr: process(clk)
  begin
   if (rising_edge(clk)) then
@@ -89,6 +107,7 @@ begin
     state <= idle;                      --set sart state
     test1 <= '0';
     test2 <= '0';
+    totalInc <= '0';
     sync_out <= '0';
     phasectr <= (phase_bits-1 downto 0 => '0');
     totphase <= (tot_bits-1 downto 0 => '0');
@@ -101,19 +120,14 @@ begin
       last_syn <= last_syn(0) & sync;
       if (ch = '1') then                  --if clock
        if (run_sync ='1') then
-        state <= upd_sync;
-       else
-        state <= upd_phase;
+        totalInc <= '1';
        end if;
+       state <= upd_phase;
       end if;
-
-     when upd_sync =>
-      test1 <= '1';
-      totphase <= totphase + 1;
-      state <= upd_phase;
 
      when upd_phase =>
       test2 <= '1';
+      totalInc <= '0';
       if (dir = '1') then
        if (phasectr = phaseval) then
         state <= clr_phase;
