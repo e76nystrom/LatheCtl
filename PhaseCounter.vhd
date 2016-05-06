@@ -113,7 +113,7 @@ begin
       state <= upd_phase;
 
      when upd_phase =>
-      test2 <= '1;'
+      test2 <= '1';
       if (dir = '1') then
        if (phasectr = phaseval) then
         state <= clr_phase;
