@@ -1194,7 +1194,7 @@ begin
  totalCopy <= '1' when (op = XRDTPHS) and (copy = '1') else '0';
 
  total_out: ShiftOut 
- generic map(tot_bits);
+ generic map(tot_bits)
  port map (
   clk : clk1,
   dshift : totalShift,
