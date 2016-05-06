@@ -163,6 +163,16 @@ architecture Behavioral of LatheCtl is
    data : inout  unsigned (n-1 downto 0));
  end component;
 
+ component ShiftOut
+  generic map(n : positive);
+  port map (
+   clk : in std_logic;
+   dshift : in std_logic;
+   load : in std_logic;
+   dout : out std_logic;
+   data : in unsigned(n-1 downto 0));
+ end component;
+
  component DbgClk
   generic(freq_bits : positive;
           count_bits : positive);
@@ -531,6 +541,10 @@ architecture Behavioral of LatheCtl is
  signal totphase : std_logic_vector(tot_bits-1 downto 0); --test counter
  --signal phaseBuf : unsigned(tot_bits-1 downto 0); --test counter
 
+ signal totalShift : std_logic;
+ signal totalCopy : std_logic;
+ signal totPhase : std_logic;
+
  -- z frequency generator variables
 
  constant freq_bits : integer := 18;
@@ -887,7 +901,9 @@ begin
  -- spi return data
 
  --opx <= op when copy = '1' else dspreg;
- dout <= outReg(out_bits-1);
+
+ dout <= totalOut when (op = XRDTPHS) else
+         outReg(out_bits-1)
 
  outReg_proc : process(clk1)
  begin
@@ -938,8 +954,8 @@ begin
 
      when XRDPSYN =>
       outReg <= (out_bits-1 downto phase_bits => '0') & phasesyn;
-     when XRDTPHS =>
-      outReg <= '1' & unsigned(totphase(tot_bits-2 downto 0));
+     --when XRDTPHS =>
+     -- outReg <= '1' & unsigned(totphase(tot_bits-2 downto 0));
       
      when XREADREG =>
       outReg <= (out_bits-1 downto opb => '0') & dspReg;
@@ -1173,6 +1189,18 @@ begin
    clr => zReset,
    ena => totalInc,
    counter => totphase);
+
+ totalShift <= '1' when (op = XRDTPHS) and (dshift = '1') else '0';
+ totalCopy <= '1' when (op = XRDTPHS) and (copy = '1') else '0';
+
+ total_out: ShiftOut 
+ generic map(tot_bits);
+ port map (
+  clk : clk1,
+  dshift : totalShift,
+  load : totalCopy
+  dout : totalOut,
+  data : totPhase);
 
  --totalCounter: XUpCounter
  -- port map (
