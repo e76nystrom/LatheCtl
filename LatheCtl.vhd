@@ -519,8 +519,8 @@ architecture Behavioral of LatheCtl is
  signal pTest2 : std_logic;
 
  signal totalInc : std_logic;
- --signal totphase : unsigned(tot_bits-1 downto 0); --test counter
- signal totphase : std_logic_vector(tot_bits-1 downto 0); --test counter
+ signal totphase : unsigned(tot_bits-1 downto 0); --test counter
+ signal phaseBuf : unsigned(tot_bits-1 downto 0); --test counter
 
  -- z frequency generator variables
 
@@ -930,7 +930,7 @@ begin
      when XRDPSYN =>
       outReg <= (out_bits-1 downto phase_bits => '0') & phasesyn;
      when XRDTPHS =>
-      outReg <= unsigned('1' & totphase);
+      outReg <= unsigned('1' & phaseBuf);
 
      when XREADREG =>
       outReg <= (out_bits-1 downto opb => '0') & dspReg;
@@ -1173,6 +1173,13 @@ begin
    elsif (totalInc = '1') then
     totphase <= std_logic_vector(unsigned(totphase) + 1);
    end if;
+  end if;
+ end process UpCounter;
+
+ pBuf: process(clk1)
+ begin
+  if (rising_edge(clk1)) then
+   phaseBuf <= totphase;
   end if;
  end process UpCounter;
 
