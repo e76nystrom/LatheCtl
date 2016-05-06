@@ -163,15 +163,15 @@ architecture Behavioral of LatheCtl is
    data : inout  unsigned (n-1 downto 0));
  end component;
 
- component ShiftOut
-  generic (n : positive);
-  port (
-   clk : in std_logic;
-   dshift : in std_logic;
-   load : in std_logic;
-   dout : out std_logic;
-   data : in unsigned(n-1 downto 0));
- end component;
+ --component ShiftOut
+ -- generic (n : positive);
+ -- port (
+ --  clk : in std_logic;
+ --  dshift : in std_logic;
+ --  load : in std_logic;
+ --  dout : out std_logic;
+ --  data : in unsigned(n-1 downto 0));
+ --end component;
 
  component DbgClk
   generic(freq_bits : positive;
@@ -541,10 +541,10 @@ architecture Behavioral of LatheCtl is
  signal totphase : unsigned(tot_bits-1 downto 0); --test counter
  --signal phaseBuf : unsigned(tot_bits-1 downto 0); --test counter
 
- signal totalSel : std_logic;
- signal totalOut : std_logic;
- signal totalShift : std_logic;
- signal totalCopy : std_logic;
+ --signal totalSel : std_logic;
+ --signal totalOut : std_logic;
+ --signal totalShift : std_logic;
+ --signal totalCopy : std_logic;
 
  -- z frequency generator variables
 
@@ -903,9 +903,11 @@ begin
 
  --opx <= op when copy = '1' else dspreg;
 
- totalSel <= '1' when (op = XRDTPHS) else '0';
- dout <= totalOut when  (totalSel = '1') else
-         outReg(out_bits-1);
+ --totalSel <= '1' when (op = XRDTPHS) else '0';
+ --dout <= totalOut when  (totalSel = '1') else
+ --        outReg(out_bits-1);
+
+ dout <= outReg(out_bits-1);
 
  outReg_proc : process(clk1)
  begin
@@ -956,8 +958,8 @@ begin
 
      when XRDPSYN =>
       outReg <= (out_bits-1 downto phase_bits => '0') & phasesyn;
-     --when XRDTPHS =>
-     -- outReg <= '1' & unsigned(totphase(tot_bits-2 downto 0));
+     when XRDTPHS =>
+      outReg <= totphase;
       
      when XREADREG =>
       outReg <= (out_bits-1 downto opb => '0') & dspReg;
@@ -1192,17 +1194,17 @@ begin
    ena => totalInc,
    counter => totphase);
 
- totalShift <= '1' when (totalSel = '1') and (dshift = '1') else '0';
- totalCopy <= '1' when (totalSel = '1') and (copy = '1') else '0';
+ --totalShift <= '1' when (totalSel = '1') and (dshift = '1') else '0';
+ --totalCopy <= '1' when (totalSel = '1') and (copy = '1') else '0';
 
- total_out: ShiftOut 
- generic map(tot_bits)
- port map (
-  clk => clk1,
-  dshift => totalShift,
-  load => totalCopy,
-  dout => totalOut,
-  data => totPhase);
+ --total_Out: ShiftOut 
+ --generic map(tot_bits)
+ --port map (
+ -- clk => clk1,
+ -- dshift => totalShift,
+ -- load => totalCopy,
+ -- dout => totalOut,
+ -- data => totPhase);
 
  --totalCounter: XUpCounter
  -- port map (
