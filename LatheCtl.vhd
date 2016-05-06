@@ -1171,7 +1171,7 @@ begin
    if (zReset = '1') then
     totphase <= (tot_bits-1 downto 0 => '0');
    elsif (totalInc = '1') then
-    totphase <= totphase) + 1;
+    totphase <= totphase + 1;
    end if;
   end if;
  end process UpCounter;
