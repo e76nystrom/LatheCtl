@@ -930,7 +930,7 @@ begin
      when XRDPSYN =>
       outReg <= (out_bits-1 downto phase_bits => '0') & phasesyn;
      when XRDTPHS =>
-      outReg <= unsigned('1' & phaseBuf);
+      outReg <= '1' & phaseBuf;
 
      when XREADREG =>
       outReg <= (out_bits-1 downto opb => '0') & dspReg;
@@ -1171,7 +1171,7 @@ begin
    if (zReset = '1') then
     totphase <= (tot_bits-1 downto 0 => '0');
    elsif (totalInc = '1') then
-    totphase <= std_logic_vector(unsigned(totphase) + 1);
+    totphase <= totphase) + 1;
    end if;
   end if;
  end process UpCounter;
