@@ -237,10 +237,19 @@ architecture Behavioral of LatheCtl is
    dshift : in std_logic;
    phase_sel : in std_logic;
    phasesyn : inout unsigned(phase_bits-1 downto 0);
-   totphase : inout unsigned(tot_bits-1 downto 0);
+   --totphase : inout unsigned(tot_bits-1 downto 0);
    test1 : out std_logic;
    test2 : out std_logic;
    sync_out : out std_logic);
+ end component;
+
+ component UpCounter is
+  generic(n : positive);
+  port (
+   clk : in std_logic;
+   clr : in std_logic;
+   ena : in std_logic;
+   counter : inout  unsigned (n-1 downto 0));
  end component;
 
  component SyncAccel is
@@ -503,12 +512,14 @@ architecture Behavioral of LatheCtl is
  constant tot_bits : positive := 32;
 
  signal phasesyn : unsigned(phase_bits-1 downto 0); --phase count on syn pulse
- signal totphase : unsigned(tot_bits-1 downto 0);   --test counter
  signal zSync : std_logic;              --sync pulse one per rev
  signal phase_sel : std_logic;
  signal runSync : std_logic;
  signal pTest1 : std_logic;
  signal pTest2 : std_logic;
+
+ signal totalInc : std_logic;
+ signal totphase : unsigned(tot_bits-1 downto 0); --test counter
 
  -- z frequency generator variables
 
@@ -1136,10 +1147,21 @@ begin
    dshift => dshift,
    phase_sel => phase_sel,
    phasesyn => phasesyn,
-   totphase => totphase,
+   --totphase => totphase,
    test1 => pTest1,
    test2 => pTest2,
    sync_out => zSync);
+
+ totalInc <= '1' when (runSync = '1') and (ch = '1') else
+             '0';
+
+ totalCounter: UpCounter
+  generic map(tot_bits)
+  port map (
+   clk => clk,
+   clr => zReset,
+   ena => totalInc,
+   counter => totphase);
 
 -- z frequency generator
 
