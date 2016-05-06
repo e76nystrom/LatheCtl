@@ -917,7 +917,7 @@ begin
      when XRDPSYN =>
       outReg <= (out_bits-1 downto phase_bits => '1') & phasesyn;
      when XRDTPHS =>
-      outReg <= (out_bits-1 downto 16 => '1') & totphase(15 downto 0);
+      outReg <= totphase;
 
      when XREADREG =>
       outReg <= (out_bits-1 downto opb => '0') & dspReg;
