@@ -544,7 +544,6 @@ architecture Behavioral of LatheCtl is
  signal totalOut : std_logic;
  signal totalShift : std_logic;
  signal totalCopy : std_logic;
- signal totPhase : std_logic;
 
  -- z frequency generator variables
 
