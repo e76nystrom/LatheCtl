@@ -717,7 +717,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => totalCopy,
+   step_in => zTest1,
    step_out => test2);
 
  -- test 3 output pulse
@@ -726,7 +726,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => totalShift,
+   step_in => zTest2,
    step_out => test3);
 
  -- test 4 output pulse
@@ -768,8 +768,8 @@ begin
 
  jc1 <= test2;
  jc2 <= test3;
- jc3 <= totalOut;
- jc4 <= totalSel;
+ jc3 <= test4;
+ jc4 <= zSyncEna;
 
  --port d
 
