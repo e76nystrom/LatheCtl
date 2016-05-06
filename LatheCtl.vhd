@@ -743,7 +743,7 @@ begin
  --jc4 <= xSyncEna;
 
  jc1 <= test2;
- jc2 <= totphase(7);
+ jc2 <= phaseBuf(7);
  jc3 <= test4;
  jc4 <= zSyncEna;
 
