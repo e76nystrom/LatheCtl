@@ -1198,7 +1198,7 @@ begin
  port map (
   clk => clk1,
   dshift => totalShift,
-  load => totalCopy
+  load => totalCopy,
   dout => totalOut,
   data => totPhase);
 
