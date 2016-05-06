@@ -541,6 +541,7 @@ architecture Behavioral of LatheCtl is
  signal totphase : unsigned(tot_bits-1 downto 0); --test counter
  --signal phaseBuf : unsigned(tot_bits-1 downto 0); --test counter
 
+ signal totalSel : std_logic;
  signal totalOut : std_logic;
  signal totalShift : std_logic;
  signal totalCopy : std_logic;
@@ -767,7 +768,7 @@ begin
 
  jc1 <= test2;
  jc2 <= test3;
- jc3 <= test4;
+ jc3 <= totalOut(tot_bits-1);
  jc4 <= totalOut;
 
  --port d
@@ -902,7 +903,8 @@ begin
 
  --opx <= op when copy = '1' else dspreg;
 
- dout <= totalOut when (op = XRDTPHS) else
+ totalSel = '1' when (op = XRDTPHS) else '0';
+ dout <= totalOut when  (totalSel = '1') else
          outReg(out_bits-1);
 
  outReg_proc : process(clk1)
@@ -1190,8 +1192,8 @@ begin
    ena => totalInc,
    counter => totphase);
 
- totalShift <= '1' when (op = XRDTPHS) and (dshift = '1') else '0';
- totalCopy <= '1' when (op = XRDTPHS) and (copy = '1') else '0';
+ totalShift <= '1' when (totalSel = '1') and (dshift = '1') else '0';
+ totalCopy <= '1' when (totalSel = '1') and (copy = '1') else '0';
 
  total_out: ShiftOut 
  generic map(tot_bits)
