@@ -93,7 +93,7 @@ architecture Behavioral of PhaseCounter is
 begin
 
  phase_shift <= phase_sel and dshift;
- test1 <= totalInc;
+ test1 <= '0';
 
  phasereg: Shift
   generic map(phase_bits)
