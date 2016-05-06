@@ -1158,7 +1158,7 @@ begin
  totalCounter: UpCounter
   generic map(tot_bits)
   port map (
-   clk => clk,
+   clk => clk1,
    clr => zReset,
    ena => totalInc,
    counter => totphase);
