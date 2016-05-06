@@ -130,7 +130,6 @@ begin
     totalInc <= '0';
     sync_out <= '0';
     phasectr <= (phase_bits-1 downto 0 => '0');
-    totphase <= (tot_bits-1 downto 0 => '0');
    else
     case state is
      when idle =>
