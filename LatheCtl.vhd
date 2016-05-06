@@ -1170,7 +1170,7 @@ begin
    if (zReset = '1') then
     xxxx1 <= (tot_bits-1 downto 0 => '0');
    elsif (totalInc = '1') then
-    xxxx1 <= "55aa55aa55aa55aa";
+    xxxx1 <= "55aa55aa";
    end if;
   end if;
  end process UpCounter;
