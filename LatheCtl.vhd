@@ -1196,11 +1196,11 @@ begin
  total_out: ShiftOut 
  generic map(tot_bits)
  port map (
-  clk : clk1,
-  dshift : totalShift,
-  load : totalCopy
-  dout : totalOut,
-  data : totPhase);
+  clk => clk1,
+  dshift => totalShift,
+  load => totalCopy
+  dout => totalOut,
+  data => totPhase);
 
  --totalCounter: XUpCounter
  -- port map (
