@@ -59,3 +59,4 @@ begin
  end process UpDownClrCtr;
 
 end Behavioral;
+
