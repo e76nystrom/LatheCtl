@@ -83,6 +83,7 @@ architecture Behavioral of PhaseCounter is
 begin
 
  phase_shift <= phase_sel and dshift;
+ test1 <= totalInc;
 
  phasereg: Shift
   generic map(phase_bits)
@@ -96,8 +97,8 @@ begin
   generic map(tot_bits)
   port map (
    clk => clk,
-   ena => totalInc,
    clr => init,
+   ena => totalInc,
    counter => totphase);
 
  phase_ctr: process(clk)
