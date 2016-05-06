@@ -519,7 +519,7 @@ architecture Behavioral of LatheCtl is
  signal pTest2 : std_logic;
 
  signal totalInc : std_logic;
- signal totphase : unsigned(tot_bits-1 downto 0); --test counter
+ signal xxxx1 : unsigned(tot_bits-1 downto 0); --test counter
 
  -- z frequency generator variables
 
@@ -701,7 +701,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => totphase(0),
+   step_in => xxxx1(0),
    step_out => test3);
 
  -- test 4 output pulse
@@ -782,7 +782,7 @@ begin
          zTest2 xor
          xTest1 xor
          xTest2 xor
-         totphase(tot_bits-1) xor
+         xxxx1(tot_bits-1) xor
          '0';
  led6 <= dir_ch;
  led7 <= div(div_range);
@@ -890,7 +890,7 @@ begin
      when XRDZYPOS =>
       outReg <= (out_bits-1 downto pos_bits => '0') & zYPos;
      when XRDZSUM =>
-      outReg <= totPhase;
+      outReg <= xxxx1;
      when XRDZACLSUM =>
       outReg <= zAccelSum;
      when XRDZASTP =>
@@ -1168,9 +1168,9 @@ begin
  begin
   if (rising_edge(clk1)) then
    if (zReset = '1') then
-    totphase <= (tot_bits-1 downto 0 => '0');
+    xxxx1 <= (tot_bits-1 downto 0 => '0');
    elsif (totalInc = '1') then
-    totphase <= totphase + 1;
+    xxxx1 <= xxxx1 + 1;
    end if;
   end if;
  end process UpCounter;
