@@ -67,7 +67,7 @@ architecture Behavioral of PhaseCounter is
    ena : in std_logic;
    clr : in std_logic;
    counter : inout  unsigned (n-1 downto 0));
- end UpCounter;
+ end component;
 
  type fsm is (idle, upd_phase, inc_phase, dec_phase,
               clr_phase, set_phase);
