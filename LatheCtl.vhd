@@ -903,7 +903,7 @@ begin
  --opx <= op when copy = '1' else dspreg;
 
  dout <= totalOut when (op = XRDTPHS) else
-         outReg(out_bits-1)
+         outReg(out_bits-1);
 
  outReg_proc : process(clk1)
  begin
