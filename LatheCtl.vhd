@@ -1142,7 +1142,7 @@ begin
    sync => sync_in,
    dir => enc_dir,
    init => zReset,
-   run_sync => runSync,
+   --run_sync => runSync,
    din => din,
    dshift => dshift,
    phase_sel => phase_sel,
