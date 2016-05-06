@@ -243,14 +243,14 @@ architecture Behavioral of LatheCtl is
    sync_out : out std_logic);
  end component;
 
- component UpCounter is
-  generic(n : positive);
-  port (
-   clk : in std_logic;
-   clr : in std_logic;
-   ena : in std_logic;
-   counter : inout  unsigned (n-1 downto 0));
- end component;
+ --component UpCounter is
+ -- generic(n : positive);
+ -- port (
+ --  clk : in std_logic;
+ --  clr : in std_logic;
+ --  ena : in std_logic;
+ --  counter : inout  unsigned (n-1 downto 0));
+ --end component;
 
  component SyncAccel is
   generic ( syn_bits : positive;
@@ -782,6 +782,7 @@ begin
          zTest2 xor
          xTest1 xor
          xTest2 xor
+         totphase(tot_bits-1) xor
          '0';
  led6 <= dir_ch;
  led7 <= div(div_range);
@@ -889,7 +890,7 @@ begin
      when XRDZYPOS =>
       outReg <= (out_bits-1 downto pos_bits => '0') & zYPos;
      when XRDZSUM =>
-      outReg <= zSum;
+      outReg <= totPhase;
      when XRDZACLSUM =>
       outReg <= zAccelSum;
      when XRDZASTP =>
@@ -928,7 +929,7 @@ begin
      when XRDPSYN =>
       outReg <= (out_bits-1 downto phase_bits => '0') & phasesyn;
      when XRDTPHS =>
-      outReg <= (out_bits-1 downto 2 => '1') & totphase(31) & totphase(0);
+      outReg <= xSum;
 
      when XREADREG =>
       outReg <= (out_bits-1 downto opb => '0') & dspReg;
@@ -1155,13 +1156,24 @@ begin
  totalInc <= '1' when (runSync = '1') and (ch = '1') else
              '0';
 
- totalCounter: UpCounter
-  generic map(tot_bits)
-  port map (
-   clk => clk1,
-   clr => zReset,
-   ena => totalInc,
-   counter => totphase);
+ --totalCounter: UpCounter
+ -- generic map(tot_bits)
+ -- port map (
+ --  clk => clk1,
+ --  clr => zReset,
+ --  ena => totalInc,
+ --  counter => totphase);
+
+ upcounter: process(clk1)
+ begin
+  if (rising_edge(clk1)) then
+   if (zReset = '1') then
+    totphase <= (tot_bits-1 downto 0 => '0');
+   elsif (totalInc = '1') then
+    totphase <= totphase + 1;
+   end if;
+  end if;
+ end process UpCounter;
 
 -- z frequency generator
 
