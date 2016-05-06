@@ -509,7 +509,7 @@ architecture Behavioral of LatheCtl is
  -- phase counter variables
 
  constant phase_bits : positive := 16;
- constant tot_bits : positive := 32;
+ constant tot_bits : positive := 31;
 
  signal phasesyn : unsigned(phase_bits-1 downto 0); --phase count on syn pulse
  signal zSync : std_logic;              --sync pulse one per rev
@@ -519,7 +519,7 @@ architecture Behavioral of LatheCtl is
  signal pTest2 : std_logic;
 
  signal totalInc : std_logic;
- signal xxxx1 : unsigned(tot_bits-1 downto 0); --test counter
+ signal totphase : unsigned(tot_bits-1 downto 0); --test counter
 
  -- z frequency generator variables
 
@@ -701,7 +701,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => xxxx1(0),
+   step_in => totphase(0),
    step_out => test3);
 
  -- test 4 output pulse
@@ -742,7 +742,7 @@ begin
  --jc4 <= xSyncEna;
 
  jc1 <= test2;
- jc2 <= test3;
+ jc2 <= totphase(0);
  jc3 <= test4;
  jc4 <= zSyncEna;
 
@@ -782,7 +782,7 @@ begin
          zTest2 xor
          xTest1 xor
          xTest2 xor
-         xxxx1(tot_bits-1) xor
+         test3 xor
          '0';
  led6 <= dir_ch;
  led7 <= div(div_range);
@@ -929,7 +929,7 @@ begin
      when XRDPSYN =>
       outReg <= (out_bits-1 downto phase_bits => '0') & phasesyn;
      when XRDTPHS =>
-      outReg <= xxxx1;
+      outReg <= '1' & totphase;
 
      when XREADREG =>
       outReg <= (out_bits-1 downto opb => '0') & dspReg;
@@ -1168,9 +1168,9 @@ begin
  begin
   if (rising_edge(clk1)) then
    if (zReset = '1') then
-    xxxx1 <= (tot_bits-1 downto 0 => '0');
+    totphase <= (tot_bits-1 downto 0 => '0');
    elsif (totalInc = '1') then
-    xxxx1 <= x"55aa55aa";
+    totphase <= totphase + 1;
    end if;
   end if;
  end process UpCounter;
