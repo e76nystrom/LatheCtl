@@ -681,7 +681,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => pTest1,
+   step_in => zSync,
    step_out => test2);
 
  -- test 3 output pulse
@@ -765,8 +765,7 @@ begin
          pLimit xor
          pZero xor
          zEncDir xor
-         test2 xor
-         test3 xor
+         pTest2 xor
          zTest1 xor
          zTest2 xor
          xTest1 xor
