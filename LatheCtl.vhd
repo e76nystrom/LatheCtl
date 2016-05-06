@@ -716,7 +716,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => zSync,
+   step_in => totalCopy,
    step_out => test2);
 
  -- test 3 output pulse
@@ -725,7 +725,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => totPhase(7),
+   step_in => totalShift,
    step_out => test3);
 
  -- test 4 output pulse
@@ -734,7 +734,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => zSyncInit,
+   step_in => totPhase(7),
    step_out => test4);
 
  --port a
@@ -766,9 +766,9 @@ begin
  --jc4 <= xSyncEna;
 
  jc1 <= test2;
- jc2 <= totPhase(7);
+ jc2 <= test3;
  jc3 <= test4;
- jc4 <= zSyncEna;
+ jc4 <= totalOut;
 
  --port d
 
@@ -776,7 +776,7 @@ begin
  --b_in <= jd2;
  --sync_in <= jd3;
 
- jd1 <= dbgRsyn;
+ jd1 <= totPhase(0);
  jd2 <= zSrcSyn;
  jd3 <= runSync;
  jd4 <= zRunning;
