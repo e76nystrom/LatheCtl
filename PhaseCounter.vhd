@@ -203,9 +203,9 @@ begin
  syn_change: process(clk)
  begin
   if (rising_edge(clk)) then            --if clock active and change
-   --if ((last_syn(0) = '1') and (last_syn(1) = '0')) then --if rising edge
+   if ((last_syn(0) = '1') and (last_syn(1) = '0')) then --if rising edge
     phasesyn <= phasectr;               --save phase counter
-   --end if;
+   end if;
   end if;
  end process;
 
