@@ -538,7 +538,7 @@ architecture Behavioral of LatheCtl is
  signal pTest2 : std_logic;
 
  signal totalInc : std_logic;
- signal totphase : std_logic_vector(tot_bits-1 downto 0); --test counter
+ signal totphase : unsigned(tot_bits-1 downto 0); --test counter
  --signal phaseBuf : unsigned(tot_bits-1 downto 0); --test counter
 
  signal totalOut : std_logic;
