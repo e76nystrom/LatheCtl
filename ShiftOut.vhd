@@ -31,11 +31,12 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity ShiftOut is
  generic(n : positive);
- port ( clk : in std_logic;
-        dshift : in std_logic;
-        load : in std_logic;
-        dout : out std_logic;
-        data : in unsigned(n-1 downto 0));
+ port (
+  clk : in std_logic;
+  dshift : in std_logic;
+  load : in std_logic;
+  dout : out std_logic;
+  data : in unsigned(n-1 downto 0));
 end ShiftOut;
 
 architecture Behavioral of ShiftOut is
@@ -44,15 +45,17 @@ architecture Behavioral of ShiftOut is
 
 begin
 
+ dout <= shift(n-1);
+
  shiftout: process (clk)
  begin
   if (rising_edge(clk)) then
-   dout <= shift(0);
    if (load = '1') then
     shift <= data;
    else 
     if (dshift = '1') then
-     shift <= shift_right(shift,1);
+     --shift <= shift_right(shift,1);
+     shift <= shift(n-2 downto 0) & shift(n-1);
     end if;
    end if;
   end if;
