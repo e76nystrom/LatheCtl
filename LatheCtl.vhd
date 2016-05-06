@@ -519,7 +519,8 @@ architecture Behavioral of LatheCtl is
  signal pTest2 : std_logic;
 
  signal totalInc : std_logic;
- signal totphase : unsigned(tot_bits-1 downto 0); --test counter
+ --signal totphase : unsigned(tot_bits-1 downto 0); --test counter
+ signal totphase : std_logic_vector(tot_bits-1 downto 0); --test counter
 
  -- z frequency generator variables
 
@@ -1170,7 +1171,7 @@ begin
    if (zReset = '1') then
     totphase <= (tot_bits-1 downto 0 => '0');
    elsif (totalInc = '1') then
-    totphase <= totphase + 1;
+    totphase <= std_logic_vector(unsigned(totphase) + 1);
    end if;
   end if;
  end process UpCounter;
