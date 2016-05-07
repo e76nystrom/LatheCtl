@@ -511,7 +511,8 @@ architecture Behavioral of LatheCtl is
 
 -- tick generator
 
- constant tick_clocks : positive := 50000000-1;
+ constant system_clock : positive := 50000000;
+ constant tick_clocks : positive := system_clock-1;
  signal freqCtr_tick : std_logic;
 
  -- frequency counter
