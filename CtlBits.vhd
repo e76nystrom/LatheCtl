@@ -70,14 +70,14 @@ package CtlBits is
 
 -- status register
 
- constant sReg_size : integer := 6;
- signal sRegReg : unsigned(sReg_size-1 downto 0);
- alias sZDoneInt  : std_logic is sRegreg(0); -- x01 z done interrrupt
- alias sXDoneInt  : std_logic is sRegreg(1); -- x02 x done interrupt
- alias sDbgDone   : std_logic is sRegreg(2); -- x04 debug done
- alias sZStart    : std_logic is sRegreg(3); -- x08 z start
- alias sXStart    : std_logic is sRegreg(4); -- x10 x start
- alias sEncDirIn  : std_logic is sRegreg(5); -- x20 encoder direction in
+ constant stat_size : integer := 6;
+ signal statReg : unsigned(stat_size-1 downto 0);
+ alias sZDoneInt  : std_logic is statreg(0); -- x01 z done interrrupt
+ alias sXDoneInt  : std_logic is statreg(1); -- x02 x done interrupt
+ alias sDbgDone   : std_logic is statreg(2); -- x04 debug done
+ alias sZStart    : std_logic is statreg(3); -- x08 z start
+ alias sXStart    : std_logic is statreg(4); -- x10 x start
+ alias sEncDirIn  : std_logic is statreg(5); -- x20 encoder direction in
 
 end CtlBits;
 
