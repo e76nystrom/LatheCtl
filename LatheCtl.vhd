@@ -82,11 +82,6 @@ entity LatheCtl is
   segf : out std_logic;
   segg : out std_logic;
 
-  an0 : out std_logic;
-  an1 : out std_logic;
-  an2 : out std_logic;
-  an3 : out std_logic;
-
   sw0: in std_logic;
   sw1: in std_logic;
   --sw2: in std_logic
@@ -95,6 +90,11 @@ entity LatheCtl is
   --sw5: in std_logic;
   --sw6: in std_logic;
   --sw7: in std_logic;
+
+  an0 : out std_logic;
+  an1 : out std_logic;
+  an2 : out std_logic;
+  an3 : out std_logic
   );
 end LatheCtl;
 
