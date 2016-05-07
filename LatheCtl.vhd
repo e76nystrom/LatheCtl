@@ -208,7 +208,8 @@ architecture Behavioral of LatheCtl is
  end component;
 
  component TickGen
-  PORT(
+  generic (div : positive);
+  port(
    clk : in std_logic;
    tick : out std_logic
    );
