@@ -72,12 +72,12 @@ package CtlBits is
 
  constant sReg_size : integer := 6;
  signal sRegReg : unsigned(sReg_size-1 downto 0);
- alias zDoneInt   : std_logic is sRegreg(0); -- x01 z done interrrupt
- alias xDoneInt   : std_logic is sRegreg(1); -- x02 x done interrupt
- alias dbgDone    : std_logic is sRegreg(2); -- x04 debug done
- alias zStart     : std_logic is sRegreg(3); -- x08 z start
- alias xStart     : std_logic is sRegreg(4); -- x10 x start
- alias encDirIn   : std_logic is sRegreg(5); -- x20 encoder direction in
+ alias szDoneInt  : std_logic is sRegreg(0); -- x01 z done interrrupt
+ alias sxDoneInt  : std_logic is sRegreg(1); -- x02 x done interrupt
+ alias sdbgDone   : std_logic is sRegreg(2); -- x04 debug done
+ alias szStart    : std_logic is sRegreg(3); -- x08 z start
+ alias sxStart    : std_logic is sRegreg(4); -- x10 x start
+ alias sencDirIn  : std_logic is sRegreg(5); -- x20 encoder direction in
 
 end CtlBits;
 
