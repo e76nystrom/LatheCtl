@@ -38,7 +38,7 @@ end TickGen;
 
 architecture Behavioral of TickGen is
 
- signal divider : integer range 0 to div-1 := 0;
+ signal divider : integer range 0 to div := 0;
 begin
 
  TickGen: process(clk)
