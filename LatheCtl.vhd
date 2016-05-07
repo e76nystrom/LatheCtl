@@ -964,8 +964,7 @@ begin
       outReg <= (out_bits-1 downto opb => '0') & dspReg;
 
      when XRDSR =>
-      outReg <= (out_bits-1 downto 6 => '0') &
-                encDirIn & xStart & zStart & dbgDone & xDoneInt & zDoneInt;
+      outReg <= (out_bits-1 downto stat_size => '0') & statReg;
 
      when others =>
       outReg <= x"55aa55aa";
@@ -1075,6 +1074,15 @@ begin
    shift => dsp_sel,
    load => dsp_load,
    data => dspReg);
+
+ -- status register
+
+ sZDoneInt <= zDoneInt;
+ zXDoneInt <= xDoneInt;
+ sDbgDone <= dbgDone;
+ sZStart <= zStart;
+ sXStart <= xStart;
+ sEncDirIn <= EndDirIn;
 
  -- clock simulator for debugging
 
