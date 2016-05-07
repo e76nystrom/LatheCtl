@@ -30,9 +30,10 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity TickGen is
- generic(div : positive := 1000000);
- port ( clk : in std_logic;
-        tick: out std_logic);
+ generic(div : positive := 1000000-1);
+ port (
+  clk : in std_logic;
+  tick: out std_logic);
 end TickGen;
 
 architecture Behavioral of TickGen is
@@ -44,7 +45,7 @@ begin
  begin
   if (rising_edge(clk)) then            --if clock active
    if (divider = 0) then                --if divider zero
-    divider <= div - 1;                 --set to maximum
+    divider <= div;                     --set to maximum
     tick <= '1';                        --set tick output
    else                                 --if divider non zero
     divider <= divider - 1;             --count divider down
