@@ -82,8 +82,8 @@ entity LatheCtl is
   segf : out std_logic;
   segg : out std_logic;
 
-  sw0: in std_logic;
-  sw1: in std_logic;
+  --sw0: in std_logic;
+  --sw1: in std_logic;
   --sw2: in std_logic
   --sw3: in std_logic;
   --sw4: in std_logic;
@@ -784,11 +784,6 @@ begin
  --jd2 <= zSrcSyn;
  --jd3 <= runSync;
  jd4 <= zRunning;
-
- a_in <= sw0;
- b_in <= sw1;
- --sync_in <= sw2;
- sync_in <= freqCtr_tick;
  
  --leds
 
