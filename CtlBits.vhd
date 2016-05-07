@@ -68,6 +68,17 @@ package CtlBits is
  alias DbgRsyn    : std_logic is dCtlreg(5); -- x20 running in sync mode
  alias DbgMove    : std_logic is dCtlreg(6); -- x40 used debug clock for move
 
+-- status register
+
+ constant sReg_size : integer := 6;
+ signal sRegReg : unsigned(sReg_size-1 downto 0);
+ alias zDoneInt   : std_logic is sRegreg(0); -- x01 z done interrrupt
+ alias xDoneInt   : std_logic is sRegreg(1); -- x02 x done interrupt
+ alias dbgDone    : std_logic is sRegreg(2); -- x04 debug done
+ alias zStart     : std_logic is sRegreg(3); -- x08 z start
+ alias xStart     : std_logic is sRegreg(4); -- x10 x start
+ alias encDirIn   : std_logic is sRegreg(5); -- x20 encoder direction in
+
 end CtlBits;
 
 package body CtlBits is
