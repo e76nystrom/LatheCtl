@@ -55,14 +55,14 @@ entity LatheCtl is
   jc3 : out std_logic;            --x step
   jc4 : out std_logic;            --x direction
 
-  --jd1 : in std_logic;             --a input
-  --jd2 : in std_logic;             --b input
-  --jd3 : in std_logic;             --sync pulse input
+  jd1 : in std_logic;             --a input
+  jd2 : in std_logic;             --b input
+  jd3 : in std_logic;             --sync pulse input
   --jd4 : in std_logic;             --serial input
 
-  jd1 : out std_logic;
-  jd2 : out std_logic;
-  jd3 : out std_logic;
+  --jd1 : out std_logic;
+  --jd2 : out std_logic;
+  --jd3 : out std_logic;
   jd4 : out std_logic;
 
   led0 : out std_logic;
@@ -89,7 +89,7 @@ entity LatheCtl is
 
   sw0: in std_logic;
   sw1: in std_logic;
-  sw2: in std_logic
+  --sw2: in std_logic
   --sw3: in std_logic;
   --sw4: in std_logic;
   --sw5: in std_logic;
@@ -776,13 +776,13 @@ begin
 
  --port d
 
- --a_in <= jd1;
- --b_in <= jd2;
- --sync_in <= jd3;
+ a_in <= jd1;
+ b_in <= jd2;
+ sync_in <= jd3;
 
- jd1 <= totPhase(0);
- jd2 <= zSrcSyn;
- jd3 <= runSync;
+ --jd1 <= totPhase(0);
+ --jd2 <= zSrcSyn;
+ --jd3 <= runSync;
  jd4 <= zRunning;
 
  a_in <= sw0;
