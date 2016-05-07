@@ -1078,11 +1078,11 @@ begin
  -- status register
 
  sZDoneInt <= zDoneInt;
- zXDoneInt <= xDoneInt;
+ sXDoneInt <= xDoneInt;
  sDbgDone <= dbgDone;
  sZStart <= zStart;
  sXStart <= xStart;
- sEncDirIn <= EndDirIn;
+ sEncDirIn <= EncDirIn;
 
  -- clock simulator for debugging
 
