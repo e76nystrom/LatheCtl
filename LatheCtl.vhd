@@ -511,6 +511,7 @@ architecture Behavioral of LatheCtl is
 
 -- tick generator
 
+ constant tick_clocks : positive := 50000000-1;
  signal freqCtr_tick : std_logic;
 
  -- frequency counter
@@ -1122,6 +1123,7 @@ begin
  -- ten ms tick generator
 
  Tick_Gen : TickGen
+  generic map (tick_clocks)
   port map (
    clk => clk1,
    tick => freqCtr_tick
