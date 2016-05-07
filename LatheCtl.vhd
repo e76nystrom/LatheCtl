@@ -33,7 +33,7 @@ use RegDef.all;
 use CtlBits.all;
 
 entity LatheCtl is
- Port (
+ port (
   sysclk : in std_logic;
   ja1 : out std_logic;            --test pulse output
   ja2 : out std_logic;            --z limit flag
@@ -109,14 +109,14 @@ architecture Behavioral of LatheCtl is
  end component;
 
  component ClockEnable is
-  Port (
+  port (
    clk : in  std_logic;
    ena : in  std_logic;
    clkena : out std_logic);
  end component;
 
  component Display is
-  port(
+  port (
    clk : in std_logic;
    dspReg : in unsigned(15 downto 0);
    dig_sel : in unsigned(1 downto 0);
@@ -127,7 +127,7 @@ architecture Behavioral of LatheCtl is
 
  component SPI
   generic (op_bits : positive := 8);
-  port(
+  port (
    clk : in std_logic;
    dclk : in std_logic;
    dsel : in std_logic;
@@ -144,7 +144,7 @@ architecture Behavioral of LatheCtl is
   generic (op_bits : positive := 8;
            in_bits: positive := 32;
            out_bits : positive := 32);
-  port(
+  port (
    clk : in  std_logic;
    op: in unsigned(op_bits-1 downto 0);
    regnum : unsigned(op_bits-1 downto 0);
@@ -154,8 +154,8 @@ architecture Behavioral of LatheCtl is
  end component;
 
  component CtlReg is
-  generic(n : positive);
-  port(
+  generic (n : positive);
+  port (
    clk : in std_logic;
    din : in std_logic;
    shift : in std_logic;
@@ -174,9 +174,9 @@ architecture Behavioral of LatheCtl is
  --end component;
 
  component DbgClk
-  generic(freq_bits : positive;
-          count_bits : positive);
-  port(
+  generic (freq_bits : positive;
+           count_bits : positive);
+  port (
    clk : in std_logic;
    dbg_ena : in std_logic;
    dbg_sel : in std_logic;
@@ -197,7 +197,7 @@ architecture Behavioral of LatheCtl is
  end component;
 
  component Encoder is
-  port(
+  port (
    clk : in std_logic;
    a : in std_logic;
    b : in std_logic;
@@ -209,7 +209,7 @@ architecture Behavioral of LatheCtl is
 
  component TickGen
   generic (div : positive);
-  port(
+  port (
    clk : in std_logic;
    tick : out std_logic
    );
@@ -217,7 +217,7 @@ architecture Behavioral of LatheCtl is
 
  component FreqCounter
   generic (freq_bits : positive);
-  PORT(
+  port (
    clk : in std_logic;
    ch : in std_logic;
    tick : in std_logic;
@@ -227,7 +227,7 @@ architecture Behavioral of LatheCtl is
 
  component PulseMult
   generic (n : positive);
-  port(
+  port (
    clk : IN  std_logic;
    ch : IN  std_logic;
    clkOut : OUT  std_logic
@@ -237,7 +237,7 @@ architecture Behavioral of LatheCtl is
  component PhaseCounter
   generic (phase_bits : positive;
            tot_bits : positive);
-  port(
+  port (
    clk : in std_logic;
    ch : in std_logic;
    sync : in std_logic;
@@ -255,7 +255,7 @@ architecture Behavioral of LatheCtl is
  end component;
 
  component UpCounter is
-  generic(n : positive);
+  generic (n : positive);
   port (
    clk : in std_logic;
    clr : in std_logic;
@@ -276,7 +276,7 @@ architecture Behavioral of LatheCtl is
   generic ( syn_bits : positive;
             pos_bits : positive;
             count_bits : positive);
-  port(
+  port (
    clk : in std_logic;
    init: in std_logic;
    ena: in std_logic;
@@ -305,8 +305,8 @@ architecture Behavioral of LatheCtl is
  end component;
 
  component FreqGen is
-  generic(freq_bits : positive);
-  port(
+  generic (freq_bits : positive);
+  port (
    clk : in std_logic;
    ena : in std_logic;
    dshift : in std_logic;
@@ -317,7 +317,7 @@ architecture Behavioral of LatheCtl is
  end component;
 
  component DataSel1_2 is
-  port(
+  port (
    sel : in std_logic;
    d0 : in std_logic;
    d1 : in std_logic;
@@ -325,7 +325,7 @@ architecture Behavioral of LatheCtl is
  end component;
 
  component DataSel1_4 is
-  port(
+  port (
    sel : in std_logic_vector(1 downto 0);
    d0 : in std_logic;
    d1 : in std_logic;
@@ -336,7 +336,7 @@ architecture Behavioral of LatheCtl is
 
  component DistCounter
   generic (dist_bits : positive);
-  port(
+  port (
    clk : in std_logic;
    accelFlag : in std_logic;
    step : in std_logic;
@@ -352,7 +352,7 @@ architecture Behavioral of LatheCtl is
  end component;
 
  component ZRun is
-  port(
+  port (
    clk : in std_logic;                  --input clock
    init : in std_logic;                 --initalize
    start : in std_logic;                --start axis
@@ -369,8 +369,8 @@ architecture Behavioral of LatheCtl is
  end component;
 
  component LocCounter is
-  generic(loc_bits : positive);
-  Port(
+  generic (loc_bits : positive);
+  port (
    clk : in  std_logic;
    step : in std_logic;                 --input step pulse
    dir : in std_logic;                  --direction
@@ -384,7 +384,7 @@ architecture Behavioral of LatheCtl is
  end component;
 
  component XRun
-  port(
+  port (
    clk : in std_logic;
    rst : in std_logic;
    start : in std_logic;
@@ -401,7 +401,7 @@ architecture Behavioral of LatheCtl is
  component Taper
   generic (syn_bits : positive;
            pos_bits : positive);
-  port(
+  port (
    clk : in std_logic;
    init : in std_logic;
    step : in std_logic;
@@ -418,8 +418,8 @@ architecture Behavioral of LatheCtl is
  end component;
 
  component PulseGen is
-  generic(step_width : positive := 200);
-  port(
+  generic (step_width : positive := 200);
+  port (
    clk : in std_logic;
    step_in : in std_logic;
    step_out : out std_logic);
