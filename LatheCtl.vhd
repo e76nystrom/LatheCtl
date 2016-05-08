@@ -1141,7 +1141,7 @@ begin
 
  -- spindle pulse frequency counter
 
- freqInit <= '1' when (op = XRDFREQ) and (copy = '1') else '0';
+ freqInit <= '1' when (op = XRDFREQ) and (load = '1') else '0';
 
  Freq_Counter : FreqCounter
   generic map (freqCtr_bits)
