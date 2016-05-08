@@ -54,6 +54,7 @@ architecture Behavioral of SPI is
  signal state : spi_fsm := start;
 
  signal count : unsigned(3 downto 0) := "0000";
+ signal opreg : unsigned(op_bits-1 downto 0); --op code
 
  signal clkena : std_logic;
 
@@ -78,7 +79,7 @@ begin
      shift <= '0';
      load <= '0';
      copy <= '0';
-     op <= "00000000";
+     opReg <= "00000000";
      if (dsel = '0') then
       count <= x"8";
       state <= active;
@@ -93,7 +94,7 @@ begin
       copy <= '0';
       if (clkena = '1') then
        if (count /= x"0") then
-        op <= op(op_bits-2 downto 0) & din;
+        opReg <= opReg(op_bits-2 downto 0) & din;
         count <= count - 1;
         state <= check_count;
        else
@@ -104,6 +105,7 @@ begin
 
     when check_count =>
      if (count = 0) then
+      op <= opReg;
       copy <= '1';
      end if;
      state <= active;
