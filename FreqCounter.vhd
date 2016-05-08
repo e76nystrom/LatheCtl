@@ -42,7 +42,7 @@ end FreqCounter;
 
 architecture Behavioral of FreqCounter is
 
- type fsm is (idle, upd_count, upd_output);
+ type fsm is (idle, upd_ch, upd_tick);
  signal state : fsm;
 
  signal counter :
@@ -70,21 +70,21 @@ begin
    case state is
     when idle =>
      if (incFlag = '1') then
-      state <=  upd_count;
+      state <=  upd_ch;
      elsif (tickFlag = '1') then
-      state <= upd_output;
+      state <= upd_tick;
      end if;
 
-    when upd_count =>
+    when upd_ch =>
      incFlag <= '0';
      counter <= counter + 1;
      if (tickFlag = '1') then
-      state <= upd_output;
+      state <= upd_tick;
      else
       state <= idle;
      end if;
 
-    when upd_output =>
+    when upd_tick =>
      tickFlag <= '0';
      if (initFlag = '1') then
       initFlag <= '0';
