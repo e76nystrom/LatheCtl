@@ -60,7 +60,7 @@ begin
      flag <= '1';                       --set flag
     else
      if (ch = '1') then                 --if phase input change
-      if (flag = '1') and (ready = '0') then              --if time for reading
+      if (flag = '1') and (ready = '1') then              --if time for reading
        freqCtr_reg <= counter;          --copy to output
        counter <= (freq_bits-1 downto 0 => '0'); --reset counter
       else
