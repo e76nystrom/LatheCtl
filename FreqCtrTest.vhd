@@ -46,8 +46,8 @@ ARCHITECTURE behavior OF FreqCtrTest IS
    init : in std_logic;
    ch : in std_logic;
    tick : in std_logic;
-   freqCtr_reg : inout unsigned(freq_bits-1 downto 0);
-   ready : out std_logic
+   freqCtr_reg : out unsigned(freq_bits-1 downto 0);
+   ready : inout std_logic
    );
  end component;
 
