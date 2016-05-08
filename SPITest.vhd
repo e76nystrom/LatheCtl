@@ -46,7 +46,7 @@ ARCHITECTURE behavior OF SPITest IS
    dclk : in std_logic;
    dsel : in std_logic;
    din : in std_logic;
-   op : inout unsigned(op_bits-1 downto 0);
+   op : out unsigned(op_bits-1 downto 0);
    copy : out std_logic;
    shift : out std_logic;
    load : out std_logic
