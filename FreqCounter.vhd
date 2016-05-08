@@ -51,8 +51,11 @@ architecture Behavioral of FreqCounter is
  signal chFlag : std_logic := '0';
  signal initFlag : std_logic := '0';
  signal tickFlag : std_logic := '0';
+ signal outReady : std_logic := '0';
 
 begin
+
+ ready <= '0';
 
  freq_ctr: process(clk)
  begin
@@ -88,10 +91,10 @@ begin
      tickFlag <= '0';
      if (initFlag = '1') then
       initFlag <= '0';
-      ready <= '0';
+      outReady <= '0';
      else
-      if (ready = '0') then
-       ready <= '1';
+      if (outReady = '0') then
+       outReady <= '1';
        freqCtr_reg <= counter;
       end if;
      end if;
