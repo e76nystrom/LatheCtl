@@ -106,8 +106,10 @@ begin
     when check_count =>
      if (count = 0) then
       op <= opReg;
+      state <= copy_reg;
+     else
+      state <= active;
      end if;
-     state <= copy_reg;
 
     when copy_reg =>
      copy <= '1';
