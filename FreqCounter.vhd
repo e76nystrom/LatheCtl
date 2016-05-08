@@ -42,7 +42,7 @@ end FreqCounter;
 
 architecture Behavioral of FreqCounter is
 
- type fsm is (idle, upd_count, upd_output, proc_init);
+ type fsm is (idle, upd_count, upd_output);
  signal state : fsm;
 
  signal counter :
