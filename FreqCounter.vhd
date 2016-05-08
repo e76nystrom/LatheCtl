@@ -78,7 +78,7 @@ begin
      end if;
 
     when upd_count =>
-     counter <= count + 1;
+     counter <= counter + 1;
      incFlag <= '0';
 
     when upd_output =>
