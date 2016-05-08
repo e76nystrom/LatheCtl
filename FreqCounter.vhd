@@ -84,6 +84,7 @@ begin
       state <= upd_output;
      else
       state <= idle;
+     end if;
 
     when upd_output =>
      freqCtr_reg <= counter;
