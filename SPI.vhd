@@ -50,7 +50,7 @@ architecture Behavioral of SPI is
          clkena : out std_logic);
  end component;
 
- type spi_fsm is (start, idle, active, check_count, copy_reg, load_reg);
+ type spi_fsm is (start, idle, active, check_count, copy_reg);
  signal state : spi_fsm := start;
 
  signal count : unsigned(3 downto 0) := "0000";
@@ -88,7 +88,7 @@ begin
     when active =>
      if (dsel = '1') then
       load <= '1';
-      state <= load_reg;
+      state <= start;
      else
       shift <= '0';
       copy <= '0';
@@ -114,9 +114,6 @@ begin
     when copy_reg =>
      copy <= '1';
      state <= active;
-
-    when load_reg =>
-     state <= start;
  
    end case;
   end if;
