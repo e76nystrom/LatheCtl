@@ -222,8 +222,7 @@ architecture Behavioral of LatheCtl is
    init : in std_logic;
    ch : in std_logic;
    tick : in std_logic;
-   freqCtr_reg : out unsigned(freq_bits-1 downto 0);
-   ready : out std_logic
+   freqCtr_reg : out unsigned(freq_bits-1 downto 0)
    );
  end component;
 
