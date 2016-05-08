@@ -74,8 +74,6 @@ ARCHITECTURE behavior OF FreqCtrTest IS
   end loop;
  end procedure delay;
 
- signal tmp : signed(freq_bits-1 downto 0);
- 
 BEGIN
  
  -- Instantiate the Unit Under Test (UUT)
