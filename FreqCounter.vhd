@@ -54,8 +54,6 @@ architecture Behavioral of FreqCounter is
 
 begin
 
- ready <= '0';
-
  freq_ctr: process(clk)
  begin
   if (rising_edge(clk)) then            --if clock active
