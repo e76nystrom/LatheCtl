@@ -73,8 +73,6 @@ begin
       state <=  upd_count;
      elsif (tickFlag = '1') then
       state <= upd_output;
-     elsif (initFlag = '1') then
-      state <= proc_init;
      end if;
 
     when upd_count =>
