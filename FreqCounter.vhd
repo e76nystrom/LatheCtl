@@ -42,13 +42,11 @@ end FreqCounter;
 
 architecture Behavioral of FreqCounter is
 
- type fsm is (idle, upd_count, upd_output);
+ type fsm is (idle, upd_count, upd_output, proc_init);
  signal state : fsm;
 
  signal counter :
   unsigned(freq_bits-1 downto 0) := (freq_bits-1 downto 0 => '0');
- signal start : std_logic;
- signal read : std_logic;
 
  signal incFlag : std_logic;
  signal initFlag : std_logic;
@@ -75,11 +73,13 @@ begin
       state <=  upd_count;
      elsif (tickFlag = '1') then
       state <= upd_output;
+     elsif (initFlag = '1') then
+      state <= proc_init;
      end if;
 
     when upd_count =>
-     counter <= counter + 1;
      incFlag <= '0';
+     counter <= counter + 1;
      if (tickFlag = '1') then
       state <= upd_output;
      else
@@ -87,10 +87,15 @@ begin
      end if;
 
     when upd_output =>
-     freqCtr_reg <= counter;
-     counter <= (freq_bits-1 downto 0 => '0'); --reset counter
-     ready <= '1';
      tickFlag <= '0';
+     if (initFlag = '1') then
+      initFlag <= '0';
+      ready <= '0';
+     else
+      ready <= '1';
+      freqCtr_reg <= counter;
+     end if;
+     counter <= (freq_bits-1 downto 0 => '0'); --reset counter
      state <= idle;
 
    end case;
