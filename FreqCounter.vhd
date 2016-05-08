@@ -71,9 +71,9 @@ begin
 
    case state is
     when idle =>
-     if incFlag then
+     if (incFlag = '1') then
       state <=  upd_count;
-     elsif tickFlag then
+     elsif (tickFlag = '1' then
       state <= upd_output;
      end if;
 
