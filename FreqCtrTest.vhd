@@ -46,8 +46,7 @@ ARCHITECTURE behavior OF FreqCtrTest IS
    init : in std_logic;
    ch : in std_logic;
    tick : in std_logic;
-   freqCtr_reg : out unsigned(freq_bits-1 downto 0);
-   ready : out std_logic
+   freqCtr_reg : out unsigned(freq_bits-1 downto 0)
    );
  end component;
 
@@ -61,7 +60,6 @@ ARCHITECTURE behavior OF FreqCtrTest IS
 
  --Outputs
  signal freqCtr_reg : unsigned(freq_bits-1 downto 0);
- signal ready : std_logic;
 
  -- Clock period definitions
  constant clk_period : time := 10 ns;
@@ -84,8 +82,7 @@ BEGIN
   init => init,
   ch => ch,
   tick => tick,
-  freqCtr_reg => freqCtr_reg,
-  ready => ready
+  freqCtr_reg => freqCtr_reg
   );
 
  -- Clock process definitions
