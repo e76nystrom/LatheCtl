@@ -85,7 +85,7 @@ begin
      freqCtr_reg <= counter;
      counter <= (freq_bits-1 downto 0 => '0'); --reset counter
      ready <= '1';
-     tickFlag <= 0;
+     tickFlag <= '0';
 
    end case;
   end if;
