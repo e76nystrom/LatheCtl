@@ -1148,8 +1148,7 @@ begin
    init => freqInit,
    ch => ch,
    tick => freqCtr_tick,
-   freqCtr_reg => freqCtr_reg,
-   ready => freqReady
+   freqCtr_reg => freqCtr_reg
    );
 
  -- pulse multiplier
