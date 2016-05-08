@@ -36,7 +36,7 @@ entity FreqCounter is
         ch : in std_logic;
         tick : in std_logic;
         freqCtr_reg : out unsigned(freq_bits-1 downto 0);
-        ready : out std_logic
+        ready : inout std_logic
         );
 end FreqCounter;
 
@@ -51,11 +51,8 @@ architecture Behavioral of FreqCounter is
  signal chFlag : std_logic := '0';
  signal initFlag : std_logic := '0';
  signal tickFlag : std_logic := '0';
- signal outReady : std_logic := '0';
 
 begin
-
- ready <= outReady;
 
  freq_ctr: process(clk)
  begin
