@@ -104,4 +104,11 @@ begin
   end if;
  end process;
 
+ ready_proc: process(clk)
+ begin
+  if (rising_edge(clk)) then            --if clock active
+   ready <= outReady;
+  end if;
+ end process;
+
 end Behavioral;
