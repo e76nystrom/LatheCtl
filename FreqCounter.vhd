@@ -42,33 +42,52 @@ end FreqCounter;
 
 architecture Behavioral of FreqCounter is
 
+ type fsm is (idle, upd_count, upd_output);
+ signal state : fsm;
+
  signal counter :
   unsigned(freq_bits-1 downto 0) := (freq_bits-1 downto 0 => '0');
- signal flag : std_logic;
+ signal start : std_logic;
+ signal read : std_logic;
+
+ signal incFlag : std_logic;
+ signal initFlag : std_logic;
+ signal tickFlag : std_logic;
 
 begin
 
  freq_ctr: process(clk)
  begin
   if (rising_edge(clk)) then            --if clock active
-   if (init = '1') then                 --if time to init
-    ready <= '0';                       --clear ready flag
-    flag <= '0';                        --clear read flago
-   else
-    if (tick = '1') then                --if ten ms tick
-     ready <= flag;                     --set ready flag
-     flag <= '1';                       --set flag
-    else
-     if (ch = '1') then                 --if phase input change
-      if (flag = '1') and (ready = '1') then              --if time for reading
-       freqCtr_reg <= counter;          --copy to output
-       counter <= (freq_bits-1 downto 0 => '0'); --reset counter
-      else
-       counter <= counter + 1;          --update counter
-      end if;
-     end if;
-    end if;
+   if (ch = '1') then
+    incFlag <= '1';
    end if;
+   if (init = '1') then
+    initFlag <= '1';
+   end if;
+   if (tick = '1') then
+    tickFlag <= '1';
+   end if;
+
+   case state is
+    when idle =>
+     if incFlag then
+      state <=  upd_count;
+     elsif tickFlag then
+      state <= upd_output;
+     end if;
+
+    when upd_count =>
+     counter <= count + 1;
+     incFlag <= '0';
+
+    when upd_output =>
+     freqCtr_reg <= counter;
+     counter <= (freq_bits-1 downto 0 => '0'); --reset counter
+     ready <= '1';
+     tickFlag <= 0;
+
+   end case;
   end if;
  end process;
 
