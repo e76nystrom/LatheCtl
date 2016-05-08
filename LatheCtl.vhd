@@ -219,9 +219,11 @@ architecture Behavioral of LatheCtl is
   generic (freq_bits : positive);
   port (
    clk : in std_logic;
+   init : in std_logic;
    ch : in std_logic;
    tick : in std_logic;
-   freqCtr_reg : out unsigned(freq_bits-1 downto 0)
+   freqCtr_reg : out unsigned(freq_bits-1 downto 0);
+   ready : out std_logic
    );
  end component;
 
@@ -520,7 +522,9 @@ architecture Behavioral of LatheCtl is
 
  constant freqCtr_bits : integer := 18;
 
+ signal freqInit : std_logic;
  signal freqCtr_reg : unsigned(freqCtr_bits-1 downto 0);
+ signal freqReady : std_logic;
 
  -- pulse multiplier variables
 
@@ -1082,6 +1086,7 @@ begin
  sDbgDone <= dbgDone;
  sZStart <= zStart;
  sXStart <= xStart;
+ sFreqReady <= freqReady;
  sEncDirIn <= EncDirIn;
 
  -- clock simulator for debugging
@@ -1136,13 +1141,17 @@ begin
 
  -- spindle pulse frequency counter
 
+ freqInit <= '1' when (op = XRDFREQ) and (copy = '1') else '0';
+
  Freq_Counter : FreqCounter
   generic map (freqCtr_bits)
   port map (
    clk => clk1,
+   init => freqInit,
    ch => ch,
    tick => freqCtr_tick,
-   freqCtr_reg => freqCtr_reg
+   freqCtr_reg => freqCtr_reg,
+   ready => freqReady
    );
 
  -- pulse multiplier
