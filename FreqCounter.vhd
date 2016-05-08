@@ -36,7 +36,7 @@ entity FreqCounter is
         ch : in std_logic;
         tick : in std_logic;
         freqCtr_reg : out unsigned(freq_bits-1 downto 0);
-        ready : out std_logic
+        ready : inout std_logic
         );
 end FreqCounter;
 
@@ -60,7 +60,7 @@ begin
      flag <= '1';                       --set flag
     else
      if (ch = '1') then                 --if phase input change
-      if (flag = '1') then              --if time for reading
+      if (flag = '1') and (ready = '0') then              --if time for reading
        freqCtr_reg <= counter;          --copy to output
        counter <= (freq_bits-1 downto 0 => '0'); --reset counter
       else
