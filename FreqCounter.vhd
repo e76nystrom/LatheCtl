@@ -80,12 +80,14 @@ begin
     when upd_count =>
      counter <= counter + 1;
      incFlag <= '0';
+     state <= idle;
 
     when upd_output =>
      freqCtr_reg <= counter;
      counter <= (freq_bits-1 downto 0 => '0'); --reset counter
      ready <= '1';
      tickFlag <= '0';
+     state <= idle;
 
    end case;
   end if;
