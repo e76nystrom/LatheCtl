@@ -1081,13 +1081,18 @@ begin
 
  -- status register
 
- sZDoneInt <= zDoneInt;
- sXDoneInt <= xDoneInt;
- sDbgDone <= dbgDone;
- sZStart <= zStart;
- sXStart <= xStart;
- sFreqReady <= freqReady;
- sEncDirIn <= EncDirIn;
+ sr_proc: process(clk)
+ begin
+  if (rising_edge(clk)) then            --if clock active
+   sZDoneInt <= zDoneInt;
+   sXDoneInt <= xDoneInt;
+   sDbgDone <= dbgDone;
+   sZStart <= zStart;
+   sXStart <= xStart;
+   sFreqReady <= freqReady;
+   sEncDirIn <= EncDirIn;
+  end if;
+ end process;
 
  -- clock simulator for debugging
 
