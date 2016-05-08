@@ -90,7 +90,7 @@ begin
       initFlag <= '0';
       ready <= '0';
      else
-      if (ready <= '0') then
+      if (ready = '0') then
        ready <= '1';
        freqCtr_reg <= counter;
       end if;
