@@ -951,7 +951,8 @@ begin
       outReg <= (out_bits-1 downto loc_bits => xLoc(loc_bits-1)) & xLoc;
 
      when XRDFREQ =>
-      outReg <= (out_bits-1 downto freqCtr_bits => '0') & freqCtr_reg;
+      outReg <= (out_bits-1 downto freqCtr_bits+1 => '0') &
+                freqReady & freqCtr_reg;
      when XRDSTATE =>
       outReg <= (15 downto 0 => '0') &
                 (3 downto 0 => '0') &
@@ -1081,18 +1082,12 @@ begin
 
  -- status register
 
- sr_proc: process(clk1)
- begin
-  if (rising_edge(clk1)) then           --if clock active
-   sZDoneInt <= zDoneInt;
-   sXDoneInt <= xDoneInt;
-   sDbgDone <= dbgDone;
-   sZStart <= zStart;
-   sXStart <= xStart;
-   sFreqReady <= freqReady;
-   sEncDirIn <= EncDirIn;
-  end if;
- end process;
+ sZDoneInt <= zDoneInt;
+ sXDoneInt <= xDoneInt;
+ sDbgDone <= dbgDone;
+ sZStart <= zStart;
+ sXStart <= xStart;
+ sEncDirIn <= EncDirIn;
 
  -- clock simulator for debugging
 
