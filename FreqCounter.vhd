@@ -73,7 +73,7 @@ begin
     when idle =>
      if (incFlag = '1') then
       state <=  upd_count;
-     elsif (tickFlag = '1' then
+     elsif (tickFlag = '1') then
       state <= upd_output;
      end if;
 
