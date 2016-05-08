@@ -77,22 +77,23 @@ constant XRDXLOC      : unsigned(opb-1 downto 0) := x"27"; -- read x location
 -- read frequency and state
 
 constant XRDFREQ      : unsigned(opb-1 downto 0) := x"28"; -- read encoder freq
-constant XRDSTATE     : unsigned(opb-1 downto 0) := x"29"; -- read state info
+constant XCLRFREQ     : unsigned(opb-1 downto 0) := x"29"; -- clear freq register
+constant XRDSTATE     : unsigned(opb-1 downto 0) := x"2a"; -- read state info
 
 -- read phase
 
-constant XRDPSYN      : unsigned(opb-1 downto 0) := x"2a"; -- read sync phase val
-constant XRDTPHS      : unsigned(opb-1 downto 0) := x"2b"; -- read tot phase val
+constant XRDPSYN      : unsigned(opb-1 downto 0) := x"2b"; -- read sync phase val
+constant XRDTPHS      : unsigned(opb-1 downto 0) := x"2c"; -- read tot phase val
 
 -- phase limit info
 
-constant XLDZLIM      : unsigned(opb-1 downto 0) := x"2c"; -- load z limit
-constant XRDZPOS      : unsigned(opb-1 downto 0) := x"2d"; -- read z position
+constant XLDZLIM      : unsigned(opb-1 downto 0) := x"2d"; -- load z limit
+constant XRDZPOS      : unsigned(opb-1 downto 0) := x"2e"; -- read z position
 
 -- test info
 
-constant XLDTFREQ     : unsigned(opb-1 downto 0) := x"2e"; -- load test freq
-constant XLDTCOUNT    : unsigned(opb-1 downto 0) := x"2f"; -- load test count
+constant XLDTFREQ     : unsigned(opb-1 downto 0) := x"2f"; -- load test freq
+constant XLDTCOUNT    : unsigned(opb-1 downto 0) := x"30"; -- load test count
 
 end RegDef;
 
