@@ -3,33 +3,57 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="C:/Development/Xilinx/LatheCtl/FreqCtrTest_isim_beh.wdb" id="1" type="auto">
+      <db_ref path="C:/Development/Xilinx/LatheCtl/SPITest_isim_beh.wdb" id="1" type="auto">
          <top_modules>
-            <top_module name="freqctrtest" />
             <top_module name="numeric_std" />
+            <top_module name="spitest" />
             <top_module name="std_logic_1164" />
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="5" />
-   <wvobject fp_name="/freqctrtest/clk" type="logic" db_ref_id="1">
+   <WVObjectSize size="11" />
+   <wvobject fp_name="/spitest/clk" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject fp_name="/freqctrtest/init" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">init</obj_property>
-      <obj_property name="ObjectShortName">init</obj_property>
+   <wvobject fp_name="/spitest/dclk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dclk</obj_property>
+      <obj_property name="ObjectShortName">dclk</obj_property>
    </wvobject>
-   <wvobject fp_name="/freqctrtest/ch" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">ch</obj_property>
-      <obj_property name="ObjectShortName">ch</obj_property>
+   <wvobject fp_name="/spitest/dsel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dsel</obj_property>
+      <obj_property name="ObjectShortName">dsel</obj_property>
    </wvobject>
-   <wvobject fp_name="/freqctrtest/tick" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">tick</obj_property>
-      <obj_property name="ObjectShortName">tick</obj_property>
+   <wvobject fp_name="/spitest/din" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">din</obj_property>
+      <obj_property name="ObjectShortName">din</obj_property>
    </wvobject>
-   <wvobject fp_name="/freqctrtest/freqctr_reg" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">freqctr_reg[15:0]</obj_property>
-      <obj_property name="ObjectShortName">freqctr_reg[15:0]</obj_property>
+   <wvobject fp_name="/spitest/op" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">op[7:0]</obj_property>
+      <obj_property name="ObjectShortName">op[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/spitest/copy" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">copy</obj_property>
+      <obj_property name="ObjectShortName">copy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/spitest/shift" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">shift</obj_property>
+      <obj_property name="ObjectShortName">shift</obj_property>
+   </wvobject>
+   <wvobject fp_name="/spitest/load" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">load</obj_property>
+      <obj_property name="ObjectShortName">load</obj_property>
+   </wvobject>
+   <wvobject fp_name="/spitest/tmp" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tmp[7:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/spitest/tmp1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tmp1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/spitest/test1_reg" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">test1_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">test1_reg[31:0]</obj_property>
    </wvobject>
 </wave_config>
