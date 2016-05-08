@@ -48,7 +48,7 @@ architecture Behavioral of FreqCounter is
  signal counter :
   unsigned(freq_bits-1 downto 0) := (freq_bits-1 downto 0 => '0');
 
- signal incFlag : std_logic;
+ signal chFlag : std_logic;
  signal initFlag : std_logic;
  signal tickFlag : std_logic;
 
@@ -58,7 +58,7 @@ begin
  begin
   if (rising_edge(clk)) then            --if clock active
    if (ch = '1') then
-    incFlag <= '1';
+    chFlag <= '1';
    end if;
    if (init = '1') then
     initFlag <= '1';
@@ -69,14 +69,14 @@ begin
 
    case state is
     when idle =>
-     if (incFlag = '1') then
+     if (chFlag = '1') then
       state <=  upd_ch;
      elsif (tickFlag = '1') then
       state <= upd_tick;
      end if;
 
     when upd_ch =>
-     incFlag <= '0';
+     chFlag <= '0';
      counter <= counter + 1;
      if (tickFlag = '1') then
       state <= upd_tick;
