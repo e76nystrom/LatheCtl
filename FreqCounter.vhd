@@ -95,7 +95,7 @@ begin
        freqCtr_reg <=  counter;
       end if;
      end if;
-     counter <= (freq_bits-2 downto 0 => '0'); --reset counter
+     counter <= (freq_bits-1 downto 0 => '0'); --reset counter
      state <= idle;
 
    end case;
