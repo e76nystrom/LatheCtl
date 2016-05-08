@@ -112,6 +112,13 @@ BEGIN
   init <= '0';
   wait until clk = '0';
 
+  for i in 0 to 4 loop
+   ch <= '1';
+   wait until clk = '1'; 
+   ch <= '0';
+   delay(1);
+  end loop;
+
   tick <= '1';
   wait until clk = '1';
   tick <= '0';
