@@ -55,11 +55,10 @@ architecture Behavioral of FreqCounter is
 
 begin
 
- ready <= outReady;
-
  freq_ctr: process(clk)
  begin
   if (rising_edge(clk)) then            --if clock active
+   ready <= outReady;
    if (ch = '1') then
     chFlag <= '1';
    end if;
