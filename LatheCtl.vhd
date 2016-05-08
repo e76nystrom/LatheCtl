@@ -524,7 +524,6 @@ architecture Behavioral of LatheCtl is
 
  signal freqInit : std_logic;
  signal freqCtr_reg : unsigned(freqCtr_bits-1 downto 0);
- signal freqReady : std_logic;
 
  -- pulse multiplier variables
 
@@ -951,8 +950,7 @@ begin
       outReg <= (out_bits-1 downto loc_bits => xLoc(loc_bits-1)) & xLoc;
 
      when XRDFREQ =>
-      outReg <= (out_bits-1 downto freqCtr_bits+1 => '0') &
-                freqReady & freqCtr_reg;
+      outReg <= (out_bits-1 downto freqCtr_bits+1 => '0') & freqCtr_reg;
      when XRDSTATE =>
       outReg <= (15 downto 0 => '0') &
                 (3 downto 0 => '0') &
