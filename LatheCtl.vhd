@@ -793,7 +793,7 @@ begin
  led0 <= ch;
  led1 <= a;
  led2 <= b;
- led4 <= enc_dir;
+ led4 <= enc_dir xor freqReady;
  led5 <= enc_err xor
          zStepPulseOut xor
          zDirOut xor
