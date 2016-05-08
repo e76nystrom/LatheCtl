@@ -47,7 +47,7 @@ ARCHITECTURE behavior OF FreqCtrTest IS
    ch : in std_logic;
    tick : in std_logic;
    freqCtr_reg : out unsigned(freq_bits-1 downto 0);
-   ready : inout std_logic
+   ready : out std_logic
    );
  end component;
 
@@ -130,7 +130,7 @@ BEGIN
    ch <= '0';
    delay(1);
   end loop;
-
+ 
   for i in 0 to 99 loop
    ch <= '1';
    wait until clk = '1'; 
