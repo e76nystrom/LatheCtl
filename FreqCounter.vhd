@@ -89,10 +89,10 @@ begin
      tickFlag <= '0';
      if (initFlag = '1') then
       initFlag <= '0';
-      outReady <= '0';
+      ready <= '0';
      else
-      if (outReady = '0') then
-       outReady <= '1';
+      if (ready = '0') then
+       ready <= '1';
        freqCtr_reg <= counter;
       end if;
      end if;
