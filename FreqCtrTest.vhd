@@ -43,9 +43,11 @@ ARCHITECTURE behavior OF FreqCtrTest IS
   generic (freq_bits : positive);
   PORT(
    clk : in std_logic;
+   init : in std_logic;
    ch : in std_logic;
    tick : in std_logic;
-   freqCtr_reg : out unsigned(freq_bits-1 downto 0)
+   freqCtr_reg : out unsigned(freq_bits-1 downto 0);
+   ready : out std_logic;
    );
  end component;
 
@@ -53,11 +55,13 @@ ARCHITECTURE behavior OF FreqCtrTest IS
 
  --Inputs
  signal clk : std_logic := '0';
+ signal init : std_logic := '0';
  signal ch : std_logic := '0';
  signal tick : std_logic := '0';
 
  --Outputs
  signal freqCtr_reg : unsigned(freq_bits-1 downto 0);
+ signal ready : std_logic;
 
  -- Clock period definitions
  constant clk_period : time := 10 ns;
@@ -79,9 +83,11 @@ BEGIN
   generic map(freq_bits)
   port MAP (
   clk => clk,
+  init => init,
   ch => ch,
   tick => tick,
-  freqCtr_reg => freqCtr_reg
+  freqCtr_reg => freqCtr_reg,
+  ready => ready
   );
 
  -- Clock process definitions
