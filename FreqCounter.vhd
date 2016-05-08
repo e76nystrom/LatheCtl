@@ -65,6 +65,7 @@ begin
        counter <= (freq_bits-1 downto 0 => '0'); --reset counter
       else
        counter <= counter + 1;          --update counter
+      end if;
      end if;
     end if;
    end if;
