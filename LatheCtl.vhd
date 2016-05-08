@@ -1081,9 +1081,9 @@ begin
 
  -- status register
 
- sr_proc: process(clk)
+ sr_proc: process(clk1)
  begin
-  if (rising_edge(clk)) then            --if clock active
+  if (rising_edge(clk1)) then           --if clock active
    sZDoneInt <= zDoneInt;
    sXDoneInt <= xDoneInt;
    sDbgDone <= dbgDone;
