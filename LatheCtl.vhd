@@ -1086,7 +1086,8 @@ begin
  sDbgDone <= dbgDone;
  sZStart <= zStart;
  sXStart <= xStart;
- sFreqReady <= freqReady;
+ --sFreqReady <= freqReady;
+ sFreqReady <= '1';
  sEncDirIn <= EncDirIn;
 
  -- clock simulator for debugging
