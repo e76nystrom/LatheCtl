@@ -90,8 +90,10 @@ begin
       initFlag <= '0';
       ready <= '0';
      else
-      ready <= '1';
-      freqCtr_reg <= counter;
+      if (ready <= '0') then
+       ready <= '1';
+       freqCtr_reg <= counter;
+      end if;
      end if;
      counter <= (freq_bits-1 downto 0 => '0'); --reset counter
      state <= idle;
