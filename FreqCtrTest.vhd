@@ -109,6 +109,11 @@ BEGIN
 
   -- insert stimulus here
 
+  init <= '1';
+  wait until clk = '1';
+  init <= '0';
+  wait until clk = '0';
+
   for i in 0 to 99 loop
    ch <= '1';
    wait until clk = '1'; 
@@ -130,6 +135,18 @@ BEGIN
 
   delay(10);
   
+  tick <= '1';
+  wait until clk = '1';
+  tick <= '0';
+  wait until clk = '0';
+
+  for i in 0 to 4 loop
+   ch <= '1';
+   wait until clk = '1'; 
+   ch <= '0';
+   delay(1);
+  end loop;
+
   wait;
  end process;
 
