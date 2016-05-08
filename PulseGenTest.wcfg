@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Development/Xilinx/Spartan6/PulseGenTest_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="numeric_std" />
+            <top_module name="pulsegentest" />
+            <top_module name="std_logic_1164" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="5" />
+   <wvobject fp_name="/pulsegentest/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pulsegentest/step_in" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">step_in</obj_property>
+      <obj_property name="ObjectShortName">step_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pulsegentest/step_out" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">step_out</obj_property>
+      <obj_property name="ObjectShortName">step_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pulsegentest/tmp" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tmp[3:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pulsegentest/uut/counter" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">counter</obj_property>
+      <obj_property name="ObjectShortName">counter</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+</wave_config>

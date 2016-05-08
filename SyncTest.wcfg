@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Development/Xilinx/LatheCtl/SyncTest_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+            <top_module name="synctest" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="19" />
+   <wvobject fp_name="/synctest/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/synctest/ch" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ch</obj_property>
+      <obj_property name="ObjectShortName">ch</obj_property>
+   </wvobject>
+   <wvobject fp_name="/synctest/dir" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dir</obj_property>
+      <obj_property name="ObjectShortName">dir</obj_property>
+   </wvobject>
+   <wvobject fp_name="/synctest/dir_ch" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dir_ch</obj_property>
+      <obj_property name="ObjectShortName">dir_ch</obj_property>
+   </wvobject>
+   <wvobject fp_name="/synctest/din" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">din</obj_property>
+      <obj_property name="ObjectShortName">din</obj_property>
+   </wvobject>
+   <wvobject fp_name="/synctest/dshift" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dshift</obj_property>
+      <obj_property name="ObjectShortName">dshift</obj_property>
+   </wvobject>
+   <wvobject fp_name="/synctest/d_sel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">d_sel</obj_property>
+      <obj_property name="ObjectShortName">d_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/synctest/incr1_sel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">incr1_sel</obj_property>
+      <obj_property name="ObjectShortName">incr1_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/synctest/incr2_sel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">incr2_sel</obj_property>
+      <obj_property name="ObjectShortName">incr2_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/synctest/syn_init" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">syn_init</obj_property>
+      <obj_property name="ObjectShortName">syn_init</obj_property>
+   </wvobject>
+   <wvobject fp_name="/synctest/synstp" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">synstp</obj_property>
+      <obj_property name="ObjectShortName">synstp</obj_property>
+   </wvobject>
+   <wvobject fp_name="/synctest/dout" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dout</obj_property>
+      <obj_property name="ObjectShortName">dout</obj_property>
+   </wvobject>
+   <wvobject fp_name="/synctest/tmp" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tmp[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/synctest/uut/sum" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sum[31:0]</obj_property>
+      <obj_property name="ObjectShortName">sum[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/synctest/uut/xpos" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">xpos[17:0]</obj_property>
+      <obj_property name="ObjectShortName">xpos[17:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/synctest/uut/ypos" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ypos[17:0]</obj_property>
+      <obj_property name="ObjectShortName">ypos[17:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/synctest/uut/d" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">d[31:0]</obj_property>
+      <obj_property name="ObjectShortName">d[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/synctest/uut/incr1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">incr1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">incr1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/synctest/uut/incr2" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">incr2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">incr2[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+</wave_config>

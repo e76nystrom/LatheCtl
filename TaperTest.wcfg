@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Development/Xilinx/LatheCtl/TaperTest_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+            <top_module name="tapertest" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="21" />
+   <wvobject fp_name="/tapertest/init" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">init</obj_property>
+      <obj_property name="ObjectShortName">init</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/din" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">din</obj_property>
+      <obj_property name="ObjectShortName">din</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/d_sel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">d_sel</obj_property>
+      <obj_property name="ObjectShortName">d_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/incr1_sel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">incr1_sel</obj_property>
+      <obj_property name="ObjectShortName">incr1_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/incr2_sel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">incr2_sel</obj_property>
+      <obj_property name="ObjectShortName">incr2_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/step" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">step</obj_property>
+      <obj_property name="ObjectShortName">step</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/tmp" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tmp[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/uut/d" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">d[31:0]</obj_property>
+      <obj_property name="ObjectShortName">d[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/uut/incr1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">incr1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">incr1[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/uut/incr2" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">incr2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">incr2[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/uut/adder_ena" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">adder_ena</obj_property>
+      <obj_property name="ObjectShortName">adder_ena</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/uut/adder_load" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">adder_load</obj_property>
+      <obj_property name="ObjectShortName">adder_load</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/uut/mux_sel" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">mux_sel[1:0]</obj_property>
+      <obj_property name="ObjectShortName">mux_sel[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/uut/sum" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sum[31:0]</obj_property>
+      <obj_property name="ObjectShortName">sum[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/uut/xpos" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">xpos[17:0]</obj_property>
+      <obj_property name="ObjectShortName">xpos[17:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/uut/ypos" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ypos[17:0]</obj_property>
+      <obj_property name="ObjectShortName">ypos[17:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/stepout" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">stepout</obj_property>
+      <obj_property name="ObjectShortName">stepout</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/uut/xinc" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">xinc</obj_property>
+      <obj_property name="ObjectShortName">xinc</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/uut/clr_pos" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clr_pos</obj_property>
+      <obj_property name="ObjectShortName">clr_pos</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tapertest/uut/state" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">state</obj_property>
+      <obj_property name="ObjectShortName">state</obj_property>
+   </wvobject>
+</wave_config>

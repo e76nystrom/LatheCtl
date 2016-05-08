@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Development/Xilinx/LatheCtl/SyncAccelTest_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+            <top_module name="syncacceltest" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="31" />
+   <wvobject fp_name="/syncacceltest/ch" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ch</obj_property>
+      <obj_property name="ObjectShortName">ch</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/dir" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dir</obj_property>
+      <obj_property name="ObjectShortName">dir</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/dir_ch" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dir_ch</obj_property>
+      <obj_property name="ObjectShortName">dir_ch</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/din" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">din</obj_property>
+      <obj_property name="ObjectShortName">din</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/dshift" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dshift</obj_property>
+      <obj_property name="ObjectShortName">dshift</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/tmp" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tmp[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/uut/d" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">d[31:0]</obj_property>
+      <obj_property name="ObjectShortName">d[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/uut/incr1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">incr1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">incr1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/uut/incr2" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">incr2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">incr2[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/uut/accel" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">accel[31:0]</obj_property>
+      <obj_property name="ObjectShortName">accel[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/uut/accelcount" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">accelcount[17:0]</obj_property>
+      <obj_property name="ObjectShortName">accelcount[17:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/xpos" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">xpos[17:0]</obj_property>
+      <obj_property name="ObjectShortName">xpos[17:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/ypos" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ypos[17:0]</obj_property>
+      <obj_property name="ObjectShortName">ypos[17:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/zDistCounter/stpctr/counter" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">counter[17:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[17:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/uut/mux_sel" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">mux_sel[1:0]</obj_property>
+      <obj_property name="ObjectShortName">mux_sel[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/uut/adder_ena" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">adder_ena</obj_property>
+      <obj_property name="ObjectShortName">adder_ena</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/sum" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sum[31:0]</obj_property>
+      <obj_property name="ObjectShortName">sum[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/uut/accelsum" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">accelsum[31:0]</obj_property>
+      <obj_property name="ObjectShortName">accelsum[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/uut/accelcounterzero" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">accelcounterzero</obj_property>
+      <obj_property name="ObjectShortName">accelcounterzero</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/uut/accelcounter" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">accelcounter[17:0]</obj_property>
+      <obj_property name="ObjectShortName">accelcounter[17:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/uut/state" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">state</obj_property>
+      <obj_property name="ObjectShortName">state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/synstp" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">synstp</obj_property>
+      <obj_property name="ObjectShortName">synstp</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/uut/accelaccumzero" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">accelaccumzero</obj_property>
+      <obj_property name="ObjectShortName">accelaccumzero</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/init" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">init</obj_property>
+      <obj_property name="ObjectShortName">init</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/ena" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ena</obj_property>
+      <obj_property name="ObjectShortName">ena</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/uut/accelflag" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">accelflag</obj_property>
+      <obj_property name="ObjectShortName">accelflag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/decel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">decel</obj_property>
+      <obj_property name="ObjectShortName">decel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/zDistCounter/distctr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">distctr[17:0]</obj_property>
+      <obj_property name="ObjectShortName">distctr[17:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/zDistCounter/aclsteps" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">aclsteps[17:0]</obj_property>
+      <obj_property name="ObjectShortName">aclsteps[17:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/syncacceltest/zDistCounter/distzero" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">distzero</obj_property>
+      <obj_property name="ObjectShortName">distzero</obj_property>
+   </wvobject>
+</wave_config>

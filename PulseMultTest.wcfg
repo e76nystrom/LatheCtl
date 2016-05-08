@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Development/Xilinx/LatheCtl/PulseMultTest_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="numeric_std" />
+            <top_module name="pulsemulttest" />
+            <top_module name="std_logic_1164" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="9" />
+   <wvobject fp_name="/pulsemulttest/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pulsemulttest/ch" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ch</obj_property>
+      <obj_property name="ObjectShortName">ch</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pulsemulttest/clkout" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clkout</obj_property>
+      <obj_property name="ObjectShortName">clkout</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pulsemulttest/uut/clkena" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clkena</obj_property>
+      <obj_property name="ObjectShortName">clkena</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pulsemulttest/uut/incounter" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">incounter[7:0]</obj_property>
+      <obj_property name="ObjectShortName">incounter[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pulsemulttest/uut/outcounter" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">outcounter[7:0]</obj_property>
+      <obj_property name="ObjectShortName">outcounter[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pulsemulttest/uut/pulsetimer" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pulsetimer[4:0]</obj_property>
+      <obj_property name="ObjectShortName">pulsetimer[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pulsemulttest/uut/remtimer" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">remtimer[2:0]</obj_property>
+      <obj_property name="ObjectShortName">remtimer[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pulsemulttest/uut/pulsecounter" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pulsecounter[2:0]</obj_property>
+      <obj_property name="ObjectShortName">pulsecounter[2:0]</obj_property>
+   </wvobject>
+</wave_config>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Development/Xilinx/Spartan6/XRunTest_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+            <top_module name="xruntest" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="21" />
+   <wvobject fp_name="/xruntest/rst" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/start" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">start</obj_property>
+      <obj_property name="ObjectShortName">start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/dir" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dir</obj_property>
+      <obj_property name="ObjectShortName">dir</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/backlash" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">backlash</obj_property>
+      <obj_property name="ObjectShortName">backlash</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/taper_start" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">taper_start</obj_property>
+      <obj_property name="ObjectShortName">taper_start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/taper_step" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">taper_step</obj_property>
+      <obj_property name="ObjectShortName">taper_step</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/dist_zero" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dist_zero</obj_property>
+      <obj_property name="ObjectShortName">dist_zero</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/step" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">step</obj_property>
+      <obj_property name="ObjectShortName">step</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/din" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">din</obj_property>
+      <obj_property name="ObjectShortName">din</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/loc_sel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">loc_sel</obj_property>
+      <obj_property name="ObjectShortName">loc_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/read_val" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">read_val</obj_property>
+      <obj_property name="ObjectShortName">read_val</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/locr_sel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">locr_sel</obj_property>
+      <obj_property name="ObjectShortName">locr_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/loc_out" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">loc_out</obj_property>
+      <obj_property name="ObjectShortName">loc_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/load_parm" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">load_parm</obj_property>
+      <obj_property name="ObjectShortName">load_parm</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/running" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">running</obj_property>
+      <obj_property name="ObjectShortName">running</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/done_int" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">done_int</obj_property>
+      <obj_property name="ObjectShortName">done_int</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/uut/run_state" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">run_state</obj_property>
+      <obj_property name="ObjectShortName">run_state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/tmp" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tmp[15:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/uut/locinreg/data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/xruntest/uut/loc" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">loc[15:0]</obj_property>
+      <obj_property name="ObjectShortName">loc[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+</wave_config>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Development/Xilinx/Spartan6/DbgDataTest_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="dbgdatatest" />
+            <top_module name="math_real" />
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="17" />
+   <wvobject fp_name="/dbgdatatest/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgdatatest/shift" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">shift</obj_property>
+      <obj_property name="ObjectShortName">shift</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgdatatest/sample" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sample</obj_property>
+      <obj_property name="ObjectShortName">sample</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgdatatest/dbg_in" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dbg_in</obj_property>
+      <obj_property name="ObjectShortName">dbg_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgdatatest/dbg_op" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">dbg_op[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dbg_op[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgdatatest/dsel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dsel</obj_property>
+      <obj_property name="ObjectShortName">dsel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgdatatest/copy_in" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">copy_in</obj_property>
+      <obj_property name="ObjectShortName">copy_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgdatatest/shift_in" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">shift_in</obj_property>
+      <obj_property name="ObjectShortName">shift_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgdatatest/op_in" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">op_in[7:0]</obj_property>
+      <obj_property name="ObjectShortName">op_in[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgdatatest/din" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">din</obj_property>
+      <obj_property name="ObjectShortName">din</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgdatatest/uut/tmp_dat" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tmp_dat[15:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp_dat[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgdatatest/dbg_dat" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">dbg_dat[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dbg_dat[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgdatatest/copy" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">copy</obj_property>
+      <obj_property name="ObjectShortName">copy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgdatatest/op" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">op[7:0]</obj_property>
+      <obj_property name="ObjectShortName">op[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgdatatest/tmp" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tmp[15:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgdatatest/uut/state" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">state</obj_property>
+      <obj_property name="ObjectShortName">state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgdatatest/uut/count" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">count[4:0]</obj_property>
+      <obj_property name="ObjectShortName">count[4:0]</obj_property>
+   </wvobject>
+</wave_config>

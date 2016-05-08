@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Development/Xilinx/LatheCtl/PhaseCtrTest_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="numeric_std" />
+            <top_module name="phasectrtest" />
+            <top_module name="std_logic_1164" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="17" />
+   <wvobject fp_name="/phasectrtest/sync" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sync</obj_property>
+      <obj_property name="ObjectShortName">sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/phasectrtest/dir" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dir</obj_property>
+      <obj_property name="ObjectShortName">dir</obj_property>
+   </wvobject>
+   <wvobject fp_name="/phasectrtest/init" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">init</obj_property>
+      <obj_property name="ObjectShortName">init</obj_property>
+   </wvobject>
+   <wvobject fp_name="/phasectrtest/run_sync" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">run_sync</obj_property>
+      <obj_property name="ObjectShortName">run_sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/phasectrtest/din" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">din</obj_property>
+      <obj_property name="ObjectShortName">din</obj_property>
+   </wvobject>
+   <wvobject fp_name="/phasectrtest/phase_sel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">phase_sel</obj_property>
+      <obj_property name="ObjectShortName">phase_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/phasectrtest/sync_out" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sync_out</obj_property>
+      <obj_property name="ObjectShortName">sync_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/phasectrtest/tmp" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tmp[15:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/phasectrtest/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/phasectrtest/ch" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ch</obj_property>
+      <obj_property name="ObjectShortName">ch</obj_property>
+   </wvobject>
+   <wvobject fp_name="/phasectrtest/sync_out" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sync_out</obj_property>
+      <obj_property name="ObjectShortName">sync_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/phasectrtest/phasesyn" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">phasesyn[15:0]</obj_property>
+      <obj_property name="ObjectShortName">phasesyn[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/phasectrtest/totphase" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">totphase[15:0]</obj_property>
+      <obj_property name="ObjectShortName">totphase[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/phasectrtest/phase_counter/totalinc" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">totalinc</obj_property>
+      <obj_property name="ObjectShortName">totalinc</obj_property>
+   </wvobject>
+   <wvobject fp_name="/phasectrtest/phase_counter/state" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">state</obj_property>
+      <obj_property name="ObjectShortName">state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/phasectrtest/phase_counter/totalCounter/clr" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clr</obj_property>
+      <obj_property name="ObjectShortName">clr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/phasectrtest/phase_counter/totalCounter/ena" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ena</obj_property>
+      <obj_property name="ObjectShortName">ena</obj_property>
+   </wvobject>
+</wave_config>

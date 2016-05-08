@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Development/Xilinx/LatheCtl/ZRunTest_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+            <top_module name="zruntest" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="19" />
+   <wvobject fp_name="/zruntest/dir" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dir</obj_property>
+      <obj_property name="ObjectShortName">dir</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zruntest/init" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">init</obj_property>
+      <obj_property name="ObjectShortName">init</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zruntest/start" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">start</obj_property>
+      <obj_property name="ObjectShortName">start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zruntest/backlash" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">backlash</obj_property>
+      <obj_property name="ObjectShortName">backlash</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zruntest/wait_syn" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">wait_syn</obj_property>
+      <obj_property name="ObjectShortName">wait_syn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zruntest/sync" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sync</obj_property>
+      <obj_property name="ObjectShortName">sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zruntest/din" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">din</obj_property>
+      <obj_property name="ObjectShortName">din</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zruntest/loc_sel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">loc_sel</obj_property>
+      <obj_property name="ObjectShortName">loc_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zruntest/load_parm" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">load_parm</obj_property>
+      <obj_property name="ObjectShortName">load_parm</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zruntest/dist_zero" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dist_zero</obj_property>
+      <obj_property name="ObjectShortName">dist_zero</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zruntest/running" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">running</obj_property>
+      <obj_property name="ObjectShortName">running</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zruntest/done_int" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">done_int</obj_property>
+      <obj_property name="ObjectShortName">done_int</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zruntest/run_sync" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">run_sync</obj_property>
+      <obj_property name="ObjectShortName">run_sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zruntest/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zruntest/tmp" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tmp[15:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zruntest/uut/run_state" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">run_state</obj_property>
+      <obj_property name="ObjectShortName">run_state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zruntest/step" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">step</obj_property>
+      <obj_property name="ObjectShortName">step</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zruntest/upd_loc" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">upd_loc</obj_property>
+      <obj_property name="ObjectShortName">upd_loc</obj_property>
+   </wvobject>
+   <wvobject fp_name="/zruntest/loc" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">loc[15:0]</obj_property>
+      <obj_property name="ObjectShortName">loc[15:0]</obj_property>
+   </wvobject>
+</wave_config>

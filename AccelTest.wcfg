@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Development/Xilinx/LatheCtl/AxisTest_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="axistest" />
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="27" />
+   <wvobject fp_name="/axistest/din" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">din</obj_property>
+      <obj_property name="ObjectShortName">din</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/rst" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/minvel" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">minvel[25:0]</obj_property>
+      <obj_property name="ObjectShortName">minvel[25:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/maxvel" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">maxvel[25:0]</obj_property>
+      <obj_property name="ObjectShortName">maxvel[25:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/accl" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">accl[25:0]</obj_property>
+      <obj_property name="ObjectShortName">accl[25:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/freq" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">freq[25:0]</obj_property>
+      <obj_property name="ObjectShortName">freq[25:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/minmax_sel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">minmax_sel</obj_property>
+      <obj_property name="ObjectShortName">minmax_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/min_max" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">min_max[25:0]</obj_property>
+      <obj_property name="ObjectShortName">min_max[25:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/iniaccel_sel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">iniaccel_sel</obj_property>
+      <obj_property name="ObjectShortName">iniaccel_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/ini_accel" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ini_accel[25:0]</obj_property>
+      <obj_property name="ObjectShortName">ini_accel[25:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/accel_flag" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">accel_flag</obj_property>
+      <obj_property name="ObjectShortName">accel_flag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/state" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">state</obj_property>
+      <obj_property name="ObjectShortName">state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/vel_ena" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">vel_ena</obj_property>
+      <obj_property name="ObjectShortName">vel_ena</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/vel_load" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">vel_load</obj_property>
+      <obj_property name="ObjectShortName">vel_load</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/vel_add" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">vel_add</obj_property>
+      <obj_property name="ObjectShortName">vel_add</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/velocity" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">velocity[25:0]</obj_property>
+      <obj_property name="ObjectShortName">velocity[25:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/step" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">step</obj_property>
+      <obj_property name="ObjectShortName">step</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/steps" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">steps[17:0]</obj_property>
+      <obj_property name="ObjectShortName">steps[17:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/nxt_ena" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nxt_ena</obj_property>
+      <obj_property name="ObjectShortName">nxt_ena</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/nxt_load" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nxt_load</obj_property>
+      <obj_property name="ObjectShortName">nxt_load</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/nxt" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">nxt[25:0]</obj_property>
+      <obj_property name="ObjectShortName">nxt[25:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/vel_ge_minmax" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">vel_ge_minmax</obj_property>
+      <obj_property name="ObjectShortName">vel_ge_minmax</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/vel_cmp_minmax" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">vel_cmp_minmax</obj_property>
+      <obj_property name="ObjectShortName">vel_cmp_minmax</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/dist_zero" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dist_zero</obj_property>
+      <obj_property name="ObjectShortName">dist_zero</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/distctr_reg" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">distctr_reg[17:0]</obj_property>
+      <obj_property name="ObjectShortName">distctr_reg[17:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/axistest/uut/distreg/zero" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">zero</obj_property>
+      <obj_property name="ObjectShortName">zero</obj_property>
+   </wvobject>
+</wave_config>

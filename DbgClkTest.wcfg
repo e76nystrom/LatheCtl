@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Development/Xilinx/LatheCtl/DbgClkTest_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="dbgclktest" />
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="23" />
+   <wvobject fp_name="/dbgclktest/dbg_ena" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dbg_ena</obj_property>
+      <obj_property name="ObjectShortName">dbg_ena</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/dbg_sel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dbg_sel</obj_property>
+      <obj_property name="ObjectShortName">dbg_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/dbg_dir" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dbg_dir</obj_property>
+      <obj_property name="ObjectShortName">dbg_dir</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/uut/dbg_count" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dbg_count</obj_property>
+      <obj_property name="ObjectShortName">dbg_count</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/a" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">a</obj_property>
+      <obj_property name="ObjectShortName">a</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/b" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">b</obj_property>
+      <obj_property name="ObjectShortName">b</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/din" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">din</obj_property>
+      <obj_property name="ObjectShortName">din</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/uut/load" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">load</obj_property>
+      <obj_property name="ObjectShortName">load</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/freq_sel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">freq_sel</obj_property>
+      <obj_property name="ObjectShortName">freq_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/a_out" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">a_out</obj_property>
+      <obj_property name="ObjectShortName">a_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/b_out" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">b_out</obj_property>
+      <obj_property name="ObjectShortName">b_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/uut/state" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">state</obj_property>
+      <obj_property name="ObjectShortName">state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/uut/pulse_out" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">pulse_out</obj_property>
+      <obj_property name="ObjectShortName">pulse_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/uut/clock/counter" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">counter[3:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/uut/clock/freq_val" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">freq_val[3:0]</obj_property>
+      <obj_property name="ObjectShortName">freq_val[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/uut/sq" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sq[1:0]</obj_property>
+      <obj_property name="ObjectShortName">sq[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/uut/count" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">count[4:0]</obj_property>
+      <obj_property name="ObjectShortName">count[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/uut/counter" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">counter[4:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/uut/count_down" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">count_down</obj_property>
+      <obj_property name="ObjectShortName">count_down</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/uut/count_zero" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">count_zero</obj_property>
+      <obj_property name="ObjectShortName">count_zero</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/uut/dbgCtr/zero" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">zero</obj_property>
+      <obj_property name="ObjectShortName">zero</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbgclktest/uut/dbgCtr/counter" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">counter[4:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[4:0]</obj_property>
+   </wvobject>
+</wave_config>

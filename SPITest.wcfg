@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Development/Xilinx/LatheCtl/FreqCtrTest_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="freqctrtest" />
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="5" />
+   <wvobject fp_name="/freqctrtest/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/freqctrtest/init" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">init</obj_property>
+      <obj_property name="ObjectShortName">init</obj_property>
+   </wvobject>
+   <wvobject fp_name="/freqctrtest/ch" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ch</obj_property>
+      <obj_property name="ObjectShortName">ch</obj_property>
+   </wvobject>
+   <wvobject fp_name="/freqctrtest/tick" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">tick</obj_property>
+      <obj_property name="ObjectShortName">tick</obj_property>
+   </wvobject>
+   <wvobject fp_name="/freqctrtest/freqctr_reg" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">freqctr_reg[15:0]</obj_property>
+      <obj_property name="ObjectShortName">freqctr_reg[15:0]</obj_property>
+   </wvobject>
+</wave_config>
