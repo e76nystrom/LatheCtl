@@ -89,6 +89,7 @@ begin
      if (initFlag = '1') then
       initFlag <= '0';
       outReady <= '0';
+      freqCtr_reg <= (freq_bits-1 downto 0 => '0'); --reset counter
      else
       if (outReady = '0') then
        outReady <= '1';
