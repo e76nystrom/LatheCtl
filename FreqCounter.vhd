@@ -80,7 +80,10 @@ begin
     when upd_count =>
      counter <= counter + 1;
      incFlag <= '0';
-     state <= idle;
+     if (tickFlag = '1') then
+      state <= upd_output;
+     else
+      state <= idle;
 
     when upd_output =>
      freqCtr_reg <= counter;
