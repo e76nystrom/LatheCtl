@@ -88,7 +88,7 @@ begin
     when active =>
      if (dsel = '1') then
       load <= '1';
-      state <= start;
+      state <= idle;
      else
       shift <= '0';
       copy <= '0';
