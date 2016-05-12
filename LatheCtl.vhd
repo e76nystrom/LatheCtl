@@ -792,7 +792,18 @@ begin
  led0 <= ch;
  led1 <= a;
  led2 <= b;
- led4 <= enc_dir;
+ led4 <= enc_dir xor
+         pTest1 xor
+         pTest2 xor
+         zTest1 xor
+         zTest2 xor
+         xTest1 xor
+         xTest2 xor
+         test1 xor
+         test2 xor
+         test3 xor
+         test4 xor
+         '0';
  led5 <= enc_err xor
          zStepPulseOut xor
          zDirOut xor
@@ -801,14 +812,6 @@ begin
          pReset xor
          pLimit xor
          pZero xor
-         zEncDir xor
-         pTest1 xor
-         pTest2 xor
-         zTest1 xor
-         zTest2 xor
-         xTest1 xor
-         xTest2 xor
-         test3 xor
          '0';
  led6 <= dir_ch;
  led7 <= div(div_range);
