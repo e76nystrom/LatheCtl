@@ -747,10 +747,10 @@ begin
 
  ja1 <= zStart;
  ja2 <= xStart;
- ja3 <= zDoneInt;
- ja4 <= xDoneInt;
  --ja3 <= zDoneInt;
- --ja4 <= zDistZero;
+ --ja4 <= xDoneInt;
+ ja3 <= xDistZero;
+ ja4 <= xDoneInt;
 
  --port b
 
@@ -768,8 +768,10 @@ begin
  
  jc1 <= zStepPulseOut;
  jc2 <= xStepPUlseOUt;
- jc3 <= zSyncEna;
- jc4 <= xSyncEna;
+ --jc3 <= zSyncEna;
+ --jc4 <= xSyncEna;
+ jc3 <= xAccel;
+ jc4 <= xDecel;
 
  --jc1 <= test2;
  --jc2 <= test3;
