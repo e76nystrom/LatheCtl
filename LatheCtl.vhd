@@ -746,11 +746,11 @@ begin
  --port a
 
  ja1 <= zStart;
- ja2 <= test1;
- --ja3 <= zDoneInt;
- --ja4 <= xDoneInt;
+ ja2 <= xStart;
  ja3 <= zDoneInt;
- ja4 <= zDistZero;
+ ja4 <= xDoneInt;
+ --ja3 <= zDoneInt;
+ --ja4 <= zDistZero;
 
  --port b
 
@@ -766,15 +766,15 @@ begin
 
  --port c
  
- --jc1 <= zStepPulseOut;
- --jc2 <= xStepPUlseOUt;
- --jc3 <= zSyncEna;
- --jc4 <= xSyncEna;
+ jc1 <= zStepPulseOut;
+ jc2 <= xStepPUlseOUt;
+ jc3 <= zSyncEna;
+ jc4 <= xSyncEna;
 
- jc1 <= test2;
- jc2 <= test3;
- jc3 <= test4;
- jc4 <= zSyncEna;
+ --jc1 <= test2;
+ --jc2 <= test3;
+ --jc3 <= test4;
+ --jc4 <= zSyncEna;
 
  --port d
 
