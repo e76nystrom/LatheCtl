@@ -44,27 +44,28 @@ end SPI;
 
 architecture Behavioral of SPI is
 
- --component ClockEnable is
- -- Port ( clk : in  std_logic;
- --        ena : in  std_logic;
- --        clkena : out std_logic);
- --end component;
+ component ClockEnable is
+  Port ( clk : in  std_logic;
+         ena : in  std_logic;
+         clkena : out std_logic);
+ end component;
 
- type spi_fsm is (start, idle, active, check_count, copy_reg, dclk_wait);
+type spi_fsm is (start, idle, active, check_count, copy_reg);
+--type spi_fsm is (start, idle, active, check_count, copy_reg, dclk_wait);
  signal state : spi_fsm := start;
 
  signal count : unsigned(3 downto 0) := "0000";
  signal opReg : unsigned(op_bits-1 downto 0); --op code
 
- --signal clkena : std_logic;
+ signal clkena : std_logic;
 
 begin
 
- --clk_ena: ClockEnable
- -- port map (
- --  clk => clk,
- --  ena => dclk,
- --  clkena =>clkena);
+ clk_ena: ClockEnable
+  port map (
+   clk => clk,
+   ena => dclk,
+   clkena =>clkena);
  
  din_proc: process(clk)
  begin
@@ -92,15 +93,15 @@ begin
      else
       shift <= '0';
       copy <= '0';
-      --if (clkena = '1') then
-      if (dclk = '1') then
+      if (clkena = '1') then
+      --if (dclk = '1') then
        if (count /= x"0") then
         opReg <= opReg(op_bits-2 downto 0) & din;
         count <= count - 1;
         state <= check_count;
        else
         shift <= '1';
-        state <= dclk_wait;
+        --state <= dclk_wait;
        end if;
       end if;
      end if;
@@ -110,26 +111,26 @@ begin
       op <= opReg;
       state <= copy_reg;
      else
-      --state <= active;
-      state <= dclk_wait;
+      state <= active;
+      --state <= dclk_wait;
      end if;
 
     when copy_reg =>
      copy <= '1';
-     --state <= active;
-     state <= dclk_wait;
+     state <= active;
+     --state <= dclk_wait;
 
-    when dclk_wait =>
-     shift <= '0';
-     copy <= '0';
-     if (dsel = '1') then
-      load <= '1';
-      state <= idle;
-     else
-      if (dclk = '0') then
-       state <= active;
-      end if;
-     end if;
+    --when dclk_wait =>
+    -- shift <= '0';
+    -- copy <= '0';
+    -- if (dsel = '1') then
+    --  load <= '1';
+    --  state <= idle;
+    -- else
+    --  if (dclk = '0') then
+    --   state <= active;
+    --  end if;
+    -- end if;
  
    end case;
   end if;
