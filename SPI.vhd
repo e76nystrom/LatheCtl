@@ -124,7 +124,7 @@ begin
      copy <= '0';
      if (dsel = '1') then
       load <= '1';
-      state = idle;
+      state <= idle;
      else
       if (dclk = '0') then
        state <= active;
