@@ -93,7 +93,7 @@ begin
       shift <= '0';
       copy <= '0';
       --if (clkena = '1') then
-      if (dclk == '1') then
+      if (dclk = '1') then
        if (count /= x"0") then
         opReg <= opReg(op_bits-2 downto 0) & din;
         count <= count - 1;
