@@ -122,8 +122,13 @@ begin
     when dclk_wait =>
      shift <= '0';
      copy <= '0';
-     if (dclk = '0') then
-      state <= active;
+     if (dsel = '1') then
+      load <= '1';
+      state = idle;
+     else
+      if (dclk = '0') then
+       state <= active;
+      end if;
      end if;
  
    end case;
