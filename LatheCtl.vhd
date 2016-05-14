@@ -916,7 +916,7 @@ begin
    copy => copy,
    shift => dshift,
    load => load,
-   info = spiInfo
+   info => spiInfo
    );
 
  -- spi return data
