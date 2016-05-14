@@ -456,11 +456,13 @@ architecture Behavioral of LatheCtl is
 
 -- z control register
 
+ signal xCtl_op : std_logic;
  signal zCtl_sel : std_logic;           --select for shifting data in
  signal zCtl_load : std_logic;          --select for loading contorl reg
 
  -- x control register
 
+ signal xCtl_op : std_logic;
  signal xCtl_sel : std_logic;           --select for shifting data in
  signal xCtl_load : std_logic;          --select for loading contorl reg
 
@@ -713,7 +715,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => zCtl_sel,
+   step_in => zCtl_op,
    step_out => test1);
 
  -- test 2 output pulse
@@ -722,7 +724,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => xCtl_sel,
+   step_in => xCtl_op,
    step_out => test2);
 
  -- test 3 output pulse
@@ -998,8 +1000,9 @@ begin
 
  -- z control register
 
- zCtl_sel <= '1' when ((op = XLDZCTL) and (dshift = '1')) else '0';
- zCtl_load <= '1' when ((op = XLDZCTL) and (load = '1')) else '0';
+ zCtl_op <= '1' when (op = XLDZCTL) else '0';
+ zCtl_sel <= '1' when ((zCtl_op = '1') and (dshift = '1')) else '0';
+ zCtl_load <= '1' when ((zCtl_op = '1') and (load = '1')) else '0';
 
  zctl : CtlReg
   generic map (zCtl_size)
@@ -1012,8 +1015,9 @@ begin
 
  -- x control register
 
- xCtl_sel <= '1' when ((op = XLDXCTL) and (dshift = '1')) else '0';
- xCtl_load <= '1' when ((op = XLDXCTL) and (load = '1')) else '0';
+ xCtl_op <= '1' when (op = XLDxCTL) else '0';
+ xCtl_sel <= '1' when ((xCtl_op = '1') and (dshift = '1')) else '0';
+ xCtl_load <= '1' when ((xCtl_op = '1') and (load = '1')) else '0';
 
  xctl : CtlReg
   generic map (xCtl_size)
