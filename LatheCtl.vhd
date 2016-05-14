@@ -794,7 +794,7 @@ begin
  --jd1 <= totPhase(0);
  --jd2 <= zSrcSyn;
  --jd3 <= runSync;
- jd4 <= op(6);
+ jd4 <= div(4);
  
  --leds
 
