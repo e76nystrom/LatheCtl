@@ -773,17 +773,17 @@ begin
 
  --port c
  
- jc1 <= zStepPulseOut;
- jc2 <= xStepPUlseOUt;
+ --jc1 <= zStepPulseOut;
+ --jc2 <= xStepPUlseOUt;
  --jc3 <= zSyncEna;
  --jc4 <= xSyncEna;
- jc3 <= xAccel;
- jc4 <= xDecel;
+ --jc3 <= xAccel;
+ --jc4 <= xDecel;
 
- --jc1 <= test2;
- --jc2 <= test3;
- --jc3 <= test4;
- --jc4 <= zSyncEna;
+ jc1 <= op(2);
+ jc2 <= op(3);
+ jc3 <= op(4);
+ jc4 <= op(5);
 
  --port d
 
@@ -794,7 +794,7 @@ begin
  --jd1 <= totPhase(0);
  --jd2 <= zSrcSyn;
  --jd3 <= runSync;
- jd4 <= zRunning;
+ jd4 <= op(6);
  
  --leds
 
