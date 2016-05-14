@@ -121,7 +121,7 @@ begin
      --state <= dclk_wait;
 
     when load_reg =>
-     state <= active;
+     state <= idle;
 
     --when dclk_wait =>
     -- shift <= '0';
