@@ -713,7 +713,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => copy,
+   step_in => xCtl_sel,
    step_out => test1);
 
  -- test 2 output pulse
