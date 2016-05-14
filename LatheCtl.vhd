@@ -456,7 +456,7 @@ architecture Behavioral of LatheCtl is
 
 -- z control register
 
- signal xCtl_op : std_logic;
+ signal zCtl_op : std_logic;
  signal zCtl_sel : std_logic;           --select for shifting data in
  signal zCtl_load : std_logic;          --select for loading contorl reg
 
