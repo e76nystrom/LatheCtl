@@ -81,8 +81,8 @@ begin
      shift <= '0';
      load <= '0';
      copy <= '0';
-     opReg <= "00000000";
      if (dsel = '0') then
+      opReg <= "00000000";
       count <= x"8";
       state <= active;
      end if;
