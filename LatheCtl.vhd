@@ -756,8 +756,8 @@ begin
 
  ja1 <= zCtl_op;
  ja2 <= xCtl_op;
- ja3 <= test3;
- ja4 <= test4;
+ ja3 <= op(0);
+ ja4 <= op(1);
 
  --port b
 
