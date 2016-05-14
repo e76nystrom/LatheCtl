@@ -448,7 +448,7 @@ architecture Behavioral of LatheCtl is
  signal op : unsigned(opb-1 downto 0);  --operation code
  signal outReg : unsigned(out_bits-1 downto 0); --output register
  --signal opx : unsigned(opb-1 downto 0); --operation code
- signal spiInfo : out std_logic_vector(2 downto 0); --state info
+ signal spiInfo : std_logic_vector(2 downto 0); --state info
 
  -- clock divider
 
