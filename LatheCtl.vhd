@@ -82,9 +82,9 @@ entity LatheCtl is
   segf : out std_logic;
   segg : out std_logic;
 
-  --sw0: in std_logic;
-  --sw1: in std_logic;
-  --sw2: in std_logic
+  sw0: in std_logic;
+  sw1: in std_logic;
+  sw2: in std_logic;
   --sw3: in std_logic;
   --sw4: in std_logic;
   --sw5: in std_logic;
@@ -789,9 +789,9 @@ begin
 
  --port d
 
- a_in <= '0';
- b_in <= '0';
- sync_in <= '0';
+ a_in <= sw1;
+ b_in <= sw2;
+ sync_in <= sw3;
 
  --a_in <= jd1;
  --b_in <= jd2;
