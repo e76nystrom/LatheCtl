@@ -973,9 +973,11 @@ begin
      when XRDSR =>
       outReg <= (out_bits-1 downto stat_size => '0') & statReg;
 
-     when XRDCTL =>
-      outReg <= (out_bits-1 downto (xCtl_size + zCtl_size + 1) => '0') &
-                xCtlReg & '0' & zCtlReg;
+     when XRDZCTL =>
+      outReg <= (out_bits-1 downto zCtl_size => '0') & zCtlReg;
+
+     when XRDZCTL =>
+      outReg <= (out_bits-1 downto xCtl_size => '0') & xCtlReg;
 
 
      when others =>
