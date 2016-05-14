@@ -31,23 +31,26 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity SPI is
  generic (op_bits : positive := 8);
- port ( clk : in std_logic;             --system clock
-        dclk : in std_logic;            --spi clk
-        dsel : in std_logic;            --spi select
-        din : in std_logic;             --spi data in
-        op : out unsigned(op_bits-1 downto 0); --op code
-        copy : out std_logic;           --copy data to be shifted out
-        shift : out std_logic;          --shift data
-        load : out std_logic            --load data shifted in
-        );
+ port (
+  clk : in std_logic;                    --system clock
+  dclk : in std_logic;                   --spi clk
+  dsel : in std_logic;                   --spi select
+  din : in std_logic;                    --spi data in
+  op : out unsigned(op_bits-1 downto 0); --op code
+  copy : out std_logic;                  --copy data to be shifted out
+  shift : out std_logic;                 --shift data
+  load : out std_logic;                  --load data shifted in
+  info : out std_logic                   --state info
+  );
 end SPI;
 
 architecture Behavioral of SPI is
 
  component ClockEnable is
-  Port ( clk : in  std_logic;
-         ena : in  std_logic;
-         clkena : out std_logic);
+  Port (
+   clk : in  std_logic;
+   ena : in  std_logic;
+   clkena : out std_logic);
  end component;
 
 --type spi_fsm is (start, idle, active, check_count, copy_reg);
@@ -60,7 +63,23 @@ type spi_fsm is (start, idle, active, check_count, copy_reg, load_reg);
 
  signal clkena : std_logic;
 
+ function convert(a: spi_fsm) return unsigned is
+ begin
+  case a is
+   when start       => return("000");
+   when idle        => return("001");
+   when active      => return("010");
+   when check_check => return("011");
+   when copy_reg    => return("100");
+   when load_reg    => return("101");
+   when others      => null;
+  end case;
+  return("000");
+ end;
+
 begin
+
+ info <= convert(state);
 
  clk_ena: ClockEnable
   port map (
