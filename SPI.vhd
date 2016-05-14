@@ -63,7 +63,7 @@ type spi_fsm is (start, idle, active, check_count, copy_reg, load_reg);
 
  signal clkena : std_logic;
 
- function convert(a: spi_fsm) return unsigned is
+ function convert(a: spi_fsm) return std_logic_vector is
  begin
   case a is
    when start       => return("000");
