@@ -110,8 +110,6 @@ begin
      if (dsel = '1') then
       state <= load_reg;
      else
-      shift <= '0';
-      copy <= '0';
       if (dclk = '1') then
        if (header = '0') then
         shift <= '1';
