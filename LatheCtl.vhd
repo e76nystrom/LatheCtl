@@ -975,7 +975,7 @@ begin
 
      when XRDCTL =>
       outReg <= (out_bits-1 downto (xCtl_size + zCtl_size + 1) => '0') &
-                xCtl_reg & '0' & zCtl_reg;
+                xCtlReg & '0' & zCtlReg;
 
 
      when others =>
