@@ -973,6 +973,11 @@ begin
      when XRDSR =>
       outReg <= (out_bits-1 downto stat_size => '0') & statReg;
 
+     when XRDCTL =>
+      outReg <= (out_bits-1 downto (xCtl_size + zCtl_size) => '0') &
+                xCtl_reg & zCtl_reg;
+
+
      when others =>
       outReg <= x"55aa55aa";
     end case;
