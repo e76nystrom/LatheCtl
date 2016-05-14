@@ -99,6 +99,10 @@ constant XRDZPOS      : unsigned(opb-1 downto 0) := x"2f"; -- read z position
 constant XLDTFREQ     : unsigned(opb-1 downto 0) := x"30"; -- load test freq
 constant XLDTCOUNT    : unsigned(opb-1 downto 0) := x"31"; -- load test count
 
+-- read control regs
+
+constant XRDCTL       : unsigned(opb-1 downto 0) := x"32"; -- read control regiisters
+
 end RegDef;
 
 package body RegDef is
