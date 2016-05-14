@@ -1232,7 +1232,7 @@ begin
  --port map (
  -- clk => clk1,
  -- dshift => totalShift,
-11 -- load => totalCopy,
+ -- load => totalCopy,
  -- dout => totalOut,
  -- data => totPhase);
 
