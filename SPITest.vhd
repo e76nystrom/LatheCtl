@@ -202,6 +202,8 @@ BEGIN
   end loop;
   dsel <= '1';
 
+  delay(20);
+  
   wait;
  end process;
 
