@@ -125,6 +125,7 @@ begin
 
     when dec_count =>
      if (count = 0) then
+      op <= opReg;
       header <= '0';
       copy <= '1';
      else
