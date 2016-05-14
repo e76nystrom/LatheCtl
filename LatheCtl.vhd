@@ -789,9 +789,9 @@ begin
 
  --port d
 
- a_in <= sw1;
- b_in <= sw2;
- sync_in <= sw3;
+ a_in <= sw0;
+ b_in <= sw1;
+ sync_in <= sw2;
 
  --a_in <= jd1;
  --b_in <= jd2;
