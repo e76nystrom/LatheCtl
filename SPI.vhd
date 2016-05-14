@@ -69,7 +69,7 @@ type spi_fsm is (start, idle, active, check_count, copy_reg, load_reg);
    when start       => return("000");
    when idle        => return("001");
    when active      => return("010");
-   when check_check => return("011");
+   when check_count => return("011");
    when copy_reg    => return("100");
    when load_reg    => return("101");
    when others      => null;
