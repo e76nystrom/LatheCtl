@@ -717,7 +717,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => xCtl_load,
+   step_in => zCtl_sel,
    step_out => test1);
 
  -- test 2 output pulse
@@ -726,7 +726,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => zCtl_load,
+   step_in => xCtl_sel,
    step_out => test2);
 
  -- test 3 output pulse
@@ -756,8 +756,8 @@ begin
  --ja3 <= xDistZero;
  --ja4 <= xDoneInt;
 
- ja1 <= test3;
- ja2 <= test2;
+ ja1 <= test1;
+ ja2 <= test3;
  ja3 <= op(0);
  ja4 <= op(1);
 
