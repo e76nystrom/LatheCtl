@@ -6,7 +6,7 @@ package CtlBits is
 
 -- z control register
 
- constant zCtl_size : integer := 8;
+ constant zCtl_size : integer := 7;
  signal zCtlReg : unsigned(zCtl_size-1 downto 0);
  alias zReset     : std_logic is zCtlreg(0); -- x01 reset flag
  alias zStart     : std_logic is zCtlreg(1); -- x02 start z
@@ -16,7 +16,6 @@ package CtlBits is
  alias zSetLoc    : std_logic is zCtlreg(4); -- x10 set z location
  alias zBacklash  : std_logic is zCtlreg(5); -- x20 backlash move no pos upd
  alias zWaitSync  : std_logic is zCtlreg(6); -- x40 wait for sync to start
- alias zPulsMult  : std_logic is zCtlreg(7); -- x80 enable pulse multiplier
 
 -- x control register
 
@@ -47,13 +46,14 @@ package CtlBits is
 
 -- configuration register
 
- constant cCtl_size : integer := 5;
+ constant cCtl_size : integer := 6;
  signal cCtlReg : unsigned(cCtl_size-1 downto 0);
  alias zStepPol   : std_logic is cCtlreg(0); -- x01 z step pulse polarity
  alias zDirPol    : std_logic is cCtlreg(1); -- x02 z direction polarity
  alias xStepPol   : std_logic is cCtlreg(2); -- x04 x step pulse polarity
  alias xDirPol    : std_logic is cCtlreg(3); -- x08 x direction polarity
  alias encPol     : std_logic is cCtlreg(4); -- x10 encoder dir polarity
+ alias zPulseMult : std_logic is cCtlreg(5); -- x20 enable pulse multiplier
 
 -- debug control register
 
