@@ -109,7 +109,6 @@ begin
 
     when active =>
      if (dsel = '1') then
-      load <= '1';
       --state <= idle;
       state <= load_reg;
      else
@@ -146,6 +145,7 @@ begin
      --state <= dclk_wait;
 
     when load_reg =>
+     load <= '1';
      state <= idle;
 
     --when dclk_wait =>
