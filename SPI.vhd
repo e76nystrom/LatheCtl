@@ -54,7 +54,7 @@ architecture Behavioral of SPI is
  end component;
 
 --type spi_fsm is (start, idle, active, check_count, copy_reg);
-type spi_fsm is (start, idle, active, check_count, copy_reg, load_reg);
+type spi_fsm is (start, idle, active, dec_count, check_count, copy_reg, load_reg);
 --type spi_fsm is (start, idle, active, check_count, copy_reg, dclk_wait);
  signal state : spi_fsm := start;
 
@@ -69,9 +69,10 @@ type spi_fsm is (start, idle, active, check_count, copy_reg, load_reg);
    when start       => return("000");
    when idle        => return("001");
    when active      => return("010");
-   when check_count => return("011");
-   when copy_reg    => return("100");
-   when load_reg    => return("101");
+   when dec_count   => return("011");
+   when check_count => return("100");
+   when copy_reg    => return("101");
+   when load_reg    => return("110");
    when others      => null;
   end case;
   return("000");
@@ -117,9 +118,7 @@ begin
       if (clkena = '1') then
       --if (dclk = '1') then
        if (count /= x"0") then
-        opReg <= opReg(op_bits-2 downto 0) & din;
-        count <= count - 1;
-        state <= check_count;
+        state <= dec_count;
        else
         shift <= '1';
         --state <= dclk_wait;
@@ -127,6 +126,11 @@ begin
       end if;
      end if;
 
+    when dec_count =>
+     opReg <= opReg(op_bits-2 downto 0) & din;
+     count <= count - 1;
+     state <= check_count;
+    
     when check_count =>
      if (count = 0) then
       op <= opReg;
