@@ -754,8 +754,8 @@ begin
  --ja3 <= xDistZero;
  --ja4 <= xDoneInt;
 
- ja1 <= zCtl_op;
- ja2 <= xCtl_op;
+ ja1 <= zCtl_sel;
+ ja2 <= xCtl_sel;
  ja3 <= op(0);
  ja4 <= op(1);
 
