@@ -101,7 +101,8 @@ constant XLDTCOUNT    : unsigned(opb-1 downto 0) := x"31"; -- load test count
 
 -- read control regs
 
-constant XRDCTL       : unsigned(opb-1 downto 0) := x"32"; -- read control regiisters
+constant XRDZCTL      : unsigned(opb-1 downto 0) := x"32"; -- read control regiisters
+constant XRDXCTL      : unsigned(opb-1 downto 0) := x"33"; -- read control regiisters
 
 end RegDef;
 
