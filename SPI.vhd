@@ -46,12 +46,12 @@ end SPI;
 
 architecture Behavioral of SPI is
 
- --component ClockEnable is
- -- Port (
- --  clk : in  std_logic;
- --  ena : in  std_logic;
- --  clkena : out std_logic);
- --end component;
+ component ClockEnable is
+  Port (
+   clk : in  std_logic;
+   ena : in  std_logic;
+   clkena : out std_logic);
+ end component;
 
 type spi_fsm is (start, idle, active, dec_count, dclk_wait, load_reg);
  signal state : spi_fsm := start;
@@ -60,7 +60,7 @@ type spi_fsm is (start, idle, active, dec_count, dclk_wait, load_reg);
  signal opReg : unsigned(op_bits-1 downto 0); --op code
  signal header : std_logic;
 
- --signal clkena : std_logic;
+ signal clkena : std_logic;
 
  function convert(a: spi_fsm) return std_logic_vector is
  begin
@@ -80,11 +80,11 @@ begin
 
  info <= convert(state);
 
- --clk_ena: ClockEnable
- -- port map (
- --  clk => clk,
- --  ena => dclk,
- --  clkena =>clkena);
+ clk_ena: ClockEnable
+  port map (
+   clk => clk,
+   ena => dclk,
+   clkena =>clkena);
  
  din_proc: process(clk)
  begin
@@ -110,7 +110,8 @@ begin
      if (dsel = '1') then
       state <= load_reg;
      else
-      if (dclk = '1') then
+      if (clkena - '1') then
+      --if (dclk = '1') then
        if (header = '0') then
         shift <= '1';
         state <= dclk_wait;
@@ -134,14 +135,15 @@ begin
     when dclk_wait =>
      shift <= '0';
      copy <= '0';
-     if (dsel = '1') then
-      load <= '1';
-      state <= idle;
-     else
-      if (dclk = '0') then
-       state <= active;
-      end if;
-     end if;
+     state <= active;
+     --if (dsel = '1') then
+     -- load <= '1';
+     -- state <= idle;
+     --else
+     -- if (dclk = '0') then
+     --  state <= active;
+     -- end if;
+     --end if;
  
     when load_reg =>
      load <= '1';
