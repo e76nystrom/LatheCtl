@@ -50,7 +50,8 @@ ARCHITECTURE behavior OF SPITest IS
    copy : out std_logic;
    shift : out std_logic;
    load : out std_logic;
-   info : out std_logic_vector(2 downto 0) --state info
+   header : inout std_logic
+   --info : out std_logic_vector(2 downto 0) --state info
    );
  end component;
 
@@ -96,7 +97,8 @@ ARCHITECTURE behavior OF SPITest IS
  signal copy : std_logic;
  signal shift : std_logic;
  signal load : std_logic;
- signal info : std_logic_vector(2 downto 0);
+ signal header : std_logic;
+ --signal info : std_logic_vector(2 downto 0);
  signal clkena1 : std_logic;
 
  -- Clock period definitions
@@ -145,7 +147,8 @@ BEGIN
   copy => copy,
   shift => shift,
   load => load,
-  info => info
+  header => header
+  --info => info
   );
 
  clk_ena: ClockEnable1
