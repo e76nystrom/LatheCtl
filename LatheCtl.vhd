@@ -802,6 +802,7 @@ begin
  --jd2 <= spiInfo(1);
  --jd3 <= spiInfo(2);
  --jd4 <= div(3);
+ jd4 <= zRunning;
  
  --leds
 
