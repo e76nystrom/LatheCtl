@@ -123,7 +123,7 @@ begin
      --end if;
 
     when chk_count =>
-     if (count = 0) then
+     if (count = "000") then
       op <= opReg;
       header <= '0';
       copy <= '1';
