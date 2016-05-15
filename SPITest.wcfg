@@ -11,7 +11,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="18" />
+   <WVObjectSize size="19" />
    <wvobject fp_name="/spitest/clk" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -84,5 +84,9 @@
    <wvobject fp_name="/spitest/clkena1" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clkena1</obj_property>
       <obj_property name="ObjectShortName">clkena1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/spitest/clk_ena/clkdly" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">clkdly[3:0]</obj_property>
+      <obj_property name="ObjectShortName">clkdly[3:0]</obj_property>
    </wvobject>
 </wave_config>
