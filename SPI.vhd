@@ -40,8 +40,8 @@ entity SPI is
   copy : out std_logic;                  --copy data to be shifted out
   shift : out std_logic;                 --shift data
   load : out std_logic;                  --load data shifted in
-  header : inout std_logic;
-  info : out std_logic_vector(2 downto 0) --state info
+  header : inout std_logic
+  --info : out std_logic_vector(2 downto 0) --state info
   );
 end SPI;
 
@@ -61,7 +61,6 @@ type spi_fsm is (start, idle, read_hdr, chk_count, dec_count,
 
  signal count : unsigned(2 downto 0) := "000";
  signal opReg : unsigned(op_bits-1 downto 0); --op code
- --signal header : std_logic;
 
  signal clkena : std_logic;
  constant n : positive := 4;
@@ -69,25 +68,25 @@ type spi_fsm is (start, idle, read_hdr, chk_count, dec_count,
  signal dselEna : std_logic;
  signal dselDis : std_logic;
 
- function convert(a: spi_fsm) return std_logic_vector is
- begin
-  case a is
-   when start     => return("111");
-   when idle      => return("000");
-   when read_hdr  => return("001");
-   when chk_count => return("011");
-   when dec_count => return("010");
-   when active    => return("100");
-   when dclk_wait => return("101");
-   when load_reg  => return("110");
-   when others    => null;
-  end case;
-  return("000");
- end;
+ --function convert(a: spi_fsm) return std_logic_vector is
+ --begin
+ -- case a is
+ --  when start     => return("111");
+ --  when idle      => return("000");
+ --  when read_hdr  => return("001");
+ --  when chk_count => return("011");
+ --  when dec_count => return("010");
+ --  when active    => return("100");
+ --  when dclk_wait => return("101");
+ --  when load_reg  => return("110");
+ --  when others    => null;
+ -- end case;
+ -- return("000");
+ --end;
 
 begin
 
- info <= convert(state);
+ --info <= convert(state);
 
  clk_ena: ClockEnable1
   generic map(n => 4)
