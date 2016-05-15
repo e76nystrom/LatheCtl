@@ -48,10 +48,12 @@ begin
   end if;
  end process;
 
- clkena <= (clkdly(n-1 downto 0) = (n-1 downto 0 => '1')) and
-           (clkdly(delayLen-1 downto n) = (n-1 downto 0 => '0'));
+ --clkena <= (clkdly(n-1 downto 0) = (n-1 downto 0 => '1')) and
+ --          (clkdly(delayLen-1 downto n) = (n-1 downto 0 => '0'));
 
 
- --clkena <= clkdly(0) and clkdly(1) and not clkdly(2) and not clkdly(3);
+ clkena <= (clkdly(n-1 downto 0) = (n-1 downto 0 => '1'));
+
+ clkena <= clkdly(0) and clkdly(1) and not clkdly(2) and not clkdly(3);
 
 end Behavioral;
