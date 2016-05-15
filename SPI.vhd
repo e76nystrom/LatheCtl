@@ -103,7 +103,7 @@ begin
      if (dsel = '0') then
       header <= '1';
       opReg <= "00000000";
-      count <= "000";
+      count <= "111";
       state <= active;
      end if;
 
