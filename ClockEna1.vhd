@@ -43,15 +43,15 @@ begin
  ena_proc: process(clk)
  begin
   if (rising_edge(clk)) then
-   --clkdly <= clkdly(delayLen-2 downto 0) & ena;
-   clkcly <= clkdly(2 downto 0) & ena;
+   clkdly <= clkdly(delayLen-2 downto 0) & ena;
+   --clkcly <= clkdly(2 downto 0) & ena;
   end if;
  end process;
 
- --clkena <= '1' when clkdly(n-1 downto 0) = (n-1 downto 0 => '1') and
- --          clkdly(delayLen-1 downto n) = (n-1 downto 0 => '0') else
- --          '0';
+ clkena <= '1' when clkdly(n-1 downto 0) = (n-1 downto 0 => '1') and
+           clkdly(delayLen-1 downto n) = (n-1 downto 0 => '0') else
+           '0';
 
- clkena <= clkdly(0) and clkdly(1) and not clkdly(2) and not clkdly(3);
+ --clkena <= clkdly(0) and clkdly(1) and not clkdly(2) and not clkdly(3);
 
 end Behavioral;
