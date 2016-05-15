@@ -101,8 +101,8 @@ begin
  --dselena <= '1' when dseldly = ((n-1 downto 0 => '0') & (n-1 downto 0 => '1'))
  --           else '0';
 
- dselEna <= '1' when dselDely = (n-1 downto 0 => '0') else '0';
- dselDis <= '1' when dselDely = (n-1 downto 0 => '1') else '0';
+ dselEna <= '1' when dseldly = (n-1 downto 0 => '0') else '0';
+ dselDis <= '1' when dseldly = (n-1 downto 0 => '1') else '0';
 
  din_proc: process(clk)
  begin
