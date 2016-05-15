@@ -112,7 +112,6 @@ begin
       state <= load_reg;
      else
       if (clkena = '1') then
-      --if (dclk = '1') then
        if (header = '0') then
         shift <= '1';
         state <= dclk_wait;
@@ -128,10 +127,10 @@ begin
       op <= opReg;
       header <= '0';
       copy <= '1';
+      state <= dclk_wait;
      else
       state <= dec_count;
      end if;
-     state <= dclk_wait;
 
     when dec_count =>
      count <= count - 1;
