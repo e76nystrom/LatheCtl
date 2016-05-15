@@ -199,14 +199,14 @@ BEGIN
   wait for clk_period*2;
   
   dsel <= '0';
-  delay(5);
+  delay(8);
   for i in 0 to 7 loop
    dclk <= '0';
    din <= tmp(7);
    tmp <= shift_left(tmp,1);
-   delay(3);
+   delay(6);
    dclk <= '1';
-   delay(3);
+   delay(6);
   end loop;
 
   delay(10);
@@ -215,9 +215,9 @@ BEGIN
    dclk <= '0';
    din <= tmp1(31);
    tmp1 <= shift_left(tmp1,1);
-   delay(3);
+   delay(6);
    dclk <= '1';
-   delay(3);
+   delay(6);
   end loop;
   dsel <= '1';
 
