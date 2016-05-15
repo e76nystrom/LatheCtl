@@ -56,7 +56,7 @@ architecture Behavioral of SPI is
 type spi_fsm is (start, idle, active, chk_count, dec_count, dclk_wait, load_reg);
  signal state : spi_fsm := start;
 
- signal count : unsigned(3 downto 0) := "0000";
+ signal count : unsigned(2 downto 0) := "000";
  signal opReg : unsigned(op_bits-1 downto 0); --op code
  signal header : std_logic;
 
