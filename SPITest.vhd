@@ -149,7 +149,7 @@ BEGIN
   );
 
  clk_ena: ClockEnable1
-  generic map(n => 2)
+  generic map(n => 3)
   port map (
    clk => clk,
    ena => dclk,
