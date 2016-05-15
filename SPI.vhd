@@ -54,7 +54,8 @@ architecture Behavioral of SPI is
    clkena : out std_logic);
  end component;
 
-type spi_fsm is (start, idle, active, chk_count, dec_count, dclk_wait, load_reg);
+type spi_fsm is (start, idle, read_hdr, chk_count, dec_count,
+                 active, dclk_wait, load_reg);
  signal state : spi_fsm := start;
 
  signal count : unsigned(2 downto 0) := "000";
@@ -67,12 +68,13 @@ type spi_fsm is (start, idle, active, chk_count, dec_count, dclk_wait, load_reg)
  begin
   case a is
    when start     => return("111");
-   when idle      => return("100");
-   when active    => return("000");
-   when chk_count => return("001");
-   when dec_count => return("101");
-   when dclk_wait => return("010");
-   when load_reg  => return("011");
+   when idle      => return("000");
+   when read_hdr  => return("001");
+   when chk_count => return("011");
+   when dec_count => return("010");
+   when active    => return("100");
+   when dclk_wait => return("101");
+   when load_reg  => return("110");
    when others    => null;
   end case;
   return("000");
@@ -105,41 +107,45 @@ begin
       header <= '1';
       opReg <= "00000000";
       count <= "111";
-      state <= active;
+      state <= read_hdr;
      end if;
 
-    when active =>
+    when read_hdr =>
      if (dsel = '1') then
-      state <= load_reg;
+      state <= idle;
      else
       if (clkena = '1') then
-       if (header = '0') then
-        shift <= '1';
-        state <= dclk_wait;
-       else
-        opReg <= opReg(op_bits-2 downto 0) & din;
-        state <= chk_count;
-       end if;
+       opReg <= opReg(op_bits-2 downto 0) & din;
+       state <= chk_count;
       end if;
-     end if;
 
     when chk_count =>
      if (count = 0) then
       op <= opReg;
       header <= '0';
       copy <= '1';
-      state <= dclk_wait;
+      state <= active;
      else
       state <= dec_count;
      end if;
 
     when dec_count =>
      count <= count - 1;
-     state <= active;
+     state <= read_hdr;
       
+    when active =>
+     copy <= '0';
+     if (dsel = '1') then
+      state <= load_reg;
+     else
+      if (clkena = '1') then
+       shift <= '1';
+       state <= dclk_wait;
+      end if;
+     end if;
+
     when dclk_wait =>
      shift <= '0';
-     copy <= '0';
      state <= active;
  
     when load_reg =>
