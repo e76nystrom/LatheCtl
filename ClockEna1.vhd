@@ -44,7 +44,7 @@ begin
  begin
   if (rising_edge(clk)) then
    if (ena = '0') then
-    clkdly <= clkdly(delayLen-1 downto 0 => '0');
+    clkdly <= (delayLen-1 downto 0 => '0');
    else
     clkdly <= clkdly(delayLen-2 downto 0) & ena;
    end if;
