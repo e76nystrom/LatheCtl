@@ -113,14 +113,14 @@ begin
      end if;
 
     when read_hdr =>
-     if (dsel = '1') then
-      state <= idle;
-     else
+     --if (dsel = '1') then
+     -- state <= idle;
+     --else
       if (clkena = '1') then
        opReg <= opReg(op_bits-2 downto 0) & din;
        state <= chk_count;
       end if;
-     end if;
+     --end if;
 
     when chk_count =>
      if (count = 0) then
