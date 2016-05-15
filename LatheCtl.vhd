@@ -136,7 +136,7 @@ architecture Behavioral of LatheCtl is
    copy : out std_logic;
    shift : out std_logic;
    load : out std_logic;
-   header : out std_logic;
+   header : inout std_logic;
    info : out std_logic_vector(2 downto 0) --state info
    --;
    );
