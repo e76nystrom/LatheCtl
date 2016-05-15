@@ -65,8 +65,6 @@ type spi_fsm is (start, idle, read_hdr, chk_count, dec_count,
 
  signal clkena : std_logic;
  constant n : positive := 4;
- --constant delayLen : positive := n*2;
- --signal dseldly : std_logic_vector(delayLen-1 downto 0);
  signal dseldly : std_logic_vector(n-1 downto 0);
  signal dselEna : std_logic;
  signal dselDis : std_logic;
@@ -97,9 +95,6 @@ begin
    clk => clk,
    ena => dclk,
    clkena =>clkena);
- 
- --dselena <= '1' when dseldly = ((n-1 downto 0 => '0') & (n-1 downto 0 => '1'))
- --           else '0';
 
  dselEna <= '1' when dseldly = (n-1 downto 0 => '0') else '0';
  dselDis <= '1' when dseldly = (n-1 downto 0 => '1') else '0';
@@ -118,13 +113,7 @@ begin
      shift <= '0';
      load <= '0';
      copy <= '0';
-     --if (dsel = '1') then
-     -- dseldly <= (delayLen-1 downto 0 => '0');
-     --else
-     -- dseldly <= dseldly(delayLen-2 downto 0) & '1';
-     --end if;
-     if (dselena = '1') then
-      --dseldly <= (delayLen-1 downto 0 => '0');
+     if (dselEna = '1') then
       header <= '1';
       opReg <= "00000000";
       count <= "111";
@@ -132,14 +121,14 @@ begin
      end if;
 
     when read_hdr =>
-     --if (dsel = '1') then
-     -- state <= idle;
-     --else
+     if (dselDis = '1') then
+      state <= idle;
+     else
       if (clkena = '1') then
        opReg <= opReg(op_bits-2 downto 0) & din;
        state <= chk_count;
       end if;
-     --end if;
+     end if;
 
     when chk_count =>
      if (count = "000") then
@@ -157,11 +146,6 @@ begin
       
     when active =>
      copy <= '0';
-     --if (dsel = '0') then
-     -- dseldly <= (delayLen-1 downto 0 => '0');
-     --else
-     -- dseldly <= dseldly(delayLen-2 downto 0) & '1';
-     --end if;
      if (dselDis = '1') then
       state <= load_reg;
      else
@@ -176,7 +160,6 @@ begin
      state <= active;
  
     when load_reg =>
-     --dseldly <= (delayLen-1 downto 0 => '0');
      load <= '1';
      state <= idle;
 
