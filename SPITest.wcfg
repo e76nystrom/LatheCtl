@@ -11,7 +11,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="15" />
+   <WVObjectSize size="16" />
    <wvobject fp_name="/spitest/clk" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -36,6 +36,10 @@
    <wvobject fp_name="/spitest/op" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">op[7:0]</obj_property>
       <obj_property name="ObjectShortName">op[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/spitest/uut/header" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">header</obj_property>
+      <obj_property name="ObjectShortName">header</obj_property>
    </wvobject>
    <wvobject fp_name="/spitest/copy" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">copy</obj_property>
