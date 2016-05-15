@@ -47,7 +47,8 @@ end SPI;
 
 architecture Behavioral of SPI is
 
- component ClockEnable is
+ component ClockEnable1 is
+ generic (n : positive);
   Port (
    clk : in  std_logic;
    ena : in  std_logic;
@@ -85,6 +86,7 @@ begin
  info <= convert(state);
 
  clk_ena: ClockEnable
+  generic map(n => 3)
   port map (
    clk => clk,
    ena => dclk,
