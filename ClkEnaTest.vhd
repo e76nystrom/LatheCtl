@@ -149,7 +149,7 @@ BEGIN
  -- );
 
  uut: ClockEnable1
-  generic map(n => 2)
+  generic map(n => 3)
   port map (
    clk => clk,
    ena => dclk,
@@ -204,9 +204,9 @@ BEGIN
    dclk <= '0';
    --din <= tmp(7);
    --tmp <= shift_left(tmp,1);
-   delay(3);
+   delay(5);
    dclk <= '1';
-   delay(3);
+   delay(5);
   end loop;
 
   delay(10);
@@ -215,9 +215,9 @@ BEGIN
    dclk <= '0';
    --din <= tmp1(31);
    --tmp1 <= shift_left(tmp1,1);
-   delay(3);
+   delay(5);
    dclk <= '1';
-   delay(3);
+   delay(5);
   end loop;
   --dsel <= '1';
 
