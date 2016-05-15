@@ -65,13 +65,14 @@ type spi_fsm is (start, idle, active, dec_count, dclk_wait, load_reg);
  function convert(a: spi_fsm) return std_logic_vector is
  begin
   case a is
-   when start       => return("000");
-   when idle        => return("001");
-   when active      => return("010");
-   when dec_count   => return("011");
-   when dclk_wait   => return("100");
-   when load_reg    => return("101");
-   when others      => null;
+   when start     => return("111");
+   when idle      => return("100");
+   when active    => return("000");
+   when chk_count => return("001");
+   when dec_count => return("101");
+   when dclk_wait => return("010");
+   when load_reg  => return("011");
+   when others    => null;
   end case;
   return("000");
  end;
@@ -117,33 +118,29 @@ begin
         state <= dclk_wait;
        else
         opReg <= opReg(op_bits-2 downto 0) & din;
-        state <= dec_count;
+        state <= chk_count;
        end if;
       end if;
      end if;
 
-    when dec_count =>
+    when chk_count =>
      if (count = 0) then
       op <= opReg;
       header <= '0';
       copy <= '1';
      else
-      count <= count - 1;
+      state <= dec_count;
      end if;
      state <= dclk_wait;
 
+    when dec_count =>
+     count <= count - 1;
+     state <= active;
+      
     when dclk_wait =>
      shift <= '0';
      copy <= '0';
      state <= active;
-     --if (dsel = '1') then
-     -- load <= '1';
-     -- state <= idle;
-     --else
-     -- if (dclk = '0') then
-     --  state <= active;
-     -- end if;
-     --end if;
  
     when load_reg =>
      load <= '1';
