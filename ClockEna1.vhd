@@ -37,7 +37,6 @@ architecture Behavioral of ClockEnable1 is
 
  constant delayLen : positive := n*2;
  signal clkdly : std_logic_vector(delayLen-1 downto 0);
- constant dlyVal =
 
 begin
 
