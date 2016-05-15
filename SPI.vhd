@@ -117,7 +117,7 @@ begin
      else
       dseldly <= dseldly(delayLen-2 downto 0) & '1';
      end if;
-     if (dselena = '0') then
+     if (dselena = '1') then
       header <= '1';
       opReg <= "00000000";
       count <= "111";
