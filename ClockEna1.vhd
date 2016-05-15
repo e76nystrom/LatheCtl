@@ -43,7 +43,11 @@ begin
  ena_proc: process(clk)
  begin
   if (rising_edge(clk)) then
-   clkdly <= clkdly(delayLen-2 downto 0) & ena;
+   if (ena = '0') then
+    clkdly <= clkdly(delayLen-1 downto 0 => '0');
+   else
+    clkdly <= clkdly(delayLen-2 downto 0) & ena;
+   end if;
   end if;
  end process;
 
