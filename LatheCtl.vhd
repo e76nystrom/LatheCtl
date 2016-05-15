@@ -55,14 +55,14 @@ entity LatheCtl is
   jc3 : out std_logic;            --x step
   jc4 : out std_logic;            --x direction
 
-  --jd1 : in std_logic;             --a input
-  --jd2 : in std_logic;             --b input
-  --jd3 : in std_logic;             --sync pulse input
+  jd1 : in std_logic;             --a input
+  jd2 : in std_logic;             --b input
+  jd3 : in std_logic;             --sync pulse input
   --jd4 : in std_logic;             --serial input
 
-  jd1 : out std_logic;
-  jd2 : out std_logic;
-  jd3 : out std_logic;
+  --jd1 : out std_logic;
+  --jd2 : out std_logic;
+  --jd3 : out std_logic;
   jd4 : out std_logic;
 
   led0 : out std_logic;
@@ -82,9 +82,9 @@ entity LatheCtl is
   segf : out std_logic;
   segg : out std_logic;
 
-  sw0: in std_logic;
-  sw1: in std_logic;
-  sw2: in std_logic;
+  --sw0: in std_logic;
+  --sw1: in std_logic;
+  --sw2: in std_logic;
   --sw3: in std_logic;
   --sw4: in std_logic;
   --sw5: in std_logic;
@@ -136,9 +136,8 @@ architecture Behavioral of LatheCtl is
    copy : out std_logic;
    shift : out std_logic;
    load : out std_logic;
-   header : inout std_logic;
-   info : out std_logic_vector(2 downto 0) --state info
-   --;
+   header : inout std_logic
+   --info : out std_logic_vector(2 downto 0) --state info
    );
  end component;
 
@@ -449,7 +448,7 @@ architecture Behavioral of LatheCtl is
  signal op : unsigned(opb-1 downto 0);  --operation code
  signal outReg : unsigned(out_bits-1 downto 0); --output register
  --signal opx : unsigned(opb-1 downto 0); --operation code
- signal spiInfo : std_logic_vector(2 downto 0); --state info
+ --signal spiInfo : std_logic_vector(2 downto 0); --state info
 signal header : std_logic;
  
  -- clock divider
@@ -759,7 +758,7 @@ begin
  --ja4 <= xDoneInt;
 
  ja1 <= test1;
- ja2 <= header;
+ ja2 <= test3;
  ja3 <= op(0);
  ja4 <= op(1);
 
@@ -791,18 +790,18 @@ begin
 
  --port d
 
- a_in <= sw0;
- b_in <= sw1;
- sync_in <= sw2;
+ --a_in <= sw0;
+ --b_in <= sw1;
+ --sync_in <= sw2;
 
- --a_in <= jd1;
- --b_in <= jd2;
- --sync_in <= jd3;
+ a_in <= jd1;
+ b_in <= jd2;
+ sync_in <= jd3;
 
- jd1 <= spiInfo(0);
- jd2 <= spiInfo(1);
- jd3 <= spiInfo(2);
- jd4 <= div(3);
+ --jd1 <= spiInfo(0);
+ --jd2 <= spiInfo(1);
+ --jd3 <= spiInfo(2);
+ --jd4 <= div(3);
  
  --leds
 
@@ -829,6 +828,7 @@ begin
          pReset xor
          pLimit xor
          pZero xor
+         header xor
          '0';
  led6 <= dir_ch;
  led7 <= div(div_range);
@@ -918,8 +918,8 @@ begin
    copy => copy,
    shift => dshift,
    load => load,
-   header => header,
-   info => spiInfo
+   header => header
+   --info => spiInfo
    );
 
  -- spi return data
