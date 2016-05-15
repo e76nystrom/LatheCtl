@@ -54,6 +54,14 @@ ARCHITECTURE behavior OF SPITest IS
    );
  end component;
 
+ component ClockEnable1 is
+ generic (n : positive);
+  Port (
+   clk : in  std_logic;
+   ena : in  std_logic;
+   clkena : out std_logic);
+ end component;
+
  --component Shift is
  -- generic(n : positive);
  -- Port(
@@ -89,6 +97,7 @@ ARCHITECTURE behavior OF SPITest IS
  signal shift : std_logic;
  signal load : std_logic;
  signal info : std_logic_vector(2 downto 0);
+ signal clkena : std_logic;
 
  -- Clock period definitions
  constant clk_period : time := 10 ns;
@@ -139,6 +148,13 @@ BEGIN
   info => info
   );
 
+ clk_ena: ClockEnable1
+  generic map(n => 2)
+  port map (
+   clk => clk,
+   ena => dclk,
+   clkena =>clkena1);
+ 
  --testreg: Shift
  -- generic map(test_bits)
  -- port map (
