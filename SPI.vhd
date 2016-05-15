@@ -40,7 +40,7 @@ entity SPI is
   copy : out std_logic;                  --copy data to be shifted out
   shift : out std_logic;                 --shift data
   load : out std_logic;                  --load data shifted in
-  header : out std_logic;
+  header : inout std_logic;
   info : out std_logic_vector(2 downto 0) --state info
   );
 end SPI;
