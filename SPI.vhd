@@ -122,7 +122,7 @@ begin
      -- dseldly <= (delayLen-1 downto 0 => '0');
      --else
      -- dseldly <= dseldly(delayLen-2 downto 0) & '1';
-     end if;
+     --end if;
      if (dselena = '1') then
       --dseldly <= (delayLen-1 downto 0 => '0');
       header <= '1';
