@@ -24,6 +24,10 @@
       <obj_property name="ElementShortName">dsel</obj_property>
       <obj_property name="ObjectShortName">dsel</obj_property>
    </wvobject>
+   <wvobject fp_name="/spitest/uut/dselena" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dselena</obj_property>
+      <obj_property name="ObjectShortName">dselena</obj_property>
+   </wvobject>
    <wvobject fp_name="/spitest/din" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">din</obj_property>
       <obj_property name="ObjectShortName">din</obj_property>
@@ -89,9 +93,5 @@
       <obj_property name="ElementShortName">clkdly[5:0]</obj_property>
       <obj_property name="ObjectShortName">clkdly[5:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/spitest/uut/dselena" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">dselena</obj_property>
-      <obj_property name="ObjectShortName">dselena</obj_property>
    </wvobject>
 </wave_config>
