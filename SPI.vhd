@@ -40,6 +40,7 @@ entity SPI is
   copy : out std_logic;                  --copy data to be shifted out
   shift : out std_logic;                 --shift data
   load : out std_logic;                  --load data shifted in
+  header : out std_logic;
   info : out std_logic_vector(2 downto 0) --state info
   );
 end SPI;
@@ -58,7 +59,7 @@ type spi_fsm is (start, idle, active, chk_count, dec_count, dclk_wait, load_reg)
 
  signal count : unsigned(2 downto 0) := "000";
  signal opReg : unsigned(op_bits-1 downto 0); --op code
- signal header : std_logic;
+ --signal header : std_logic;
 
  signal clkena : std_logic;
 
