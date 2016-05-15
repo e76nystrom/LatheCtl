@@ -176,7 +176,7 @@ begin
      state <= active;
  
     when load_reg =>
-     dseldly <= (delayLen-1 downto 0 => '0');
+     --dseldly <= (delayLen-1 downto 0 => '0');
      load <= '1';
      state <= idle;
 
