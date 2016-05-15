@@ -96,13 +96,7 @@ begin
    ena => dclk,
    clkena =>clkena);
  
- dsel_proc: process(clk)
- begin
-  if (rising_edge(clk)) then
-  end if;
- end process;
-
- dselena <= '1' when dseldly = ((n-1 downto 0 => '1') & (n-1 downto 0 => '0'))
+ dselena <= '1' when dseldly = ((n-1 downto 0 => '0') & (n-1 downto 0 => '1'))
             else '0';
 
  din_proc: process(clk)
@@ -119,9 +113,9 @@ begin
      load <= '0';
      copy <= '0';
      if (dsel = '1') then
-      dseldly <= (delayLen-1 downto 0 => '1');
+      dseldly <= (delayLen-1 downto 0 => '0');
      else
-      dseldly <= dseldly(delayLen-2 downto 0) & dsel;
+      dseldly <= dseldly(delayLen-2 downto 0) & '1';
      end if;
      if (dselena = '0') then
       header <= '1';
