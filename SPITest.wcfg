@@ -44,6 +44,7 @@
    <wvobject fp_name="/spitest/op" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">op[7:0]</obj_property>
       <obj_property name="ObjectShortName">op[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/spitest/uut/header" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">header</obj_property>
