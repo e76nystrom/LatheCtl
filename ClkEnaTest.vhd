@@ -4,7 +4,7 @@
 --
 -- Create Date:   05:56:52 04/05/2015
 -- Design Name:   
--- Module Name:   C:/Development/Xilinx/Spartan6/SPITest.vhd
+-- Module Name:   C:/Development/Xilinx/Spartan6/ClkEnaTest.vhd
 -- Project Name:  Spartan6
 -- Target Device:  
 -- Tool versions:  
@@ -32,27 +32,27 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 USE ieee.numeric_std.ALL;
 
-ENTITY SPITest IS
-END SPITest;
+ENTITY ClkEnaTest IS
+END ClkEnaTest;
 
-ARCHITECTURE behavior OF SPITest IS 
+ARCHITECTURE behavior OF ClkEnaTest IS 
  
  -- Component Declaration for the Unit Under Test (UUT)
  
- component SPI
- generic (op_bits : positive := 8);
-  PORT(
-   clk : in std_logic;
-   dclk : in std_logic;
-   dsel : in std_logic;
-   din : in std_logic;
-   op : out unsigned(op_bits-1 downto 0);
-   copy : out std_logic;
-   shift : out std_logic;
-   load : out std_logic;
-   info : out std_logic_vector(2 downto 0) --state info
-   );
- end component;
+ --component SPI
+ --generic (op_bits : positive := 8);
+ -- PORT(
+ --  clk : in std_logic;
+ --  dclk : in std_logic;
+ --  dsel : in std_logic;
+ --  din : in std_logic;
+ --  op : out unsigned(op_bits-1 downto 0);
+ --  copy : out std_logic;
+ --  shift : out std_logic;
+ --  load : out std_logic;
+ --  info : out std_logic_vector(2 downto 0) --state info
+ --  );
+ --end component;
 
  component ClockEnable1 is
  generic (n : positive);
@@ -86,17 +86,17 @@ ARCHITECTURE behavior OF SPITest IS
  --Inputs
  signal clk : std_logic := '0';
  signal dclk : std_logic := '0';
- signal dsel : std_logic := '1';
- signal din : std_logic := '0';
+ --signal dsel : std_logic := '1';
+ --signal din : std_logic := '0';
 
  --BiDirs
- signal op : unsigned(7 downto 0);
+ --signal op : unsigned(7 downto 0);
 
  --Outputs
- signal copy : std_logic;
- signal shift : std_logic;
- signal load : std_logic;
- signal info : std_logic_vector(2 downto 0);
+ --signal copy : std_logic;
+ --signal shift : std_logic;
+ --signal load : std_logic;
+ --signal info : std_logic_vector(2 downto 0);
  signal clkena1 : std_logic;
 
  -- Clock period definitions
@@ -126,29 +126,29 @@ ARCHITECTURE behavior OF SPITest IS
  -- end loop;
  --end procedure send;
 
- signal tmp : unsigned(op_bits-1 downto 0) :=  (op_bits-1 downto 0 => '0');
- signal tmp1 : unsigned(31 downto 0) :=  (31 downto 0 => '0');
+ --signal tmp : unsigned(op_bits-1 downto 0) :=  (op_bits-1 downto 0 => '0');
+ --signal tmp1 : unsigned(31 downto 0) :=  (31 downto 0 => '0');
 
- constant test_bits : integer := 32;
+ --constant test_bits : integer := 32;
  --signal test_reg : unsigned(test_bits-1 downto 0);
- signal test1_reg : unsigned(test_bits-1 downto 0);
+ --signal test1_reg : unsigned(test_bits-1 downto 0);
 
 BEGIN
  
  -- Instantiate the Unit Under Test (UUT)
- uut: SPI port MAP (
-  clk => clk,
-  dclk => dclk,
-  dsel => dsel,
-  din => din,
-  op => op,
-  copy => copy,
-  shift => shift,
-  load => load,
-  info => info
-  );
+ --uut: SPI port MAP (
+ -- clk => clk,
+ -- dclk => dclk,
+ -- dsel => dsel,
+ -- din => din,
+ -- op => op,
+ -- copy => copy,
+ -- shift => shift,
+ -- load => load,
+ -- info => info
+ -- );
 
- clk_ena: ClockEnable1
+ uut: ClockEnable1
   generic map(n => 2)
   port map (
    clk => clk,
@@ -191,19 +191,19 @@ BEGIN
 
   -- insert stimulus here 
 
-  tmp <= to_unsigned(16#a5#,8);
-  tmp1 <= to_unsigned(16#12345678#,32);
+  --tmp <= to_unsigned(16#a5#,8);
+  --tmp1 <= to_unsigned(16#12345678#,32);
 
   --send(tmp);
   
   wait for clk_period*2;
   
-  dsel <= '0';
+  --dsel <= '0';
   delay(5);
   for i in 0 to 7 loop
    dclk <= '0';
-   din <= tmp(7);
-   tmp <= shift_left(tmp,1);
+   --din <= tmp(7);
+   --tmp <= shift_left(tmp,1);
    delay(3);
    dclk <= '1';
    delay(3);
@@ -213,13 +213,13 @@ BEGIN
 
   for i in 0 to 31 loop
    dclk <= '0';
-   din <= tmp1(31);
-   tmp1 <= shift_left(tmp1,1);
+   --din <= tmp1(31);
+   --tmp1 <= shift_left(tmp1,1);
    delay(3);
    dclk <= '1';
    delay(3);
   end loop;
-  dsel <= '1';
+  --dsel <= '1';
 
   delay(20);
   
