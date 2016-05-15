@@ -97,7 +97,7 @@ ARCHITECTURE behavior OF SPITest IS
  signal shift : std_logic;
  signal load : std_logic;
  signal info : std_logic_vector(2 downto 0);
- signal clkena : std_logic;
+ signal clkena1 : std_logic;
 
  -- Clock period definitions
  constant clk_period : time := 10 ns;
