@@ -64,6 +64,10 @@ type spi_fsm is (start, idle, read_hdr, chk_count, dec_count,
  --signal header : std_logic;
 
  signal clkena : std_logic;
+ constant n : positive := 3;
+ constant delayLen : positive := n*2;
+ signal dseldly : std_logic_vector(delayLen-1 downto 0);
+ signal dselena : std_logic;
 
  function convert(a: spi_fsm) return std_logic_vector is
  begin
@@ -92,6 +96,15 @@ begin
    ena => dclk,
    clkena =>clkena);
  
+ dsel_proc: process(clk)
+ begin
+  if (rising_edge(clk)) then
+  end if;
+ end process;
+
+ dselena <= '1' when dseldly = ((n-1 downto 0 => '1') & (n-1 downto 0 => '0'))
+            else '0';
+
  din_proc: process(clk)
  begin
   if (rising_edge(clk)) then
@@ -105,7 +118,12 @@ begin
      shift <= '0';
      load <= '0';
      copy <= '0';
-     if (dsel = '0') then
+     if (dsel = '1') then
+      dseldly <= (delayLen-1 downto 0 => '1');
+     else
+      dseldly <= dseldly(delayLen-2 downto 0) & dsel;
+     end if;
+     if (dselena = '0') then
       header <= '1';
       opReg <= "00000000";
       count <= "111";
