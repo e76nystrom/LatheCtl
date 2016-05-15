@@ -118,6 +118,7 @@ begin
        opReg <= opReg(op_bits-2 downto 0) & din;
        state <= chk_count;
       end if;
+     end if;
 
     when chk_count =>
      if (count = 0) then
