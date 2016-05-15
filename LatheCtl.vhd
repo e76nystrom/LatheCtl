@@ -800,7 +800,7 @@ begin
  jd1 <= spiInfo(0);
  jd2 <= spiInfo(1);
  jd3 <= spiInfo(2);
- jd4 <= div(4);
+ jd4 <= div(3);
  
  --leds
 
