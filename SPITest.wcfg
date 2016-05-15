@@ -88,5 +88,6 @@
    <wvobject fp_name="/spitest/clk_ena/clkdly" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">clkdly[5:0]</obj_property>
       <obj_property name="ObjectShortName">clkdly[5:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
 </wave_config>
