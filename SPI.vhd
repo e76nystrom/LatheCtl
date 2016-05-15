@@ -110,7 +110,7 @@ begin
      if (dsel = '1') then
       state <= load_reg;
      else
-      if (clkena - '1') then
+      if (clkena = '1') then
       --if (dclk = '1') then
        if (header = '0') then
         shift <= '1';
