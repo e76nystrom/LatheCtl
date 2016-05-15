@@ -11,7 +11,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="21" />
+   <WVObjectSize size="22" />
    <wvobject fp_name="/spitest/clk" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -28,9 +28,13 @@
       <obj_property name="ElementShortName">dselena</obj_property>
       <obj_property name="ObjectShortName">dselena</obj_property>
    </wvobject>
+   <wvobject fp_name="/spitest/uut/dseldis" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dseldis</obj_property>
+      <obj_property name="ObjectShortName">dseldis</obj_property>
+   </wvobject>
    <wvobject fp_name="/spitest/uut/dseldly" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">dseldly[5:0]</obj_property>
-      <obj_property name="ObjectShortName">dseldly[5:0]</obj_property>
+      <obj_property name="ElementShortName">dseldly[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dseldly[3:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/spitest/din" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">din</obj_property>
