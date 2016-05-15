@@ -85,7 +85,7 @@ begin
 
  info <= convert(state);
 
- clk_ena: ClockEnable
+ clk_ena: ClockEnable1
   generic map(n => 3)
   port map (
    clk => clk,
