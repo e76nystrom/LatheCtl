@@ -26,25 +26,29 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity ClockEnable is
+entity ClockEnable1 is
+ generic (n : positive);
  Port ( clk : in  std_logic;
         ena : in  std_logic;
         clkena : out std_logic);
-end ClockEnable;
+end ClockEnable1;
 
-architecture Behavioral of ClockEnable is
+architecture Behavioral of ClockEnable1 is
 
- signal clkdly : std_logic_vector(1 downto 0);
+ constant delayLen : positive := n*2
+ signal clkdly : std_logic_vector(delayLen-1 downto 0);
 
 begin
 
  ena_proc: process(clk)
  begin
   if (rising_edge(clk)) then
-   clkdly <= clkdly(0) & ena;
+   clkdly <= clkdly(delayLen-2 downto 0) & ena;
   end if;
  end process;
 
- clkena <= clkdly(0) and not clkdly(1);
+ clkena <= '1' when clkdly(n-1 downto 0) = (n-1 downto 0 => '0') and
+           clkdly(delayLen-1 downto n) = (n-1 downto 0 => '1') else
+           '0';
 
 end Behavioral;
