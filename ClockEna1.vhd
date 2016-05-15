@@ -27,7 +27,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity ClockEnable1 is
- generic (n : positive);
+ generic (n : positive := 1);
  Port ( clk : in  std_logic;
         ena : in  std_logic;
         clkena : out std_logic);
