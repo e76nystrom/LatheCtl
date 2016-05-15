@@ -64,10 +64,12 @@ type spi_fsm is (start, idle, read_hdr, chk_count, dec_count,
  --signal header : std_logic;
 
  signal clkena : std_logic;
- constant n : positive := 3;
- constant delayLen : positive := n*2;
- signal dseldly : std_logic_vector(delayLen-1 downto 0);
- signal dselena : std_logic;
+ constant n : positive := 4;
+ --constant delayLen : positive := n*2;
+ --signal dseldly : std_logic_vector(delayLen-1 downto 0);
+ signal dseldly : std_logic_vector(n-1 downto 0);
+ signal dselEna : std_logic;
+ signal dselDis : std_logic;
 
  function convert(a: spi_fsm) return std_logic_vector is
  begin
@@ -96,12 +98,16 @@ begin
    ena => dclk,
    clkena =>clkena);
  
- dselena <= '1' when dseldly = ((n-1 downto 0 => '0') & (n-1 downto 0 => '1'))
-            else '0';
+ --dselena <= '1' when dseldly = ((n-1 downto 0 => '0') & (n-1 downto 0 => '1'))
+ --           else '0';
+
+ dselEna <= '1' when dselDely = (n-1 downto 0 => '0') else '0';
+ dselDis <= '1' when dselDely = (n-1 downto 0 => '1') else '0';
 
  din_proc: process(clk)
  begin
   if (rising_edge(clk)) then
+   dseldly <= dseldly(n-2 downto 0) & dsel;
    case state is
     when start =>
      if (dsel = '1') then
@@ -112,13 +118,13 @@ begin
      shift <= '0';
      load <= '0';
      copy <= '0';
-     if (dsel = '1') then
-      dseldly <= (delayLen-1 downto 0 => '0');
-     else
-      dseldly <= dseldly(delayLen-2 downto 0) & '1';
+     --if (dsel = '1') then
+     -- dseldly <= (delayLen-1 downto 0 => '0');
+     --else
+     -- dseldly <= dseldly(delayLen-2 downto 0) & '1';
      end if;
      if (dselena = '1') then
-      dseldly <= (delayLen-1 downto 0 => '0');
+      --dseldly <= (delayLen-1 downto 0 => '0');
       header <= '1';
       opReg <= "00000000";
       count <= "111";
@@ -151,12 +157,12 @@ begin
       
     when active =>
      copy <= '0';
-     if (dsel = '0') then
-      dseldly <= (delayLen-1 downto 0 => '0');
-     else
-      dseldly <= dseldly(delayLen-2 downto 0) & '1';
-     end if;
-     if (dselena = '1') then
+     --if (dsel = '0') then
+     -- dseldly <= (delayLen-1 downto 0 => '0');
+     --else
+     -- dseldly <= dseldly(delayLen-2 downto 0) & '1';
+     --end if;
+     if (dselDis = '1') then
       state <= load_reg;
      else
       if (clkena = '1') then
