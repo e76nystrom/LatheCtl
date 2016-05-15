@@ -118,6 +118,7 @@ begin
       dseldly <= dseldly(delayLen-2 downto 0) & '1';
      end if;
      if (dselena = '1') then
+      dseldly <= (delayLen-1 downto 0 => '0');
       header <= '1';
       opReg <= "00000000";
       count <= "111";
@@ -150,7 +151,12 @@ begin
       
     when active =>
      copy <= '0';
-     if (dsel = '1') then
+     if (dsel = '0') then
+      dseldly <= (delayLen-1 downto 0 => '0');
+     else
+      dseldly <= dseldly(delayLen-2 downto 0) & '1';
+     end if;
+     if (dselena = '1') then
       state <= load_reg;
      else
       if (clkena = '1') then
