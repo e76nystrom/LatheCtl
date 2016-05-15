@@ -136,6 +136,7 @@ architecture Behavioral of LatheCtl is
    copy : out std_logic;
    shift : out std_logic;
    load : out std_logic;
+   header : out std_logic;
    info : out std_logic_vector(2 downto 0) --state info
    --;
    );
@@ -449,7 +450,8 @@ architecture Behavioral of LatheCtl is
  signal outReg : unsigned(out_bits-1 downto 0); --output register
  --signal opx : unsigned(opb-1 downto 0); --operation code
  signal spiInfo : std_logic_vector(2 downto 0); --state info
-
+signal header : std_logic;
+ 
  -- clock divider
 
  constant div_range : integer := 26;
@@ -757,7 +759,7 @@ begin
  --ja4 <= xDoneInt;
 
  ja1 <= test1;
- ja2 <= test3;
+ ja2 <= header;
  ja3 <= op(0);
  ja4 <= op(1);
 
@@ -916,6 +918,7 @@ begin
    copy => copy,
    shift => dshift,
    load => load,
+   header => header,
    info => spiInfo
    );
 
