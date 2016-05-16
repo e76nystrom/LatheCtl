@@ -753,7 +753,7 @@ begin
  ja1 <= zStart;
  ja2 <= xStart;
  ja3 <= zDoneInt;
- ja4 <= test1;
+ ja4 <= xDoneInt;
 
  --ja3 <= xDistZero;
  --ja4 <= xDoneInt;
@@ -804,7 +804,7 @@ begin
  --jd2 <= spiInfo(1);
  --jd3 <= spiInfo(2);
  --jd4 <= div(3);
- jd4 <= zRunning;
+ jd4 <= zClockIn;
  
  --leds
 
