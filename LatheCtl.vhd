@@ -718,7 +718,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => zClockIn,
+   step_in => zCtl_sel,
    step_out => test1);
 
  -- test 2 output pulse
@@ -804,7 +804,7 @@ begin
  --jd2 <= spiInfo(1);
  --jd3 <= spiInfo(2);
  --jd4 <= div(3);
- jd4 <= zClockIn;
+ jd4 <= zRunning;
  
  --leds
 
