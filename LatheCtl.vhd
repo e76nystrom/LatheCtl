@@ -1013,7 +1013,19 @@ begin
 
  -- z control register
 
- zCtl_op <= '1' when (op = XLDZCTL) else '0';
+ zCtl_proc: process(clk1)
+ begin
+  if (rising_edge(clk1)) then
+   if 
+   if (op = XLDZCTL) then
+    zCtl_op <= '1';
+   else
+    zCtl_op <= '0';
+   end if;
+  end if;
+ end process;
+
+ --zCtl_op <= '1' when (op = XLDZCTL) else '0';
  zCtl_sel <= '1' when ((zCtl_op = '1') and (dshift = '1')) else '0';
  zCtl_load <= '1' when ((zCtl_op = '1') and (load = '1')) else '0';
 
@@ -1028,7 +1040,19 @@ begin
 
  -- x control register
 
- xCtl_op <= '1' when (op = XLDxCTL) else '0';
+ xCtl_proc: process(clk1)
+ begin
+  if (rising_edge(clk1)) then
+   if 
+   if (op = XLDXCTL) then
+    xCtl_op <= '1';
+   else
+    xCtl_op <= '0';
+   end if;
+  end if;
+ end process;
+
+ --xCtl_op <= '1' when (op = XLDxCTL) else '0';
  xCtl_sel <= '1' when ((xCtl_op = '1') and (dshift = '1')) else '0';
  xCtl_load <= '1' when ((xCtl_op = '1') and (load = '1')) else '0';
 
