@@ -1016,7 +1016,6 @@ begin
  zCtl_proc: process(clk1)
  begin
   if (rising_edge(clk1)) then
-   if 
    if (op = XLDZCTL) then
     zCtl_op <= '1';
    else
@@ -1043,7 +1042,6 @@ begin
  xCtl_proc: process(clk1)
  begin
   if (rising_edge(clk1)) then
-   if 
    if (op = XLDXCTL) then
     xCtl_op <= '1';
    else
