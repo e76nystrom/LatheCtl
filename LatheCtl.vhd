@@ -718,7 +718,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => zCtl_sel,
+   step_in => zClockIn,
    step_out => test1);
 
  -- test 2 output pulse
@@ -753,7 +753,7 @@ begin
  ja1 <= zStart;
  ja2 <= xStart;
  ja3 <= zDoneInt;
- ja4 <= xDoneInt;
+ ja4 <= test1;
 
  --ja3 <= xDistZero;
  --ja4 <= xDoneInt;
