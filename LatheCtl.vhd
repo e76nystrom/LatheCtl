@@ -1030,7 +1030,7 @@ begin
  -- z control register
 
  zCtl_proc : OpLatch
- generic map(op_bits, XLDZCTL)
+ generic map(opb, XLDZCTL)
   port map(
    clk => clk1,
    op => op,
