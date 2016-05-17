@@ -63,7 +63,7 @@ begin
  latch_proc : OpLatch
  generic map(op_bits, opVal)
   port map(
-   clk => clk1,
+   clk => clk,
    op => op,
    opSel => ctl_op);
 
