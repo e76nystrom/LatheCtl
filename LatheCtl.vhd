@@ -1067,8 +1067,8 @@ begin
    clk => clk1,
    din => din,
    op => op,
-   shift => cCtl_shift,
-   load => cCtl_load,
+   shift => dshift,
+   load => load,
    data => cCtlReg);
 
  -- debug control register
@@ -1081,8 +1081,8 @@ begin
    clk => clk1,
    din => din,
    op => op,
-   shift => dCtl_shift,
-   load => dCtl_load,
+   shift => dshift,
+   load => load,
    data => dCtlReg);
 
  -- display control register
@@ -1095,8 +1095,8 @@ begin
    clk => clk1,
    din => din,
    op => op,
-   shift => dsp_shift,
-   load => dsp_load,
+   shift => dshift,
+   load => load,
    data => dspReg);
 
  -- status register
