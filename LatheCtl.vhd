@@ -173,6 +173,19 @@ architecture Behavioral of LatheCtl is
    data : inout  unsigned (n-1 downto 0));
  end component;
 
+ component CtlReg1 is
+ generic(op_bits : positive := 8;
+         opVal : unsigned;
+         n : positive);
+  port (
+   clk : in std_logic;
+   din : in std_logic;
+  op : unsigned(op_bits-1 downto 0);    --current operation
+   shift : in std_logic;
+   load : in std_logic;
+   data : inout  unsigned (n-1 downto 0));
+ end component;
+
  --component ShiftOut
  -- generic (n : positive);
  -- port (
@@ -1029,48 +1042,34 @@ begin
 
  -- z control register
 
- zCtl_proc : OpLatch
- generic map(opb, XLDZCTL)
-  port map(
-   clk => clk1,
-   op => op,
-   opSel => zCtl_op);
- 
- --zCtl_proc: process(clk1)
- --begin
- -- if (rising_edge(clk1)) then
- --  if (op = XLDZCTL) then
- --   zCtl_op <= '1';
- --  else
- --   zCtl_op <= '0';
- --  end if;
- -- end if;
- --end process;
+ --zCtl_proc : OpLatch
+ --generic map(opb, XLDZCTL)
+ -- port map(
+ --  clk => clk1,
+ --  op => op,
+ --  opSel => zCtl_op);
 
- zCtl_shift <= '1' when ((zCtl_op = '1') and (dshift = '1')) else '0';
- zCtl_load <= '1' when ((zCtl_op = '1') and (load = '1')) else '0';
+ --zCtl_shift <= '1' when ((zCtl_op = '1') and (dshift = '1')) else '0';
+ --zCtl_load <= '1' when ((zCtl_op = '1') and (load = '1')) else '0';
 
- zctl : CtlReg
-  generic map (zCtl_size)
+ zctl : CtlReg1
+  generic map (opb, XLDZCTL, zCtl_size)
   port map (
    clk => clk1,
    din => din,
-   shift => zCtl_shift,
-   load => zCtl_load,
+   op => op,
+   shift => shift,
+   load => load,
    data => zCtlReg);
 
  -- x control register
 
- xCtl_proc: process(clk1)
- begin
-  if (rising_edge(clk1)) then
-   if (op = XLDXCTL) then
-    xCtl_op <= '1';
-   else
-    xCtl_op <= '0';
-   end if;
-  end if;
- end process;
+ xCtl_proc : OpLatch
+ generic map(opb, XLDXCTL)
+  port map(
+   clk => clk1,
+   op => op,
+   opSel => xCtl_op);
 
  xCtl_shift <= '1' when ((xCtl_op = '1') and (dshift = '1')) else '0';
  xCtl_load <= '1' when ((xCtl_op = '1') and (load = '1')) else '0';
