@@ -154,26 +154,16 @@ architecture Behavioral of LatheCtl is
    data_out : out unsigned (out_bits-1 downto 0));
  end component;
 
- component OpLatch is
-  generic(op_bits : positive := 8;
-          opVal : unsigned);
-  port (
-   clk : in std_logic;
-   op : in unsigned(op_bits-1 downto 0);
-   opSel : out std_logic);
- end component;
+ --component OpLatch is
+ -- generic(op_bits : positive := 8;
+ --         opVal : unsigned);
+ -- port (
+ --  clk : in std_logic;
+ --  op : in unsigned(op_bits-1 downto 0);
+ --  opSel : out std_logic);
+ --end component;
 
  component CtlReg is
-  generic (n : positive);
-  port (
-   clk : in std_logic;
-   din : in std_logic;
-   shift : in std_logic;
-   load : in std_logic;
-   data : inout  unsigned (n-1 downto 0));
- end component;
-
- component CtlReg1 is
  generic(op_bits : positive := 8;
          opVal : unsigned;
          n : positive);
@@ -1003,7 +993,7 @@ begin
 
  -- z control register
 
- zctl : CtlReg1
+ zctl : CtlReg
   generic map (op_bits => opb,
               opVal => XLDZCTL,
               n => zCtl_size)
@@ -1017,7 +1007,7 @@ begin
 
  -- x control register
 
- xctl : CtlReg1
+ xctl : CtlReg
   generic map (op_bits => opb,
               opVal => XLDXCTL,
               n => xCtl_size)
@@ -1031,7 +1021,7 @@ begin
 
  -- taper control register
 
- tCtl : CtlReg1
+ tCtl : CtlReg
   generic map (op_bits => opb,
                opVal => XLDtCTL,
                n => tCtl_size)
@@ -1045,7 +1035,7 @@ begin
 
  -- z position control register
 
- pCtl : CtlReg1
+ pCtl : CtlReg
   generic map (op_bits => opb,
                opVal => XLDPCTL,
                n => pCtl_size)
@@ -1059,7 +1049,7 @@ begin
 
  -- configuration control register
 
- cCtl : CtlReg1
+ cCtl : CtlReg
   generic map (op_bits => opb,
                opVal => XLDCFG,
                n => cCtl_size)
@@ -1073,7 +1063,7 @@ begin
 
  -- debug control register
 
- dbgctl : CtlReg1
+ dbgctl : CtlReg
   generic map (op_bits => opb,
                opVal => XLDDREG,
                n => dCtl_size)
@@ -1087,7 +1077,7 @@ begin
 
  -- display control register
 
- dspctl : CtlReg1
+ dspctl : CtlReg
   generic map (op_bits => opb,
                opVal => XLDDCTL,
                n => opb)
