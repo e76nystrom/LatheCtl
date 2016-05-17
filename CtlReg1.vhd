@@ -42,7 +42,7 @@ entity CtlReg1 is
   data : inout  unsigned (n-1 downto 0)); --data register
 end CtlReg1;
 
-architecture Behavioral of CtlReg is
+architecture Behavioral of CtlReg1 is
 
  component OpLatch is
   generic(op_bits : positive := 8;
@@ -70,7 +70,7 @@ begin
  ctl_shift <= '1' when ((ctl_op = '1') and (shift = '1')) else '0';
  ctl_load <= '1' when ((ctl_op = '1') and (load = '1')) else '0';
 
-ctlreg: process (clk)
+ctlreg1: process (clk)
  begin
   if (rising_edge(clk)) then
    if (ctl_load = '1') then          --if load set
@@ -81,7 +81,7 @@ ctlreg: process (clk)
     end if;
    end if;
   end if;
- end process ctlreg;
+ end process ctlreg1;
 
 end Behavioral;
 
