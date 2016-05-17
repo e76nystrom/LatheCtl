@@ -30,11 +30,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity OpLatch is
- generic(opVal : positive);
+ generic(op_bits : positive := 8;
+         opVal : unsigned);
  port (
-  clk : in  STD_LOGIC;
-  op : in  STD_LOGIC;
-  opSel : out  STD_LOGIC);
+  clk : in std_logic;
+  op : unsigned(op_bits-1 downto 0);
+  opSel : out std_logic);
 end OpLatch;
 
 architecture Behavioral of OpLatch is
