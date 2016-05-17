@@ -767,7 +767,7 @@ begin
  --jc1 <= op(2);
  --jc2 <= op(3);
  jc3 <= a;
- jc4 <= b);
+ jc4 <= b;
 
  --port d
 
