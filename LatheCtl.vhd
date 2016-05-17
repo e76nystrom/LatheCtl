@@ -1058,7 +1058,7 @@ begin
  -- debug control register
 
  dbgctl : CtlReg
-  generic map (opVal => XLDDREG,
+  generic map (opVal => XLDDCTL,
                n => dCtl_size)
   port map (
    clk => clk1,
@@ -1071,7 +1071,7 @@ begin
  -- display control register
 
  dspctl : CtlReg
-  generic map (opVal => XLDDCTL,
+  generic map (opVal => XLDDREG,
                n => opb)
   port map (
    clk => clk1,
