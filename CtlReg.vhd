@@ -37,7 +37,7 @@ entity CtlReg is
  port (
   clk : in std_logic;                   --clock
   din : in std_logic;                   --data in
-  op : unsigned(opb-1 downto 0);    --current operation
+  op : unsigned(opb-1 downto 0);        --current reg address
   shift : in std_logic;                 --shift data
   load : in std_logic;                  --load to data register
   data : inout  unsigned (n-1 downto 0)); --data register
