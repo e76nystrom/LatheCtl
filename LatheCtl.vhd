@@ -460,19 +460,19 @@ signal header : std_logic;
 -- z control register
 
  signal zCtl_op : std_logic;          --z control op selected
- signal zCtl_sel : std_logic;         --select for shifting data in
+ signal zCtl_shift : std_logic;         --select for shifting data in
  signal zCtl_load : std_logic;        --select for loading contorl reg
 
  -- x control register
 
  signal xCtl_op : std_logic;          --x control op selected
- signal xCtl_sel : std_logic;         --select for shifting data in
+ signal xCtl_shift : std_logic;         --select for shifting data in
  signal xCtl_load : std_logic;        --select for loading contorl reg
 
 -- taper control register
 
  signal tCtl_op : std_logic;          --taper control op selected
- signal tctl_sel : std_logic;         --select for shifting data in
+ signal tctl_shift : std_logic;         --select for shifting data in
  signal tctl_load : std_logic;        --select for loading contorl reg
  signal taperZ : std_logic;           --x moves z tapered
  signal taperX : std_logic;           --z moves x tapered
@@ -480,25 +480,25 @@ signal header : std_logic;
 -- z position control register
 
  signal pCtl_op : std_logic;          --phase control op selected
- signal pCtl_sel : std_logic;         --select for shifting data in
+ signal pCtl_shift : std_logic;         --select for shifting data in
  signal pCtl_load : std_logic;        --select for loading contorl reg
 
 -- configuration register
 
  signal cCtl_op : std_logic;          --config control op selected
- signal cCtl_sel : std_logic;         --select for shifting data in
+ signal cCtl_shift : std_logic;         --select for shifting data in
  signal cCtl_load : std_logic;        --select for loading contorl reg
 
  -- debug control register
 
  signal dCtl_op : std_logic;          --debug control op selected
- signal dCtl_sel : std_logic;         --select for shifting data in
+ signal dCtl_shift : std_logic;         --select for shifting data in
  signal dCtl_load : std_logic;        --select for loading contorl reg
 
  -- display control register
 
  signal dCtl_op : std_logic;          --display control op selected
- signal dsp_sel : std_logic;          --select for shifting data in
+ signal dsp_shift : std_logic;          --select for shifting data in
  signal dsp_load : std_logic;         --select for loading contorl reg
 
 -- debug frequency generator
@@ -734,7 +734,7 @@ begin
   generic map (step_width => 25)
   port map (
    clk => clk1,
-   step_in => xClockIn
+   step_in => xClockIn,
    step_out => test2);
 
  -- test 3 output pulse
@@ -1031,7 +1031,7 @@ begin
   end if;
  end process;
 
- zCtl_sel <= '1' when ((zCtl_op = '1') and (dshift = '1')) else '0';
+ zCtl_shift <= '1' when ((zCtl_op = '1') and (dshift = '1')) else '0';
  zCtl_load <= '1' when ((zCtl_op = '1') and (load = '1')) else '0';
 
  zctl : CtlReg
@@ -1039,7 +1039,7 @@ begin
   port map (
    clk => clk1,
    din => din,
-   shift => zCtl_sel,
+   shift => zCtl_shift,
    load => zCtl_load,
    data => zCtlReg);
 
@@ -1056,7 +1056,7 @@ begin
   end if;
  end process;
 
- xCtl_sel <= '1' when ((xCtl_op = '1') and (dshift = '1')) else '0';
+ xCtl_shift <= '1' when ((xCtl_op = '1') and (dshift = '1')) else '0';
  xCtl_load <= '1' when ((xCtl_op = '1') and (load = '1')) else '0';
 
  xctl : CtlReg
@@ -1064,7 +1064,7 @@ begin
   port map (
    clk => clk1,
    din => din,
-   shift => xCtl_sel,
+   shift => xCtl_shift,
    load => xCtl_load,
    data => xCtlReg);
 
@@ -1081,7 +1081,7 @@ begin
   end if;
  end process;
 
- tCtl_sel <= '1' when ((tCtl_op = '1') and (dshift = '1')) else '0';
+ tCtl_shift <= '1' when ((tCtl_op = '1') and (dshift = '1')) else '0';
  tCtl_load <= '1' when ((tCtl_op = '1') and (load = '1')) else '0';
 
  tCtl : CtlReg
@@ -1089,7 +1089,7 @@ begin
   port map (
    clk => clk1,
    din => din,
-   shift => tCtl_Sel,
+   shift => tCtl_shift,
    load => tCtl_load,
    data => tctlReg);
 
@@ -1106,7 +1106,7 @@ begin
   end if;
  end process;
 
- pCtl_sel <= '1' when ((pCtl_op = '1') and (dshift = '1')) else '0';
+ pCtl_shift <= '1' when ((pCtl_op = '1') and (dshift = '1')) else '0';
  pCtl_load <= '1' when ((pCtl_op = '1') and (load = '1')) else '0';
 
  pCtl : CtlReg
@@ -1114,7 +1114,7 @@ begin
   port map (
    clk => clk1,
    din => din,
-   shift => pCtl_sel,
+   shift => pCtl_shift,
    load => pCtl_load,
    data => pCtlReg);
 
@@ -1131,7 +1131,7 @@ begin
   end if;
  end process;
 
- cCtl_sel <= '1' when ((cCtl_op = '1') and (dshift = '1')) else '0';
+ cCtl_shift <= '1' when ((cCtl_op = '1') and (dshift = '1')) else '0';
  cCtl_load <= '1' when ((cCtl_op = '1') and (load = '1')) else '0';
 
  cCtl : CtlReg
@@ -1139,7 +1139,7 @@ begin
   port map (
    clk => clk1,
    din => din,
-   shift => cCtl_sel,
+   shift => cCtl_shift,
    load => cCtl_load,
    data => cCtlReg);
 
@@ -1156,7 +1156,7 @@ begin
   end if;
  end process;
 
- dCtl_sel <= '1' when ((dCtl_op = '1') and (dshift = '1')) else '0';
+ dCtl_shift <= '1' when ((dCtl_op = '1') and (dshift = '1')) else '0';
  dCtl_load <= '1' when ((dCtl_op = '1') and (load = '1')) else '0';
 
  dbgctl : CtlReg
@@ -1164,7 +1164,7 @@ begin
   port map (
    clk => clk1,
    din => din,
-   shift => dCtl_sel,
+   shift => dCtl_shift,
    load => dCtl_load,
    data => dCtlReg);
 
@@ -1181,7 +1181,7 @@ begin
   end if;
  end process;
 
- dsp_sel <= '1' when ((dspCtl_op) = '1') and (dshift = '1')) else '0';
+ dsp_shift <= '1' when ((dspCtl_op) = '1') and (dshift = '1')) else '0';
  dsp_load <= '1' when ((dspCtl_op = '1') and (load = '1')) else '0';
 
  dspctl : CtlReg
@@ -1189,7 +1189,7 @@ begin
   port map (
    clk => clk1,
    din => din,
-   shift => dsp_sel,
+   shift => dsp_shift,
    load => dsp_load,
    data => dspReg);
 
