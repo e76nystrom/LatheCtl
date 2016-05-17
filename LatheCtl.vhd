@@ -164,13 +164,12 @@ architecture Behavioral of LatheCtl is
  --end component;
 
  component CtlReg is
- generic(op_bits : positive := 8;
-         opVal : unsigned;
+ generic(opVal : unsigned;
          n : positive);
   port (
    clk : in std_logic;
    din : in std_logic;
-   op : unsigned(op_bits-1 downto 0);
+   op : unsigned(opb-1 downto 0);
    shift : in std_logic;
    load : in std_logic;
    data : inout  unsigned (n-1 downto 0));
@@ -994,9 +993,8 @@ begin
  -- z control register
 
  zctl : CtlReg
-  generic map (op_bits => opb,
-              opVal => XLDZCTL,
-              n => zCtl_size)
+  generic map (opVal => XLDZCTL,
+               n => zCtl_size)
   port map (
    clk => clk1,
    din => din,
@@ -1008,9 +1006,8 @@ begin
  -- x control register
 
  xctl : CtlReg
-  generic map (op_bits => opb,
-              opVal => XLDXCTL,
-              n => xCtl_size)
+  generic map (opVal => XLDXCTL,
+               n => xCtl_size)
   port map (
    clk => clk1,
    din => din,
@@ -1022,8 +1019,7 @@ begin
  -- taper control register
 
  tCtl : CtlReg
-  generic map (op_bits => opb,
-               opVal => XLDtCTL,
+  generic map (opVal => XLDtCTL,
                n => tCtl_size)
   port map (
    clk => clk1,
@@ -1036,8 +1032,7 @@ begin
  -- z position control register
 
  pCtl : CtlReg
-  generic map (op_bits => opb,
-               opVal => XLDPCTL,
+  generic map (opVal => XLDPCTL,
                n => pCtl_size)
   port map (
    clk => clk1,
@@ -1050,8 +1045,7 @@ begin
  -- configuration control register
 
  cCtl : CtlReg
-  generic map (op_bits => opb,
-               opVal => XLDCFG,
+  generic map (opVal => XLDCFG,
                n => cCtl_size)
   port map (
    clk => clk1,
@@ -1064,8 +1058,7 @@ begin
  -- debug control register
 
  dbgctl : CtlReg
-  generic map (op_bits => opb,
-               opVal => XLDDREG,
+  generic map (opVal => XLDDREG,
                n => dCtl_size)
   port map (
    clk => clk1,
@@ -1078,8 +1071,7 @@ begin
  -- display control register
 
  dspctl : CtlReg
-  generic map (op_bits => opb,
-               opVal => XLDDCTL,
+  generic map (opVal => XLDDCTL,
                n => opb)
   port map (
    clk => clk1,
