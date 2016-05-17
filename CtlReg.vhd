@@ -29,14 +29,15 @@ use IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+use RegDef.all;
+
 entity CtlReg is
- generic(op_bits : positive := 8;
-         opVal : unsigned;
+ generic(opVal : unsigned;
          n : positive);
  port (
   clk : in std_logic;                   --clock
   din : in std_logic;                   --data in
-  op : unsigned(op_bits-1 downto 0);    --current operation
+  op : unsigned(opb-1 downto 0);    --current operation
   shift : in std_logic;                 --shift data
   load : in std_logic;                  --load to data register
   data : inout  unsigned (n-1 downto 0)); --data register
@@ -45,11 +46,10 @@ end CtlReg;
 architecture Behavioral of CtlReg is
 
  component OpLatch is
-  generic(op_bits : positive := 8;
-          opVal : unsigned);
+  generic(opVal : unsigned);
   port (
    clk : in std_logic;
-   op : in unsigned(op_bits-1 downto 0);
+   op : in unsigned(opb downto 0);
    opSel : out std_logic);
  end component;
 
@@ -61,7 +61,7 @@ signal ctl_load : std_logic;
 begin
 
  latch_proc : OpLatch
- generic map(op_bits, opVal)
+ generic map(opVal)
   port map(
    clk => clk,
    op => op,
