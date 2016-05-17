@@ -1058,7 +1058,7 @@ begin
    clk => clk1,
    din => din,
    op => op,
-   shift => shift,
+   shift => dshift,
    load => load,
    data => zCtlReg);
 
