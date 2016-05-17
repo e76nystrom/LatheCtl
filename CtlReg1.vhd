@@ -29,7 +29,7 @@ use IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity CtlReg is
+entity CtlReg1 is
  generic(op_bits : positive := 8;
          opVal : unsigned;
          n : positive);
@@ -40,7 +40,7 @@ entity CtlReg is
   shift : in std_logic;                 --shift data
   load : in std_logic;                  --load to data register
   data : inout  unsigned (n-1 downto 0)); --data register
-end CtlReg;
+end CtlReg1;
 
 architecture Behavioral of CtlReg is
 
