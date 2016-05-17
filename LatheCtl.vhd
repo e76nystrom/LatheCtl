@@ -1061,7 +1061,7 @@ begin
 
  cCtl : CtlReg1
   generic map (op_bits => opb,
-               opVal => XLDCCTL,
+               opVal => XLDCFG,
                n => cCtl_size)
   port map (
    clk => clk1,
