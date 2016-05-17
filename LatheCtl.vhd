@@ -481,9 +481,9 @@ signal header : std_logic;
 
 -- z control register
 
- signal zCtl_op : std_logic;          --z control op selected
- signal zCtl_shift : std_logic;       --select for shifting data in
- signal zCtl_load : std_logic;        --select for loading contorl reg
+ --signal zCtl_op : std_logic;          --z control op selected
+ --signal zCtl_shift : std_logic;       --select for shifting data in
+ --signal zCtl_load : std_logic;        --select for loading contorl reg
 
  -- x control register
 
