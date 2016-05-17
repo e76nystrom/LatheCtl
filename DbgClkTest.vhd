@@ -153,17 +153,17 @@ BEGIN
   b <= '1';
   a <= '1';
 
-  delay(2);
+  delay(3);
   
   b <= '1';
   a <= '0';
 
-  delay(2);
+  delay(3);
 
   b <= '0';
   a <= '0';
 
-  delay(2);
+  delay(3);
   freq_val := 3;
 
   tmp <= to_signed(freq_val,freq_bits);
