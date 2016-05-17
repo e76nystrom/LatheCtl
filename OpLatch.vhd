@@ -30,15 +30,27 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity OpLatch is
-    Port ( clk : in  STD_LOGIC;
-           op : in  STD_LOGIC;
-           out : out  STD_LOGIC);
+ generic(opVal : positive);
+ port (
+  clk : in  STD_LOGIC;
+  op : in  STD_LOGIC;
+  opSel : out  STD_LOGIC);
 end OpLatch;
 
 architecture Behavioral of OpLatch is
 
 begin
 
+ pCtl_proc: process(clk)
+ begin
+  if (rising_edge(clk)) then
+   if (op = opVal) then
+    opSel <= '1';
+   else
+    opSel <= '0';
+   end if;
+  end if;
+ end process;
 
 end Behavioral;
 
