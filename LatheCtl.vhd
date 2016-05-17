@@ -1148,7 +1148,7 @@ begin
  dCtl_proc: process(clk1)
  begin
   if (rising_edge(clk1)) then
-   if (op = XLDDCTL) then
+   if (op = XLDDREG) then
     dCtl_op <= '1';
    else
     dCtl_op <= '0';
