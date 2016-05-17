@@ -180,7 +180,7 @@ architecture Behavioral of LatheCtl is
   port (
    clk : in std_logic;
    din : in std_logic;
-  op : unsigned(op_bits-1 downto 0);    --current operation
+   op : unsigned(op_bits-1 downto 0);
    shift : in std_logic;
    load : in std_logic;
    data : inout  unsigned (n-1 downto 0));
@@ -1053,7 +1053,7 @@ begin
  --zCtl_load <= '1' when ((zCtl_op = '1') and (load = '1')) else '0';
 
  zctl : CtlReg1
-  generic map (opb, XLDZCTL, zCtl_size)
+  generic map (op_bits => opb, opVal => XLDZCTL, n => zCtl_size)
   port map (
    clk => clk1,
    din => din,
