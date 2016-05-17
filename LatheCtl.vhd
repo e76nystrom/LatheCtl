@@ -1182,7 +1182,7 @@ begin
  end process;
 
  dsp_shift <= '1' when ((dspCtl_op) = '1') and (dshift = '1')) else '0';
- dsp_load <= '1' when ((dspCtl_op = '1') and (load = '1')) else '0';
+ dsp_load <= '1' when ((dspCtl_op) = '1') and (load = '1')) else '0';
 
  dspctl : CtlReg
   generic map (n => opb)
