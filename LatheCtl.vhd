@@ -154,6 +154,14 @@ architecture Behavioral of LatheCtl is
    data_out : out unsigned (out_bits-1 downto 0));
  end component;
 
+ component OpLatch is
+  generic(opVal : positive);
+  port (
+   clk : in  STD_LOGIC;
+   op : in  STD_LOGIC;
+   opSel : out  STD_LOGIC);
+ end component;
+
  component CtlReg is
   generic (n : positive);
   port (
@@ -1020,16 +1028,23 @@ begin
 
  -- z control register
 
- zCtl_proc: process(clk1)
- begin
-  if (rising_edge(clk1)) then
-   if (op = XLDZCTL) then
-    zCtl_op <= '1';
-   else
-    zCtl_op <= '0';
-   end if;
-  end if;
- end process;
+ zCtl_proc : OpLatch
+ generic map(XLDZCTL)
+  port map(
+   clk => clk1,
+   op => op,
+   opSel => zCtl_op);
+ 
+ --zCtl_proc: process(clk1)
+ --begin
+ -- if (rising_edge(clk1)) then
+ --  if (op = XLDZCTL) then
+ --   zCtl_op <= '1';
+ --  else
+ --   zCtl_op <= '0';
+ --  end if;
+ -- end if;
+ --end process;
 
  zCtl_shift <= '1' when ((zCtl_op = '1') and (dshift = '1')) else '0';
  zCtl_load <= '1' when ((zCtl_op = '1') and (load = '1')) else '0';
