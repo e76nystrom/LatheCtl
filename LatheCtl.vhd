@@ -1070,13 +1070,13 @@ begin
 
  -- taper control register
 
- pCtl_proc: process(clk1)
+ tCtl_proc: process(clk1)
  begin
   if (rising_edge(clk1)) then
-   if (op = XLDPCTL) then
-    pCtl_op <= '1';
+   if (op = XLDTCTL) then
+    tCtl_op <= '1';
    else
-    pCtl_op <= '0';
+    tCtl_op <= '0';
    end if;
   end if;
  end process;
@@ -1123,7 +1123,7 @@ begin
  cCtl_proc: process(clk1)
  begin
   if (rising_edge(clk1)) then
-   if (op = XLDCCTL) then
+   if (op = XLDCFG) then
     cCtl_op <= '1';
    else
     cCtl_op <= '0';
