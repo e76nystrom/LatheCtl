@@ -42,6 +42,8 @@ entity CtlReg is
   data : inout  unsigned (n-1 downto 0)); --data register
 end CtlReg;
 
+architecture Behavioral of CtlReg is
+
  component OpLatch is
   generic(op_bits : positive := 8;
           opVal : unsigned);
@@ -50,8 +52,6 @@ end CtlReg;
    op : in unsigned(op_bits-1 downto 0);
    opSel : out std_logic);
  end component;
-
-architecture Behavioral of CtlReg is
 
 signal sreg : unsigned (n-1 downto 0) := (n-1 downto 0 => '0');
 signal ctl_op : std_logic;
