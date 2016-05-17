@@ -479,49 +479,10 @@ signal header : std_logic;
  signal div : unsigned(div_range downto 0);
  alias dig_sel: unsigned(1 downto 0) is div(19 downto 18);
 
--- z control register
-
- --signal zCtl_op : std_logic;          --z control op selected
- --signal zCtl_shift : std_logic;       --select for shifting data in
- --signal zCtl_load : std_logic;        --select for loading contorl reg
-
- -- x control register
-
- signal xCtl_op : std_logic;          --x control op selected
- signal xCtl_shift : std_logic;       --select for shifting data in
- signal xCtl_load : std_logic;        --select for loading contorl reg
-
 -- taper control register
 
- signal tCtl_op : std_logic;          --taper control op selected
- signal tctl_shift : std_logic;       --select for shifting data in
- signal tctl_load : std_logic;        --select for loading contorl reg
  signal taperZ : std_logic;           --x moves z tapered
  signal taperX : std_logic;           --z moves x tapered
-
--- z position control register
-
- signal pCtl_op : std_logic;          --phase control op selected
- signal pCtl_shift : std_logic;       --select for shifting data in
- signal pCtl_load : std_logic;        --select for loading contorl reg
-
--- configuration register
-
- signal cCtl_op : std_logic;          --config control op selected
- signal cCtl_shift : std_logic;       --select for shifting data in
- signal cCtl_load : std_logic;        --select for loading contorl reg
-
- -- debug control register
-
- signal dCtl_op : std_logic;          --debug control op selected
- signal dCtl_shift : std_logic;       --select for shifting data in
- signal dCtl_load : std_logic;        --select for loading contorl reg
-
- -- display control register
-
- signal dspCtl_op : std_logic;        --display control op selected
- signal dsp_shift : std_logic;        --select for shifting data in
- signal dsp_load : std_logic;         --select for loading contorl reg
 
 -- debug frequency generator
 
@@ -1042,18 +1003,10 @@ begin
 
  -- z control register
 
- --zCtl_proc : OpLatch
- --generic map(opb, XLDZCTL)
- -- port map(
- --  clk => clk1,
- --  op => op,
- --  opSel => zCtl_op);
-
- --zCtl_shift <= '1' when ((zCtl_op = '1') and (dshift = '1')) else '0';
- --zCtl_load <= '1' when ((zCtl_op = '1') and (load = '1')) else '0';
-
  zctl : CtlReg1
-  generic map (op_bits => opb, opVal => XLDZCTL, n => zCtl_size)
+  generic map (op_bits => opb,
+              opVal => XLDZCTL,
+              n => zCtl_size)
   port map (
    clk => clk1,
    din => din,
@@ -1064,146 +1017,84 @@ begin
 
  -- x control register
 
- xCtl_proc : OpLatch
- generic map(opb, XLDXCTL)
-  port map(
-   clk => clk1,
-   op => op,
-   opSel => xCtl_op);
-
- xCtl_shift <= '1' when ((xCtl_op = '1') and (dshift = '1')) else '0';
- xCtl_load <= '1' when ((xCtl_op = '1') and (load = '1')) else '0';
-
- xctl : CtlReg
-  generic map (xCtl_size)
+ xctl : CtlReg1
+  generic map (op_bits => opb,
+              opVal => XLDXCTL,
+              n => xCtl_size)
   port map (
    clk => clk1,
    din => din,
-   shift => xCtl_shift,
-   load => xCtl_load,
+   op => op,
+   shift => dshift,
+   load => load,
    data => xCtlReg);
 
  -- taper control register
 
- tCtl_proc: process(clk1)
- begin
-  if (rising_edge(clk1)) then
-   if (op = XLDTCTL) then
-    tCtl_op <= '1';
-   else
-    tCtl_op <= '0';
-   end if;
-  end if;
- end process;
-
- tCtl_shift <= '1' when ((tCtl_op = '1') and (dshift = '1')) else '0';
- tCtl_load <= '1' when ((tCtl_op = '1') and (load = '1')) else '0';
-
- tCtl : CtlReg
-  generic map (n => tCtl_size)
+ tCtl : CtlReg1
+  generic map (op_bits => opb,
+               opVal => XLDtCTL,
+               n => tCtl_size)
   port map (
    clk => clk1,
    din => din,
-   shift => tCtl_shift,
-   load => tCtl_load,
+   op => op,
+   shift => dshift,
+   load => load,
    data => tctlReg);
 
  -- z position control register
 
- pCtl_proc: process(clk1)
- begin
-  if (rising_edge(clk1)) then
-   if (op = XLDPCTL) then
-    pCtl_op <= '1';
-   else
-    pCtl_op <= '0';
-   end if;
-  end if;
- end process;
-
- pCtl_shift <= '1' when ((pCtl_op = '1') and (dshift = '1')) else '0';
- pCtl_load <= '1' when ((pCtl_op = '1') and (load = '1')) else '0';
-
- pCtl : CtlReg
-  generic map (n => pCtl_size)
+ pCtl : CtlReg1
+  generic map (op_bits => opb,
+               oppVal => XLDPCTL,
+               n => pCtl_size)
   port map (
    clk => clk1,
    din => din,
-   shift => pCtl_shift,
-   load => pCtl_load,
+   op => op,
+   shift => dshift,
+   load => load,
    data => pCtlReg);
 
  -- configuration control register
 
- cCtl_proc: process(clk1)
- begin
-  if (rising_edge(clk1)) then
-   if (op = XLDCFG) then
-    cCtl_op <= '1';
-   else
-    cCtl_op <= '0';
-   end if;
-  end if;
- end process;
-
- cCtl_shift <= '1' when ((cCtl_op = '1') and (dshift = '1')) else '0';
- cCtl_load <= '1' when ((cCtl_op = '1') and (load = '1')) else '0';
-
- cCtl : CtlReg
-  generic map (n => cCtl_size)
+ cCtl : CtlReg1
+  generic map (op_bits => opb,
+               opVal => XLDcCTL,
+               n => cCtl_size)
   port map (
    clk => clk1,
    din => din,
+   op => op,
    shift => cCtl_shift,
    load => cCtl_load,
    data => cCtlReg);
 
  -- debug control register
 
- dCtl_proc: process(clk1)
- begin
-  if (rising_edge(clk1)) then
-   if (op = XLDDREG) then
-    dCtl_op <= '1';
-   else
-    dCtl_op <= '0';
-   end if;
-  end if;
- end process;
-
- dCtl_shift <= '1' when ((dCtl_op = '1') and (dshift = '1')) else '0';
- dCtl_load <= '1' when ((dCtl_op = '1') and (load = '1')) else '0';
-
- dbgctl : CtlReg
-  generic map (n => dCtl_size)
+ dbgctl : CtlReg1
+  generic map (op_bits => opb,
+               opVal => XLDDREG,
+               n => dCtl_size)
   port map (
    clk => clk1,
    din => din,
+   op => op,
    shift => dCtl_shift,
    load => dCtl_load,
    data => dCtlReg);
 
  -- display control register
 
- dspCtl_proc: process(clk1)
- begin
-  if (rising_edge(clk1)) then
-   if (op = XLDDCTL) then
-    dspCtl_op <= '1';
-   else
-    dspCtl_op <= '0';
-   end if;
-  end if;
- end process;
-
- dsp_shift <= '1' when ((dspCtl_op = '1') and (dshift = '1')) else '0';
- dsp_load <= '1' when ((dspCtl_op = '1') and (load = '1')) else '0';
-
- dspctl : CtlReg
-  generic map (n => opb)
+ dspctl : CtlReg1
+  generic map (op_bits => opb,
+               opVal => XLDDCTL,
+               n => opb)
   port map (
    clk => clk1,
    din => din,
+   op => op,
    shift => dsp_shift,
    load => dsp_load,
    data => dspReg);
