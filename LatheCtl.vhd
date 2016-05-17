@@ -155,11 +155,12 @@ architecture Behavioral of LatheCtl is
  end component;
 
  component OpLatch is
-  generic(opVal : positive);
+  generic(op_bits : positive := 8;
+          opVal : unsigned);
   port (
-   clk : in  STD_LOGIC;
-   op : in  STD_LOGIC;
-   opSel : out  STD_LOGIC);
+   clk : in std_logic;
+   op : in unsigned(op_bits-1 downto 0);
+   opSel : out std_logic);
  end component;
 
  component CtlReg is
@@ -1029,7 +1030,7 @@ begin
  -- z control register
 
  zCtl_proc : OpLatch
- generic map(XLDZCTL)
+ generic map(op_bits, XLDZCTL)
   port map(
    clk => clk1,
    op => op,
