@@ -29,12 +29,13 @@ use IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+use RegDef.all;
+
 entity OpLatch is
- generic(op_bits : positive := 8;
-         opVal : unsigned);
+ generic(opVal : unsigned);
  port (
   clk : in std_logic;
-  op : unsigned(op_bits-1 downto 0);
+  op : unsigned(opb-1 downto 0);
   opSel : out std_logic);
 end OpLatch;
 
