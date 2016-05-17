@@ -49,7 +49,7 @@ architecture Behavioral of CtlReg is
   generic(opVal : unsigned);
   port (
    clk : in std_logic;
-   op : in unsigned(opb downto 0);
+   op : in unsigned(opb-1 downto 0);
    opSel : out std_logic);
  end component;
 
