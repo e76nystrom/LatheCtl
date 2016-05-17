@@ -460,19 +460,19 @@ signal header : std_logic;
 -- z control register
 
  signal zCtl_op : std_logic;          --z control op selected
- signal zCtl_shift : std_logic;         --select for shifting data in
+ signal zCtl_shift : std_logic;       --select for shifting data in
  signal zCtl_load : std_logic;        --select for loading contorl reg
 
  -- x control register
 
  signal xCtl_op : std_logic;          --x control op selected
- signal xCtl_shift : std_logic;         --select for shifting data in
+ signal xCtl_shift : std_logic;       --select for shifting data in
  signal xCtl_load : std_logic;        --select for loading contorl reg
 
 -- taper control register
 
  signal tCtl_op : std_logic;          --taper control op selected
- signal tctl_shift : std_logic;         --select for shifting data in
+ signal tctl_shift : std_logic;       --select for shifting data in
  signal tctl_load : std_logic;        --select for loading contorl reg
  signal taperZ : std_logic;           --x moves z tapered
  signal taperX : std_logic;           --z moves x tapered
@@ -480,25 +480,25 @@ signal header : std_logic;
 -- z position control register
 
  signal pCtl_op : std_logic;          --phase control op selected
- signal pCtl_shift : std_logic;         --select for shifting data in
+ signal pCtl_shift : std_logic;       --select for shifting data in
  signal pCtl_load : std_logic;        --select for loading contorl reg
 
 -- configuration register
 
  signal cCtl_op : std_logic;          --config control op selected
- signal cCtl_shift : std_logic;         --select for shifting data in
+ signal cCtl_shift : std_logic;       --select for shifting data in
  signal cCtl_load : std_logic;        --select for loading contorl reg
 
  -- debug control register
 
  signal dCtl_op : std_logic;          --debug control op selected
- signal dCtl_shift : std_logic;         --select for shifting data in
+ signal dCtl_shift : std_logic;       --select for shifting data in
  signal dCtl_load : std_logic;        --select for loading contorl reg
 
  -- display control register
 
- signal dCtl_op : std_logic;          --display control op selected
- signal dsp_shift : std_logic;          --select for shifting data in
+ signal dspCtl_op : std_logic;        --display control op selected
+ signal dsp_shift : std_logic;        --select for shifting data in
  signal dsp_load : std_logic;         --select for loading contorl reg
 
 -- debug frequency generator
@@ -1181,8 +1181,8 @@ begin
   end if;
  end process;
 
- dsp_shift <= '1' when ((dspCtl_op) = '1') and (dshift = '1')) else '0';
- dsp_load <= '1' when ((dspCtl_op) = '1') and (load = '1')) else '0';
+ dsp_shift <= '1' when ((dspCtl_op = '1') and (dshift = '1')) else '0';
+ dsp_load <= '1' when ((dspCtl_op = '1') and (load = '1')) else '0';
 
  dspctl : CtlReg
   generic map (n => opb)
