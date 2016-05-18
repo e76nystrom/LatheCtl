@@ -154,14 +154,14 @@ architecture Behavioral of LatheCtl is
    data_out : out unsigned (out_bits-1 downto 0));
  end component;
 
- --component OpLatch is
- -- generic(op_bits : positive := 8;
- --         opVal : unsigned);
- -- port (
- --  clk : in std_logic;
- --  op : in unsigned(op_bits-1 downto 0);
- --  opSel : out std_logic);
- --end component;
+ component OpLatch is
+  generic(op_bits : positive := 8;
+          opVal : unsigned);
+  port (
+   clk : in std_logic;
+   op : in unsigned(op_bits-1 downto 0);
+   opSel : out std_logic);
+ end component;
 
  component CtlReg is
  generic(opVal : unsigned;
