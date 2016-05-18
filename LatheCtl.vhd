@@ -1096,14 +1096,14 @@ begin
  dbgFLatch : OpLatch
  generic map(XLDTFREQ)
   port map(
-   clk => clk,
+   clk => clk1,
    op => op,
    opSel => dbgFreq_sel);
 
  dbgCLatch : OpLatch
  generic map(XLDTCOUNT)
   port map(
-   clk => clk,
+   clk => clk1,
    op => op,
    opSel => dbgCount_sel);
 
@@ -1160,7 +1160,7 @@ begin
  ClrFreqLatch : OpLatch
  generic map(XCLRFREQ)
   port map(
-   clk => clk,
+   clk => clk1,
    op => op,
    opSel => freqInitOp);
 
