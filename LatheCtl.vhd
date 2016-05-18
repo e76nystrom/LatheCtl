@@ -1094,14 +1094,14 @@ begin
  -- clock simulator for debugging
 
  dbgFLatch : OpLatch
- generic map(XLDTFREQ)
+ generic map(opVal => XLDTFREQ)
   port map(
    clk => clk1,
    op => op,
    opSel => dbgFreq_sel);
 
  dbgCLatch : OpLatch
- generic map(XLDTCOUNT)
+ generic map(opVal => XLDTCOUNT)
   port map(
    clk => clk1,
    op => op,
@@ -1158,7 +1158,7 @@ begin
  -- spindle pulse frequency counter
 
  ClrFreqLatch : OpLatch
- generic map(XCLRFREQ)
+ generic map(opVal => XCLRFREQ)
   port map(
    clk => clk1,
    op => op,
@@ -1167,7 +1167,7 @@ begin
  freqInit <= '1' when (freqInitOp = '1') and (load = '1') else '0';
 
  Freq_Counter : FreqCounter
-  generic map (freqCtr_bits)
+  generic map (opVal => freqCtr_bits)
   port map (
    clk => clk1,
    init => freqInit,
