@@ -508,6 +508,7 @@ signal header : std_logic;
 
  constant freqCtr_bits : integer := 18;
 
+ signal freqInitOp : std_logic;
  signal freqInit : std_logic;
  signal freqCtr_reg : unsigned(freqCtr_bits-1 downto 0);
 
@@ -1092,8 +1093,22 @@ begin
 
  -- clock simulator for debugging
 
- dbgfreq_sel <= '1' when (op = XLDTFREQ) else '0';
- dbgcount_sel <= '1' when (op = XLDTCOUNT) else '0';
+ dbgFLatch : OpLatch
+ generic map(XLDTFREQ)
+  port map(
+   clk => clk,
+   op => op,
+   opSel => dbgFreq_sel);
+
+ dbgCLatch : OpLatch
+ generic map(XLDTCOUNT)
+  port map(
+   clk => clk,
+   op => op,
+   opSel => dbgCount_sel);
+
+ --dbgfreq_sel <= '1' when (op = XLDTFREQ) else '0';
+ --dbgcount_sel <= '1' when (op = XLDTCOUNT) else '0';
 
  dbg_clk : DbgClk
   generic map (freq_bits => dfreq_bits,
@@ -1142,7 +1157,14 @@ begin
 
  -- spindle pulse frequency counter
 
- freqInit <= '1' when (op = XCLRFREQ) and (load = '1') else '0';
+ ClrFreqLatch : OpLatch
+ generic map(XCLRFREQ)
+  port map(
+   clk => clk,
+   op => op,
+   opSel => freqInitOp);
+
+ freqInit <= '1' when (freqInitOp = '1') and (load = '1') else '0';
 
  Freq_Counter : FreqCounter
   generic map (freqCtr_bits)
