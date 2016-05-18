@@ -61,7 +61,7 @@ signal ctl_load : std_logic;
 begin
 
  latch_proc : OpLatch
- generic map(opVal)
+ generic map(opVal => opVal)
   port map(
    clk => clk,
    op => op,
