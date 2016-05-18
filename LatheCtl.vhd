@@ -1167,7 +1167,7 @@ begin
  freqInit <= '1' when (freqInitOp = '1') and (load = '1') else '0';
 
  Freq_Counter : FreqCounter
-  generic map (opVal => freqCtr_bits)
+  generic map (freqCtr_bits)
   port map (
    clk => clk1,
    init => freqInit,
