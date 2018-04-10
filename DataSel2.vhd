@@ -32,9 +32,9 @@ use IEEE.NUMERIC_STD.ALL;
 entity DataSel2 is
  generic(n : positive);
  port ( sel : in std_logic;
-        data0 : in  UNSIGNED (n-1 downto 0);
-        data1 : in  UNSIGNED (n-1 downto 0);
-        data_out : out  UNSIGNED (n-1 downto 0));
+        data0 : in unsigned (n-1 downto 0);
+        data1 : in unsigned (n-1 downto 0);
+        data_out : out unsigned (n-1 downto 0));
 end DataSel2;
 
 architecture Behavioral of DataSel2 is
